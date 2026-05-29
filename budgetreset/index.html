@@ -141,12 +141,12 @@
   function push(event, extra={}){window.dataLayer.push(Object.assign({event,asset_id:assetId},extra))}
   function makeExpense(name='', amount=0){
     const row=document.createElement('div'); row.className='row';
-    row.innerHTML=`<div class="field"><label>Category</label><input class="ex-name" value="${name.replace(/"/free-utility-lab/g,'&quot;')}" placeholder="Bill or category"></div><div class="field"><label>Monthly amount</label><input class="ex-amount" type="number" min="0" step="10" value="${amount}"></div><button class="remove" type="button" aria-label="Remove expense">×</button>`;
+    row.innerHTML=`<div class="field"><label>Category</label><input class="ex-name" value="${name.replace(/"/g,'&quot;')}" placeholder="Bill or category"></div><div class="field"><label>Monthly amount</label><input class="ex-amount" type="number" min="0" step="10" value="${amount}"></div><button class="remove" type="button" aria-label="Remove expense">×</button>`;
     row.querySelector('.remove').onclick=()=>{row.remove();calc()}; row.querySelectorAll('input').forEach(i=>i.addEventListener('input',calc)); expenseRows.appendChild(row);
   }
   function makeDebt(name='', bal=0, apr=0, pay=0){
     const row=document.createElement('div'); row.className='row debt';
-    row.innerHTML=`<div class="field"><label>Debt</label><input class="debt-name" value="${name.replace(/"/free-utility-lab/g,'&quot;')}" placeholder="Debt name"></div><div class="field"><label>Balance</label><input class="debt-bal" type="number" min="0" step="50" value="${bal}"></div><div class="field"><label>APR %</label><input class="debt-apr" type="number" min="0" step=".1" value="${apr}"></div><div class="field"><label>Payment</label><input class="debt-pay" type="number" min="0" step="10" value="${pay}"></div><button class="remove" type="button" aria-label="Remove debt">×</button>`;
+    row.innerHTML=`<div class="field"><label>Debt</label><input class="debt-name" value="${name.replace(/"/g,'&quot;')}" placeholder="Debt name"></div><div class="field"><label>Balance</label><input class="debt-bal" type="number" min="0" step="50" value="${bal}"></div><div class="field"><label>APR %</label><input class="debt-apr" type="number" min="0" step=".1" value="${apr}"></div><div class="field"><label>Payment</label><input class="debt-pay" type="number" min="0" step="10" value="${pay}"></div><button class="remove" type="button" aria-label="Remove debt">×</button>`;
     row.querySelector('.remove').onclick=()=>{row.remove();calc()}; row.querySelectorAll('input').forEach(i=>i.addEventListener('input',calc)); debtRows.appendChild(row);
   }
   function getExpenses(){return [...expenseRows.querySelectorAll('.row')].map(r=>({name:r.querySelector('.ex-name').value||'Category',amount:n(r.querySelector('.ex-amount').value)}))}
@@ -175,7 +175,7 @@
     push('calculator_complete',{budget_positive:net>=0, expense_count:expenses.length, debt_count:debts.length});
     return {income,savings,expenses,debts,extra,exTotal,debtPay,net,rate,months,period:$('period').value,method:$('method').value,currency:currency()};
   }
-  function csvEscape(v){return '"'+String(v).replace(/"/free-utility-lab/g,'""')+'"'}
+  function csvEscape(v){return '"'+String(v).replace(/"/g,'""')+'"'}
   function downloadCsv(){
     const r=calc(), lines=[]; lines.push(['BudgetReset Pro export','Value'].map(csvEscape).join(','));
     [['Currency',r.currency],['Period',r.period],['Income',r.income],['Savings goal',r.savings],['Bills/spending',r.exTotal],['Debt payments incl extra',r.debtPay],['Net after plan',r.net],['Savings rate',r.rate+'%'],['Payoff method',r.method],['Payoff estimate months',r.months||'']].forEach(x=>lines.push(x.map(csvEscape).join(',')));
