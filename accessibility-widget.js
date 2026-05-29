@@ -96,7 +96,7 @@
   const t = T[lang] || T.he;
 
   // ── State ──────────────────────────────────────────────────────────────
-  const STATE_KEY = 'clarvix_a11y';
+  const STATE_KEY = 'free_utility_lab_a11y';
   const defaultState = {
     fontSize:   0,   // -2 to +4 steps (each step = +2px from base)
     contrast:   false,
@@ -346,8 +346,8 @@ body.clv-read-font, body.clv-read-font * {
   btn.setAttribute('aria-controls', 'clv-a11y-panel');
   btn.innerHTML = `
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-      <circle cx="12" cy="4" r="2"/free-utility-lab/>
-      <path d="M12 6v6l4 4M12 12l-4 4M8 8H4M20 8h-4M12 18v4"/free-utility-lab/>
+      <circle cx="12" cy="4" r="2"/>
+      <path d="M12 6v6l4 4M12 12l-4 4M8 8H4M20 8h-4M12 18v4"/>
     </svg>
     <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">${t.btn}</span>`;
   document.body.appendChild(btn);
