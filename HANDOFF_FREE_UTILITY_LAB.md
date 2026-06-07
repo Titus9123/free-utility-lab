@@ -7,51 +7,47 @@ GitHub Pages: `https://titus9123.github.io/free-utility-lab/`
 
 ## Current state
 
-Free Utility Lab is now separated from Clarvix in the public repo and published to GitHub Pages under the neutral `Free Utility Lab` brand.
+Free Utility Lab is separated from Clarvix in the public repo and published to GitHub Pages under the neutral `Free Utility Lab` brand.
 
-Latest completed work:
-- Removed inherited GTM / `googletagmanager` snippets from all copied tool and support pages.
-- Rewrote public root copy and privacy policy for neutral free-tool positioning.
-- Rebuilt sitemap with 29 real URLs.
-- Fixed broken migrated SVG markers (`/free-utility-lab/>`) in `asset-lab/index.html` and `accessibility-widget.js`.
-- Removed public Clarvix markers from CSS/JS and switched accessibility widget localStorage key to `free_utility_lab_a11y`.
-- Removed internal monetization language from public root and asset-lab pages.
-- Fixed migration-corrupted JS regexes in BudgetReset, AIStackCost, MealPlanSheet and MoveBudget CSV/name escaping.
+Latest organic-growth work:
+
+- Added 20 new long-tail SEO support pages across MealPlanSheet, BudgetReset, MoveBudget and AIStackCost.
+- Rebuilt sitemap with 49 real URLs, trailing-slash root URL and `lastmod` values.
+- Added OpenGraph and Twitter metadata to all HTML pages.
+- Added a shared `free-utility-lab-tracking.js` event loader across all pages.
+- Added internal links from hub/main pages into new organic-search guides.
+- Added docs:
+  - `docs/organic-traffic-growth-plan.md`
+  - `docs/google-stack-setup-checklist.md`
+  - `docs/distribution-kit.md`
 
 ## Verification snapshot
 
 Local verification currently passes:
-- HTML files: 29
-- HTML parse errors: 0
-- Inline script `node --check` errors: 0
-- Sitemap URLs: 29 unique
-- Sitemap local missing: 0
-- Bad root-relative links outside `/free-utility-lab/`: 0
-- Public forbidden markers outside this handoff: 0 for:
-  - `Clarvix`, `clarvix.net`, `contact@clarvix.net`
-  - `GTM-KQ8MQBNQ`, `googletagmanager`
-  - `adsbygoogle`, `googlesyndication`
-  - `client_secret`, `access_token`, `PRIVATE KEY`
-  - `/free-utility-lab/>`
-  - `RPM`, `RPV`, `CPV`, `ad revenue`, `make ad money`, `passive income`
-  - migration-corrupted regex marker `free-utility-lab/g`
 
-Live verification from previous push passed with cache-bust for:
-- `/`
-- `/asset-lab/`
-- `/sitemap.xml`
-- sample BudgetReset / MealPlanSheet / MoveBudget support pages
+- HTML files: 49
+- Sitemap URLs: 49 unique
+- Local sitemap URL check: 49/49 returned HTTP 200
+- Canonicals: present on all HTML pages
+- OpenGraph metadata: present on all HTML pages
+- Twitter metadata: present on all HTML pages
+- Tracking loader: present on all HTML pages
+- Body `data-asset-id`: present on all HTML pages
+- Shared tracking JS: `node --check` passed
+- Git diff whitespace check: passed
 
-## Workflow constraint
+## Measurement status
 
-Use small, deterministic patches. Avoid broad destructive repo-wide replacements unless the exact script is narrowly scoped and verified.
+- Current neutral Free Utility Lab pages now have local `dataLayer`/event instrumentation.
+- GA4/GTM external collector is intentionally not hardcoded yet because a dedicated Free Utility Lab Measurement ID or GTM container ID is still needed.
+- Search Console verification/submission still requires user Google account action.
 
 ## Next recommended step
 
-Commit and push the latest JS-regex fixes + updated handoff, then verify live with cache-busted URLs and page-specific markers.
+Commit/push the organic-growth updates, wait for GitHub Pages deployment, then verify live with cache-busted URLs:
 
-Suggested live checks after push:
-- `https://titus9123.github.io/free-utility-lab/budgetreset/?v=<commit>` includes `replace(/"/g,'&quot;')` and no `free-utility-lab/g`.
-- `https://titus9123.github.io/free-utility-lab/aistackcost/?v=<commit>` includes `aistackcost-recommendation.csv` and no `free-utility-lab/g`.
-- `https://titus9123.github.io/free-utility-lab/mealplansheet/?v=<commit>` includes `mealplansheet-weekly-plan.csv` and no `free-utility-lab/g`.
-- `https://titus9123.github.io/free-utility-lab/movebudget/?v=<commit>` includes `movebudget-result.csv` and no `free-utility-lab/g`.
+- `https://titus9123.github.io/free-utility-lab/sitemap.xml?v=<commit>` should include 49 URLs.
+- `https://titus9123.github.io/free-utility-lab/mealplansheet/cheap-weekly-meal-plan/?v=<commit>` should return HTTP 200 and include `Open the free MealPlanSheet tool`.
+- `https://titus9123.github.io/free-utility-lab/budgetreset/zero-based-budget-template/?v=<commit>` should return HTTP 200 and include `Open the free BudgetReset tool`.
+- `https://titus9123.github.io/free-utility-lab/movebudget/moving-cost-checklist/?v=<commit>` should return HTTP 200 and include `Open the free MoveBudget tool`.
+- `https://titus9123.github.io/free-utility-lab/aistackcost/best-ai-tools-for-small-business/?v=<commit>` should return HTTP 200 and include `Open the free AIStackCost tool`.
