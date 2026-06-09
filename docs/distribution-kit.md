@@ -99,3 +99,21 @@ New AIStackCost targets:
 - Use BudgetReset pages for budgeting resource lists; avoid advice claims.
 - Use MoveBudget pages for renter/apartment checklists and moving-resource pages.
 - Use AIStackCost pages for creator/freelancer/agency operations resource lists.
+
+
+## Deep keyword research priorities
+
+See `docs/deep-keyword-research.md` and `docs/keyword-research-scored.csv`. Distribution should prioritize these exact long-tail terms confirmed by Google Autocomplete:
+
+- AIStackCost: `ai tools for freelancers` → `/aistackcost/ai-tools-for-freelancers/` (Commercial comparison)
+- BudgetReset: `monthly bill calendar template free pdf` → `/budgetreset/monthly-bill-calendar-template-free-pdf/` (Template/download)
+- BudgetReset: `monthly bill calendar free printable` → `/budgetreset/monthly-bill-calendar-free-printable/` (Printable/checklist)
+- BudgetReset: `free printable monthly bill calendar pdf` → `/budgetreset/free-printable-monthly-bill-calendar-pdf/` (Printable/checklist)
+- AIStackCost: `top 10 ai tools for freelancers` → `/aistackcost/top-10-ai-tools-for-freelancers/` (Commercial comparison)
+- AIStackCost: `free ai tools for freelancers` → `/aistackcost/free-ai-tools-for-freelancers/` (Commercial comparison)
+- AIStackCost: `best free ai tools for freelancers` → `/aistackcost/best-free-ai-tools-for-freelancers/` (Commercial comparison)
+- BudgetReset: `monthly bill calendar printable free` → `/budgetreset/monthly-bill-calendar-printable-free/` (Printable/checklist)
+- MoveBudget: `moving cost calculator no email` → `/movebudget/moving-cost-calculator-no-email/` (Tool/calculator)
+- BudgetReset: `free printable monthly bills calendar template` → `/budgetreset/free-printable-monthly-bills-calendar-template/` (Template/download)
+- BudgetReset: `biweekly paycheck budget template google sheets free` → `/budgetreset/biweekly-paycheck-budget-template-google-sheets-free/` (Template/download)
+- AIStackCost: `ai productivity tools for freelancers` → `/aistackcost/ai-productivity-tools-for-freelancers/` (Commercial comparison)
