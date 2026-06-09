@@ -7,7 +7,7 @@ GitHub Pages: `https://titus9123.github.io/free-utility-lab/`
 
 ## Current state
 
-Free Utility Lab is separated from Clarvix in the public repo and published to GitHub Pages under the neutral `Free Utility Lab` brand.
+Free Utility Lab is separated from legacy/internal brand references in the public repo and published to GitHub Pages under the neutral `Free Utility Lab` brand.
 
 Latest organic-growth work:
 

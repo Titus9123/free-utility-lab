@@ -17,8 +17,8 @@ Confirmed current state:
 - Structured data: present on tool and guide pages
 - GA/GTM external measurement: not installed on the neutral Free Utility Lab property yet
 - Local dataLayer events: present on most pages, but not connected to an analytics collector until GA4/GTM is installed
-- Search Console for Clarvix Asset Lab: 0 clicks and 0 impressions in the checked windows
-- GA4 Clarvix Asset Lab: 0 views/sessions/events in the latest 7-day window
+- Search Console baseline for the legacy Asset Lab property: 0 clicks and 0 impressions in the checked windows
+- GA4 baseline for the legacy Asset Lab property: 0 views/sessions/events in the latest 7-day window
 
 Main bottleneck: discovery and measurement, not publication. The pages exist, but Google has no measurable search traction yet and the new neutral property is not fully connected to GA4/GSC.
 
