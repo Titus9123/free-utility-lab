@@ -67,3 +67,35 @@ Hi — I found your resources page and thought this free browser-based utility m
 - 5 outreach emails/messages to relevant resource pages
 
 Track every attempt with date, URL, status and resulting referral traffic.
+
+## Organic sprint 2 — 12 new support pages (2026-06-09)
+
+Purpose: increase search surface immediately around the four existing clusters instead of launching another orphan tool.
+
+New MealPlanSheet targets:
+- https://titus9123.github.io/free-utility-lab/mealplansheet/no-cook-meal-plan/
+- https://titus9123.github.io/free-utility-lab/mealplansheet/student-meal-planner/
+- https://titus9123.github.io/free-utility-lab/mealplansheet/lunch-meal-prep-planner/
+
+New BudgetReset targets:
+- https://titus9123.github.io/free-utility-lab/budgetreset/monthly-bill-calendar/
+- https://titus9123.github.io/free-utility-lab/budgetreset/payday-budget-planner/
+- https://titus9123.github.io/free-utility-lab/budgetreset/debt-snowball-calculator/
+
+New MoveBudget targets:
+- https://titus9123.github.io/free-utility-lab/movebudget/renter-moving-budget/
+- https://titus9123.github.io/free-utility-lab/movebudget/local-moving-cost-calculator/
+- https://titus9123.github.io/free-utility-lab/movebudget/packing-supplies-calculator/
+
+New AIStackCost targets:
+- https://titus9123.github.io/free-utility-lab/aistackcost/creator-ai-tools-budget/
+- https://titus9123.github.io/free-utility-lab/aistackcost/freelancer-ai-tool-stack/
+- https://titus9123.github.io/free-utility-lab/aistackcost/ai-tools-for-agencies/
+
+48-hour distribution actions:
+- Submit the sitemap again in Search Console after deployment.
+- Request indexing first for the 4 main tools, then these 12 new support URLs.
+- Use MealPlanSheet pages for Pinterest-style pins and household planning communities.
+- Use BudgetReset pages for budgeting resource lists; avoid advice claims.
+- Use MoveBudget pages for renter/apartment checklists and moving-resource pages.
+- Use AIStackCost pages for creator/freelancer/agency operations resource lists.
