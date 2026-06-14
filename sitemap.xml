@@ -336,4 +336,40 @@
     <loc>https://titus9123.github.io/free-utility-lab/privacy-policy.html</loc>
     <lastmod>2026-06-09</lastmod>
   </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/tools/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/printable-templates/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/finance-tools/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/meal-planning-tools/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/moving-tools/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://titus9123.github.io/free-utility-lab/ai-tools/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
 </urlset>

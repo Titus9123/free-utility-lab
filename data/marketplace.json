@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "site": {
+    "name": "Free Utility Lab",
+    "current_base_url": "https://titus9123.github.io/free-utility-lab/",
+    "domain_migration_status": "deferred",
+    "notes": "Current GitHub Pages base stays unchanged until the final approved domain migration."
+  },
+  "assets": [
+    {
+      "id": "budgetreset",
+      "name": "BudgetReset",
+      "slug": "budgetreset",
+      "category": "finance-tools",
+      "cluster": "budgetreset",
+      "public_url": "https://titus9123.github.io/free-utility-lab/budgetreset/",
+      "local_path": "budgetreset/index.html",
+      "page_type": "tool",
+      "intent": "Free monthly budget planner, bill calendar, paycheck budget templates, and debt payoff worksheets.",
+      "priority": 1,
+      "formats": [
+        "calculator",
+        "worksheet",
+        "planner",
+        "template"
+      ],
+      "outputs": [
+        "copy",
+        "csv",
+        "print"
+      ],
+      "user_types": [
+        "households",
+        "students",
+        "renters",
+        "debt payoff planners"
+      ],
+      "related_tools": [
+        "mealplansheet",
+        "movebudget"
+      ],
+      "schema_types": [
+        "SoftwareApplication",
+        "FAQPage",
+        "BreadcrumbList",
+        "HowTo"
+      ],
+      "tracking_asset_id": "budgetreset",
+      "goal4_upgrade": "budgetreset-utility-export-print-copy-internal-links",
+      "status": "live"
+    },
+    {
+      "id": "mealplansheet",
+      "name": "MealPlanSheet",
+      "slug": "mealplansheet",
+      "category": "meal-planning-tools",
+      "cluster": "mealplansheet",
+      "public_url": "https://titus9123.github.io/free-utility-lab/mealplansheet/",
+      "local_path": "mealplansheet/index.html",
+      "page_type": "tool",
+      "intent": "Free weekly meal planner, grocery list templates, meal prep checklists, and budget grocery planning worksheets.",
+      "priority": 2,
+      "formats": [
+        "worksheet",
+        "planner",
+        "template",
+        "checklist"
+      ],
+      "outputs": [
+        "copy",
+        "csv",
+        "print"
+      ],
+      "user_types": [
+        "families",
+        "students",
+        "busy workers",
+        "budget shoppers"
+      ],
+      "related_tools": [
+        "budgetreset"
+      ],
+      "schema_types": [
+        "SoftwareApplication",
+        "FAQPage",
+        "BreadcrumbList",
+        "HowTo"
+      ],
+      "tracking_asset_id": "mealplansheet",
+      "status": "live",
+      "goal5_upgrade": "mealplansheet-templates-export-print-copy-internal-links"
+    },
+    {
+      "id": "movebudget",
+      "name": "MoveBudget",
+      "slug": "movebudget",
+      "category": "moving-tools",
+      "cluster": "movebudget",
+      "public_url": "https://titus9123.github.io/free-utility-lab/movebudget/",
+      "local_path": "movebudget/index.html",
+      "page_type": "tool",
+      "intent": "Free moving cost calculator, moving checklist, box calculator, apartment budget, and utility setup planner.",
+      "priority": 4,
+      "formats": [
+        "calculator",
+        "worksheet",
+        "checklist",
+        "planner"
+      ],
+      "outputs": [
+        "copy",
+        "csv",
+        "print"
+      ],
+      "user_types": [
+        "renters",
+        "first apartment planners",
+        "local movers",
+        "families moving home"
+      ],
+      "related_tools": [
+        "budgetreset"
+      ],
+      "schema_types": [
+        "SoftwareApplication",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "tracking_asset_id": "movebudget",
+      "status": "live"
+    },
+    {
+      "id": "aistackcost",
+      "name": "AIStackCost",
+      "slug": "aistackcost",
+      "category": "ai-tools",
+      "cluster": "aistackcost",
+      "public_url": "https://titus9123.github.io/free-utility-lab/aistackcost/",
+      "local_path": "aistackcost/index.html",
+      "page_type": "tool",
+      "intent": "Free AI tool stack and subscription cost planner for freelancers, creators, agencies, and small businesses.",
+      "priority": 3,
+      "formats": [
+        "calculator",
+        "comparison",
+        "worksheet",
+        "planner"
+      ],
+      "outputs": [
+        "copy",
+        "csv",
+        "print",
+        "external_link"
+      ],
+      "user_types": [
+        "freelancers",
+        "creators",
+        "agencies",
+        "small businesses"
+      ],
+      "related_tools": [
+        "budgetreset"
+      ],
+      "schema_types": [
+        "SoftwareApplication",
+        "FAQPage",
+        "BreadcrumbList"
+      ],
+      "tracking_asset_id": "aistackcost",
+      "status": "live"
+    },
+    {
+      "id": "all-tools-hub",
+      "name": "All Tools Hub",
+      "slug": "tools",
+      "category": "all-tools",
+      "cluster": "marketplace",
+      "public_url": "https://titus9123.github.io/free-utility-lab/tools/",
+      "local_path": "tools/index.html",
+      "page_type": "hub",
+      "intent": "marketplace-style directory for every free tool, calculator, template, and checklist.",
+      "priority": 5,
+      "formats": [
+        "guide"
+      ],
+      "outputs": [
+        "copy",
+        "external_link"
+      ],
+      "user_types": [
+        "all visitors"
+      ],
+      "related_tools": [
+        "budgetreset",
+        "mealplansheet",
+        "movebudget",
+        "aistackcost"
+      ],
+      "schema_types": [
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "tracking_asset_id": "all_tools_hub",
+      "status": "live"
+    },
+    {
+      "id": "printable-templates-hub",
+      "name": "Printable Templates Hub",
+      "slug": "printable-templates",
+      "category": "printable-templates",
+      "cluster": "marketplace",
+      "public_url": "https://titus9123.github.io/free-utility-lab/printable-templates/",
+      "local_path": "printable-templates/index.html",
+      "page_type": "hub",
+      "intent": "hub for printable worksheets, planners, calendars, grocery lists, and checklists.",
+      "priority": 6,
+      "formats": [
+        "guide",
+        "template"
+      ],
+      "outputs": [
+        "copy",
+        "print",
+        "external_link"
+      ],
+      "user_types": [
+        "template searchers",
+        "printable searchers"
+      ],
+      "related_tools": [
+        "budgetreset",
+        "mealplansheet",
+        "movebudget"
+      ],
+      "schema_types": [
+        "ItemList",
+        "BreadcrumbList"
+      ],
+      "tracking_asset_id": "printable_templates_hub",
+      "status": "live"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "categories": [
+    {
+      "id": "finance-tools",
+      "name": "Money / finance tools",
+      "slug": "finance-tools",
+      "planned_url": "/finance-tools/",
+      "status": "live"
+    },
+    {
+      "id": "meal-planning-tools",
+      "name": "Meal planning tools",
+      "slug": "meal-planning-tools",
+      "planned_url": "/meal-planning-tools/",
+      "status": "live"
+    },
+    {
+      "id": "moving-tools",
+      "name": "Moving tools",
+      "slug": "moving-tools",
+      "planned_url": "/moving-tools/",
+      "status": "live"
+    },
+    {
+      "id": "ai-tools",
+      "name": "AI tools",
+      "slug": "ai-tools",
+      "planned_url": "/ai-tools/",
+      "status": "live"
+    },
+    {
+      "id": "printable-templates",
+      "name": "Printable templates",
+      "slug": "printable-templates",
+      "planned_url": "/printable-templates/",
+      "status": "live"
+    },
+    {
+      "id": "all-tools",
+      "name": "All tools",
+      "slug": "tools",
+      "planned_url": "/tools/",
+      "status": "live"
+    }
+  ]
+}

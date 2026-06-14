@@ -1,0 +1,32 @@
+{
+  "page_types": [
+    {
+      "id": "tool",
+      "description": "Primary interactive asset page."
+    },
+    {
+      "id": "calculator",
+      "description": "Page centered on calculation or estimation."
+    },
+    {
+      "id": "printable",
+      "description": "Page centered on print-ready templates or worksheets."
+    },
+    {
+      "id": "template",
+      "description": "Reusable table, sheet, planner, or document pattern."
+    },
+    {
+      "id": "checklist",
+      "description": "Task list or planning checklist."
+    },
+    {
+      "id": "guide",
+      "description": "Support page with direct utility and internal links to a primary tool."
+    },
+    {
+      "id": "hub",
+      "description": "Category, marketplace, or collection page."
+    }
+  ]
+}

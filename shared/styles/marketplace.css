@@ -1,0 +1,132 @@
+:root {
+  --ful-bg: #f7f8ff;
+  --ful-ink: #132033;
+  --ful-muted: #5c6678;
+  --ful-panel: #ffffff;
+  --ful-line: #dfe5f2;
+  --ful-accent: #2563eb;
+  --ful-accent-soft: rgba(37, 99, 235, 0.10);
+  --ful-shadow: 0 18px 54px rgba(19, 32, 51, 0.10);
+}
+
+.ful-marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.ful-tool-card {
+  background: var(--ful-panel);
+  border: 1px solid var(--ful-line);
+  border-radius: 24px;
+  box-shadow: var(--ful-shadow);
+  color: var(--ful-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+}
+
+.ful-tool-card h3 {
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.ful-tool-card p {
+  color: var(--ful-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ful-card-topline,
+.ful-card-meta {
+  color: var(--ful-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ful-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ful-badge {
+  align-items: center;
+  background: var(--ful-accent-soft);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  color: var(--ful-accent);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 800;
+  min-height: 30px;
+  padding: 6px 10px;
+}
+
+.ful-primary-cta {
+  align-items: center;
+  background: var(--ful-accent);
+  border-radius: 14px;
+  color: #fff;
+  display: inline-flex;
+  font-weight: 850;
+  justify-content: center;
+  margin-top: auto;
+  padding: 12px 14px;
+  text-decoration: none;
+}
+
+.ful-export-actions,
+.ful-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ful-export-actions button,
+.ful-filter-bar button,
+.ful-filter-bar select {
+  border: 1px solid var(--ful-line);
+  border-radius: 12px;
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.ful-breadcrumb {
+  align-items: center;
+  color: var(--ful-muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  gap: 8px;
+  margin: 12px 0 22px;
+}
+
+.ful-breadcrumb a {
+  color: var(--ful-accent);
+  text-decoration: none;
+}
+
+.ful-faq details {
+  background: var(--ful-panel);
+  border: 1px solid var(--ful-line);
+  border-radius: 16px;
+  margin: 10px 0;
+  padding: 14px 16px;
+}
+
+@media (max-width: 640px) {
+  .ful-tool-card {
+    border-radius: 18px;
+    padding: 18px;
+  }
+
+  .ful-primary-cta {
+    width: 100%;
+  }
+}

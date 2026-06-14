@@ -1,0 +1,39 @@
+{
+  "outputs": [
+    {
+      "id": "copy",
+      "name": "Copyable result",
+      "description": "User can copy the generated plan, list, table, or checklist."
+    },
+    {
+      "id": "csv",
+      "name": "CSV export",
+      "description": "User can export or recreate results in spreadsheet-friendly table form."
+    },
+    {
+      "id": "print",
+      "name": "Printable",
+      "description": "Page or result is designed to print cleanly."
+    },
+    {
+      "id": "pdf",
+      "name": "PDF-friendly",
+      "description": "Page can support PDF download or browser save-to-PDF."
+    },
+    {
+      "id": "download",
+      "name": "Downloadable",
+      "description": "User can download a reusable file or artifact."
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist",
+      "description": "User receives a task checklist or step-by-step worksheet."
+    },
+    {
+      "id": "external_link",
+      "name": "External link",
+      "description": "Page may link to official third-party resources where useful."
+    }
+  ]
+}

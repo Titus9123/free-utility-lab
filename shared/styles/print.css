@@ -1,0 +1,29 @@
+@media print {
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .ful-no-print,
+  .ful-export-actions,
+  .ful-filter-bar,
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  .ful-print-section,
+  [data-print-section] {
+    break-inside: avoid;
+    box-shadow: none !important;
+    border-color: #999 !important;
+  }
+
+  body[data-ful-print-target] > *:not([data-print-section]) {
+    display: none !important;
+  }
+
+  a[href]::after {
+    content: "";
+  }
+}

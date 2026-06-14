@@ -37,7 +37,16 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is BudgetReset Pro free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The budget planner is free to use in the browser and does not require signup for the main calculation, CSV export or printable PDF."}},{"@type":"Question","name":"Can I download the budget result to Excel?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Download CSV button. The file opens in Excel, Google Sheets, Numbers and other spreadsheet tools."}},{"@type":"Question","name":"Does this replace financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. BudgetReset Pro is an educational planning worksheet and calculator. It does not provide personalized financial, debt or investment advice."}}]}
   </script>
   <link rel="stylesheet" href="/free-utility-lab/asset-lab-modern.css">
+  <link rel="stylesheet" href="/free-utility-lab/shared/styles/marketplace.css">
+  <link rel="stylesheet" href="/free-utility-lab/shared/styles/print.css">
   <style>:root{--asset-accent:#9FE870;--asset-accent2:#4CC9A6;--asset-glow:color-mix(in srgb,#9FE870 32%,transparent);}</style>
+  <style>.goal4-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:18px 0}.goal4-step{background:rgba(255,255,255,.76);border:1px solid var(--line);border-radius:18px;padding:12px 14px;font-weight:800}.goal4-step small{display:block;color:var(--muted);font-weight:650;margin-top:4px}.summary-text{background:#f7fbf1;border:1px dashed rgba(13,22,15,.2);border-radius:18px;color:var(--muted);font-family:var(--mono);font-size:.9rem;margin:14px 0 0;padding:12px;white-space:pre-line}.goal4-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}.goal4-links ul{margin:10px 0 0;padding-left:18px}.goal4-links li{margin:8px 0}.ful-breadcrumb{margin-top:0}</style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Free Utility Lab","item":"https://titus9123.github.io/free-utility-lab/"},{"@type":"ListItem","position":2,"name":"Finance tools","item":"https://titus9123.github.io/free-utility-lab/finance-tools/"},{"@type":"ListItem","position":3,"name":"BudgetReset","item":"https://titus9123.github.io/free-utility-lab/budgetreset/"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"How to make a monthly budget with BudgetReset","description":"Create a free monthly budget worksheet, review bills and debt payments, then copy, export CSV or print the result.","step":[{"@type":"HowToStep","name":"Add income","text":"Enter monthly take-home income and choose the budget rhythm: monthly or biweekly/paycheck."},{"@type":"HowToStep","name":"Review bills and debt","text":"Add fixed bills, flexible spending categories, debts, APR and planned payments so the worksheet can show the net result."},{"@type":"HowToStep","name":"Copy, CSV or print","text":"Use the generated summary, copy button, CSV download or print worksheet action to keep the budget offline."}]}
+  </script>
 
 <link rel="alternate" hreflang="en" href="https://titus9123.github.io/free-utility-lab/budgetreset/">
 <link rel="alternate" hreflang="es" href="https://titus9123.github.io/free-utility-lab/es/budgetreset/">
@@ -66,12 +75,18 @@
   <a href="/free-utility-lab/he/budgetreset/" lang="he" dir="rtl">עברית</a>
 </section>
 
-  <main>
+  <main data-goal="budgetreset-upgrade">
+    <nav class="ful-breadcrumb" aria-label="Breadcrumb"><a href="/free-utility-lab/">Home</a><span>›</span><a href="/free-utility-lab/tools/">All tools</a><span>›</span><a href="/free-utility-lab/finance-tools/">Finance tools</a><span>›</span><span>BudgetReset</span></nav>
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <span class="eyebrow">Free finance worksheet · no signup</span>
         <h1 id="hero-title">Build a monthly budget, bill tracker and debt payoff plan in minutes.</h1>
         <p>BudgetReset Pro turns your income, bills, debts and savings goal into a simple plan you can print as PDF or download as an Excel-friendly CSV.</p>
+        <div class="goal4-steps" aria-label="3-step budget worksheet">
+          <div class="goal4-step">1. Add income<small>Monthly or paycheck rhythm</small></div>
+          <div class="goal4-step">2. Review bills + debt<small>See net cash after the plan</small></div>
+          <div class="goal4-step">3. Copy, CSV or print<small>Keep the worksheet offline</small></div>
+        </div>
         <div class="hero-actions">
           <a class="btn primary" href="#tool" data-event="cta_click">Create my budget</a>
           <button class="btn secondary" type="button" id="demoBtn">Fill example</button>
@@ -115,7 +130,7 @@
         </div>
       </article>
 
-      <aside class="panel summary" aria-live="polite">
+      <aside class="panel summary" aria-live="polite" data-print-section="budgetreset-result">
         <div class="panel-head"><h2>Your budget result</h2><p class="print-only">Generated with BudgetReset Pro — titus9123.github.io/free-utility-lab/budgetreset/</p></div>
         <div class="summary-body">
           <div class="score"><div class="label">Monthly net after plan</div><div class="money" id="netResult">$0</div><div id="statusLine">Add income and bills to see your result.</div></div>
@@ -129,9 +144,12 @@
           </div>
           <div class="insight" id="insight">Tip: keep essential bills, minimum debt payments and savings goals visible together before deciding what to cut.</div>
           <div class="actions">
+            <button class="btn secondary" type="button" id="copySummary">Copy plan summary</button>
             <button class="btn green" type="button" id="downloadCsv">Download CSV for Excel</button>
+            <button class="btn primary" type="button" id="printWorksheet">Print worksheet</button>
             <button class="btn primary" type="button" id="downloadPdf">Download / print PDF</button>
           </div>
+          <pre class="summary-text" id="summaryText">Budget summary will appear here after you add income, bills and debts.</pre>
           <div class="ad-unit" data-ad-slot="budgetreset_result_contextual" data-ad-status="inactive">Contextual finance education placement <small>Inactive until ad network approval</small></div>
         </div>
       </aside>
@@ -143,6 +161,15 @@
         <article class="card"><h3>CSV + PDF</h3><p>CSV is best if you want to edit in Excel or Google Sheets. PDF is best if you want a clean printable plan.</p></article>
         <article class="card"><h3>Related planners</h3><p>Use the monthly planner, paycheck template, debt tracker, <a href="/free-utility-lab/budgetreset/bill-payment-calendar/" data-event="support_page_click">bill payment calendar</a>, <a href="/free-utility-lab/budgetreset/savings-challenge-tracker/" data-event="support_page_click">savings tracker</a> and <a href="/free-utility-lab/budgetreset/biweekly-budget-planner/" data-event="support_page_click">biweekly planner</a>.</p></article>
       </div>
+      <section class="card" aria-label="BudgetReset marketplace paths">
+        <h2>BudgetReset worksheet library</h2>
+        <p>Start with the free calculator, then use the printable templates and focused finance guides for the exact budgeting job you came for.</p>
+        <div class="goal4-links">
+          <div><h3>Explore tool hubs</h3><ul><li><a href="/free-utility-lab/tools/" data-event="marketplace_hub_click">All free tools</a></li><li><a href="/free-utility-lab/finance-tools/" data-event="marketplace_hub_click">Finance tools</a></li><li><a href="/free-utility-lab/printable-templates/" data-event="marketplace_hub_click">Printable templates</a></li></ul></div>
+          <div><h3>Bill calendar templates</h3><ul><li><a href="/free-utility-lab/budgetreset/free-printable-monthly-bill-calendar-pdf/" data-event="support_page_click">Free printable monthly bill calendar PDF</a></li><li><a href="/free-utility-lab/budgetreset/monthly-bill-calendar-template-free-pdf/" data-event="support_page_click">Monthly bill calendar template free PDF</a></li><li><a href="/free-utility-lab/budgetreset/monthly-bill-calendar-free-printable/" data-event="support_page_click">Monthly bill calendar free printable</a></li><li><a href="/free-utility-lab/budgetreset/monthly-bill-calendar-printable-free/" data-event="support_page_click">Monthly bill calendar printable free</a></li></ul></div>
+          <div><h3>Paycheck and debt worksheets</h3><ul><li><a href="/free-utility-lab/budgetreset/biweekly-paycheck-budget-template-google-sheets-free/" data-event="support_page_click">Biweekly paycheck budget template Google Sheets free</a></li><li><a href="/free-utility-lab/budgetreset/paycheck-budget-template/" data-event="support_page_click">Paycheck budget template</a></li><li><a href="/free-utility-lab/budgetreset/debt-payoff-tracker/" data-event="support_page_click">Debt payoff tracker</a></li><li><a href="/free-utility-lab/budgetreset/zero-based-budget-template/" data-event="support_page_click">Zero-based budget template</a></li></ul></div>
+        </div>
+      </section>
       <section class="faq">
         <h2>Free budget planner FAQ</h2>
         <details open><summary>What is the best way to use this planner?</summary><p>Start with take-home income, list fixed bills first, add flexible spending categories, then enter debts and your realistic savings goal. Use the result as a planning worksheet, not as financial advice.</p></details>
@@ -202,8 +229,23 @@
     $('heroIncome').textContent=money(income); $('heroBills').textContent=money(exTotal); $('heroSavings').textContent=money(savings);
     const status = net>=0 ? 'Your plan has room left after bills, savings and debt payments.' : 'Your plan is over budget. Lower flexible spending, savings target or debt extra payment.';
     $('statusLine').textContent=status; $('insight').textContent= net>=0 ? 'Good: the plan leaves '+money(net)+' unassigned. Consider giving it a job: buffer, emergency fund or extra debt payment.' : 'Warning: this plan is short by '+money(Math.abs(net))+'. Try reducing flexible categories before cutting essentials.';
+    const result={income,savings,expenses,debts,extra,exTotal,debtPay,net,rate,months,period:$('period').value,method:$('method').value,currency:currency()};
+    if($('summaryText')){$('summaryText').textContent=buildSummary(result);}
     push('calculator_complete',{budget_positive:net>=0, expense_count:expenses.length, debt_count:debts.length});
-    return {income,savings,expenses,debts,extra,exTotal,debtPay,net,rate,months,period:$('period').value,method:$('method').value,currency:currency()};
+    return result;
+  }
+  function buildSummary(r){
+    const topExpenses=r.expenses.filter(e=>e.amount>0).slice(0,5).map(e=>'• '+e.name+': '+money(e.amount)).join('\n') || '• Add bills or spending categories';
+    const debtLine=r.debts.length ? r.debts.slice(0,4).map(d=>'• '+d.name+': '+money(d.balance)+' balance, '+money(d.payment)+' payment').join('\n') : '• No debts added';
+    return 'BudgetReset Pro plan summary\n'+
+      'Period: '+r.period+'\n'+
+      'Income: '+money(r.income)+'\n'+
+      'Bills/spending: '+money(r.exTotal)+'\n'+
+      'Debt payments incl. extra: '+money(r.debtPay)+'\n'+
+      'Savings goal: '+money(r.savings)+' ('+r.rate+'%)\n'+
+      'Net after plan: '+money(r.net)+'\n'+
+      'Payoff method: '+r.method+'; estimate: '+(r.months ? r.months+' months' : 'not available')+'\n\n'+
+      'Top bills/spending:\n'+topExpenses+'\n\nDebts:\n'+debtLine+'\n\nEducational worksheet only. No private data is sent by the tool.';
   }
   function csvEscape(v){return '"'+String(v).replace(/"/g,'""')+'"'}
   function downloadCsv(){
@@ -214,13 +256,16 @@
     const blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'}), a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='budgetreset-pro-budget.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href); push('download_click',{download_type:'csv'});
   }
   function printPdf(){push('download_click',{download_type:'pdf_print'}); window.print();}
+  function copySummary(){const summary=$('summaryText').textContent||buildSummary(calc()); const actions=window.FreeUtilityLabActions; if(actions&&actions.copyText){actions.copyText(summary)}; if(actions&&actions.downloadText){actions.downloadText('budgetreset-pro-summary.txt', summary, 'text/plain;charset=utf-8')}; push('copy_click',{format:'summary'});}
+  function printWorksheet(){const actions=window.FreeUtilityLabActions; push('print_click',{format:'worksheet'}); if(actions&&actions.printSection&&actions.printSection('budgetreset-result')){return;} window.print();}
   $('addExpense').onclick=()=>{makeExpense('',0);calc();push('add_expense')}; $('addDebt').onclick=()=>{makeDebt('',0,0,0);calc();push('add_debt')};
-  $('downloadCsv').onclick=downloadCsv; $('downloadPdf').onclick=printPdf;
+  $('downloadCsv').onclick=downloadCsv; $('downloadPdf').onclick=printPdf; $('copySummary').onclick=copySummary; $('printWorksheet').onclick=printWorksheet;
   $('demoBtn').onclick=()=>{expenseRows.innerHTML=''; debtRows.innerHTML=''; defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); $('income').value=5200; $('savingsGoal').value=700; $('extraDebt').value=225; calc(); push('demo_fill')};
-  ['income','savingsGoal','currency','period','method','extraDebt'].forEach(id=>$(id).addEventListener('input',calc));
+  ['income','savingsGoal','currency','period','method','extraDebt'].forEach(id=>$(id).addEventListener('input',()=>{push('calculator_start',{step:'input_change'});calc()}));
   defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); calc();
 })();
 </script>
+<script src="/free-utility-lab/shared/scripts/utility-actions.js" defer></script>
 <script src="/free-utility-lab/accessibility-widget.js?v=8ec7e2e" defer></script>
 <script src="/free-utility-lab/free-utility-lab-tracking.js" defer></script>
 <script src="/free-utility-lab/free-utility-lab-measurement-bridge.js" defer></script>
