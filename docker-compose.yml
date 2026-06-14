@@ -1,0 +1,12 @@
+services:
+  validate:
+    build:
+      context: .
+    command: python3 scripts/run_all_validations.py
+
+  preview:
+    build:
+      context: .
+    command: python3 -m http.server 8080 --bind 0.0.0.0
+    ports:
+      - "8080:8080"
