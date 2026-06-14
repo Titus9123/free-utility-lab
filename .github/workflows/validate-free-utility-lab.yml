@@ -1,0 +1,45 @@
+name: Validate Free Utility Lab
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gates:
+    name: Quality gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Report HTML page count
+        run: |
+          set -euo pipefail
+          html_count=$(find . -name 'index.html' -type f | wc -l | tr -d ' ')
+          echo "HTML page count: ${html_count}"
+          test "${html_count}" -gt 0
+
+      - name: Run Python tests
+        run: python3 -m pytest -q
+
+      - name: Run validation bundle
+        run: python3 scripts/run_all_validations.py
+
+      - name: Run schema smoke validation
+        run: python3 scripts/validate_schema_smoke.py
+
+      - name: Validate Docker Compose config
+        run: docker compose config >/tmp/free-utility-lab-compose-config.out
+
+      - name: Build Docker validation image
+        run: docker compose build
