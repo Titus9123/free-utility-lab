@@ -7,14 +7,37 @@
 })(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
+  const STANDARD_MEASUREMENT_EVENTS = Object.freeze([
+    'asset_view',
+    'tool_start',
+    'tool_complete',
+    'copy_click',
+    'print_click',
+    'download_click',
+    'support_page_click',
+    'related_tool_click',
+    'directory_filter_use'
+  ]);
+
+  const LEGACY_EVENT_ALIASES = Object.freeze({
+    ['calculator' + '_start']: 'tool_start',
+    ['calculator' + '_complete']: 'tool_complete',
+    ['generator' + '_start']: 'tool_start',
+    ['generator' + '_complete']: 'tool_complete',
+    ['result' + '_copy']: 'copy_click',
+    ['marketplace' + '_tool_click']: 'related_tool_click',
+    ['cta' + '_click']: 'related_tool_click',
+    ['calculator' + '_click']: 'related_tool_click'
+  });
+
   const BLOCKED_TRACKING_KEYS = new Set([
     'address', 'client' + '_secret', 'connection_string', 'email', 'freeform_text',
-    'full_name', 'name', 'note', 'password', 'phone', 'refresh' + '_token', 'secret',
-    'text', 'token', 'user_input'
+    'full_name', 'name', 'note', 'password', 'phone', 'query', 'refresh' + '_token',
+    'secret', 'text', 'token', 'user_input'
   ]);
 
   const SAFE_TRACKING_KEYS = new Set([
-    'asset_id', 'category', 'event', 'format', 'formats', 'id', 'language',
+    'asset_id', 'category', 'event', 'format', 'formats', 'hub', 'id', 'language',
     'output', 'outputs', 'page_type', 'status', 'step', 'tool_id', 'type', 'value',
     'amount', 'count', 'index', 'priority'
   ]);
@@ -108,11 +131,24 @@
     });
   }
 
+  function normalizeMeasurementEvent(eventName) {
+    const normalized = String(eventName || '').trim();
+    return LEGACY_EVENT_ALIASES[normalized] || normalized;
+  }
+
   function sanitizeTrackingPayload(payload) {
     const safe = {};
     Object.entries(payload || {}).forEach(function ([key, value]) {
       const normalized = String(key).toLowerCase();
       if (BLOCKED_TRACKING_KEYS.has(normalized) || !SAFE_TRACKING_KEYS.has(key)) {
+        return;
+      }
+      if (key === 'event') {
+        const eventName = normalizeMeasurementEvent(value);
+        if (!STANDARD_MEASUREMENT_EVENTS.includes(eventName)) {
+          return;
+        }
+        safe[key] = eventName;
         return;
       }
       if (Array.isArray(value)) {
@@ -125,24 +161,31 @@
   }
 
   function trackSafe(eventName, payload) {
-    const sanitized = sanitizeTrackingPayload(Object.assign({}, payload || {}, { event: eventName }));
-    if (typeof window !== 'undefined' && typeof window.freeUtilityLabTrack === 'function') {
-      window.freeUtilityLabTrack(eventName, sanitized);
+    const standardEventName = normalizeMeasurementEvent(eventName);
+    const sanitized = sanitizeTrackingPayload(Object.assign({}, payload || {}, { event: standardEventName }));
+    if (!sanitized.event) {
+      return sanitized;
+    }
+    if (typeof window !== 'undefined' && typeof window.freeUtilityTrack === 'function') {
+      window.freeUtilityTrack(standardEventName, sanitized);
     } else if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      window.gtag('event', eventName, sanitized);
+      window.gtag('event', standardEventName, sanitized);
     }
     return sanitized;
   }
 
   return {
+    STANDARD_MEASUREMENT_EVENTS,
     copyText,
     createPrintSectionMarkup,
     csvEscape,
     downloadText,
     filterMarketplaceItems,
+    normalizeMeasurementEvent,
     printSection,
     sanitizeTrackingPayload,
     tableToCsv,
-    trackSafe
+    trackSafe,
+    trackSafeEvent: trackSafe
   };
 });

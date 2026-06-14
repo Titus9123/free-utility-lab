@@ -108,7 +108,7 @@ def tool_card(asset: dict[str, Any]) -> str:
   <div class="ful-badges" aria-label="Tool outputs">{badge_list(badges)}</div>
   <p class="ful-card-meta">Formats: {escape(', '.join(asset.get('formats', [])))}</p>
   <p class="ful-card-meta">Useful for: {escape(', '.join(asset.get('user_types', [])))}</p>
-  <a class="ful-primary-cta" href="{escape(href)}" data-event="marketplace_tool_click" data-asset-id="{escape(asset.get('tracking_asset_id', asset['id']))}">Open free tool</a>
+  <a class="ful-primary-cta" href="{escape(href)}" data-event="related_tool_click" data-asset-id="{escape(asset.get('tracking_asset_id', asset['id']))}">Open free tool</a>
 </article>"""
 
 
@@ -250,10 +250,10 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {{}};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {{}};
-    document.querySelectorAll('[data-event="marketplace_tool_click"]').forEach(function (link) {{
+    document.querySelectorAll('[data-event="related_tool_click"]').forEach(function (link) {{
       link.addEventListener('click', function () {{
         if (window.FreeUtilityLabActions.trackSafeEvent) {{
-          window.FreeUtilityLabActions.trackSafeEvent('marketplace_tool_click', {{ asset_id: link.dataset.assetId, hub: '{escape(slug)}' }});
+          window.FreeUtilityLabActions.trackSafeEvent('related_tool_click', {{ asset_id: link.dataset.assetId, hub: '{escape(slug)}' }});
         }}
       }});
     }});

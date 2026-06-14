@@ -16,7 +16,20 @@ VALIDATION_COMMANDS = [
     [sys.executable, "scripts/validate_site_links.py", ".", "--base-path", "/free-utility-lab/"],
     [sys.executable, "scripts/validate_sitemap.py", "sitemap.xml", "--site-root", "."],
     [sys.executable, "scripts/validate_schema_smoke.py"],
-    [sys.executable, "scripts/audit_no_secrets.py", "data", "scripts", "Dockerfile", "docker-compose.yml", ".github/workflows/validate-free-utility-lab.yml"],
+    [
+        sys.executable,
+        "scripts/audit_no_secrets.py",
+        "data",
+        "scripts",
+        "shared",
+        "docs",
+        "tests",
+        "free-utility-lab-tracking.js",
+        "free-utility-lab-measurement-bridge.js",
+        "Dockerfile",
+        "docker-compose.yml",
+        ".github/workflows/validate-free-utility-lab.yml",
+    ],
 ]
 
 

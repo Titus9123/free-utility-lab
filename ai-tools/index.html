@@ -101,7 +101,7 @@
   <div class="ful-badges" aria-label="Tool outputs"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">Copy</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span><span class="ful-badge">External link</span></div>
   <p class="ful-card-meta">Formats: calculator, comparison, worksheet, planner</p>
   <p class="ful-card-meta">Useful for: freelancers, creators, agencies, small businesses</p>
-  <a class="ful-primary-cta" href="/free-utility-lab/aistackcost/" data-event="marketplace_tool_click" data-asset-id="aistackcost">Open free tool</a>
+  <a class="ful-primary-cta" href="/free-utility-lab/aistackcost/" data-event="related_tool_click" data-asset-id="aistackcost">Open free tool</a>
 </article>
       </div>
     </section>
@@ -123,10 +123,10 @@
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {};
-    document.querySelectorAll('[data-event="marketplace_tool_click"]').forEach(function (link) {
+    document.querySelectorAll('[data-event="related_tool_click"]').forEach(function (link) {
       link.addEventListener('click', function () {
         if (window.FreeUtilityLabActions.trackSafeEvent) {
-          window.FreeUtilityLabActions.trackSafeEvent('marketplace_tool_click', { asset_id: link.dataset.assetId, hub: 'ai-tools' });
+          window.FreeUtilityLabActions.trackSafeEvent('related_tool_click', { asset_id: link.dataset.assetId, hub: 'ai-tools' });
         }
       });
     });

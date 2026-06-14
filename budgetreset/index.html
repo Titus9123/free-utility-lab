@@ -231,7 +231,7 @@
     $('statusLine').textContent=status; $('insight').textContent= net>=0 ? 'Good: the plan leaves '+money(net)+' unassigned. Consider giving it a job: buffer, emergency fund or extra debt payment.' : 'Warning: this plan is short by '+money(Math.abs(net))+'. Try reducing flexible categories before cutting essentials.';
     const result={income,savings,expenses,debts,extra,exTotal,debtPay,net,rate,months,period:$('period').value,method:$('method').value,currency:currency()};
     if($('summaryText')){$('summaryText').textContent=buildSummary(result);}
-    push('calculator_complete',{budget_positive:net>=0, expense_count:expenses.length, debt_count:debts.length});
+    push('tool_complete',{budget_positive:net>=0, expense_count:expenses.length, debt_count:debts.length});
     return result;
   }
   function buildSummary(r){
@@ -261,7 +261,7 @@
   $('addExpense').onclick=()=>{makeExpense('',0);calc();push('add_expense')}; $('addDebt').onclick=()=>{makeDebt('',0,0,0);calc();push('add_debt')};
   $('downloadCsv').onclick=downloadCsv; $('downloadPdf').onclick=printPdf; $('copySummary').onclick=copySummary; $('printWorksheet').onclick=printWorksheet;
   $('demoBtn').onclick=()=>{expenseRows.innerHTML=''; debtRows.innerHTML=''; defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); $('income').value=5200; $('savingsGoal').value=700; $('extraDebt').value=225; calc(); push('demo_fill')};
-  ['income','savingsGoal','currency','period','method','extraDebt'].forEach(id=>$(id).addEventListener('input',()=>{push('calculator_start',{step:'input_change'});calc()}));
+  ['income','savingsGoal','currency','period','method','extraDebt'].forEach(id=>$(id).addEventListener('input',()=>{push('tool_start',{step:'input_change'});calc()}));
   defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); calc();
 })();
 </script>

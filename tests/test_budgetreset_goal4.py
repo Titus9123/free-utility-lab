@@ -49,8 +49,8 @@ def test_budgetreset_goal4_has_printable_copyable_result_section():
     assert "budgetreset-pro-summary.txt" in html
     assert "copy_click" in html
     assert "print_click" in html
-    assert "calculator_start" in html
-    assert "calculator_complete" in html
+    assert "tool_start" in html
+    assert "tool_complete" in html
 
 
 def test_budgetreset_goal4_schema_has_breadcrumb_and_howto():

@@ -34,7 +34,7 @@ Every Goal 3 hub includes:
 - Tool cards and `ItemList` schema.
 - Links to related hubs.
 - Filter controls for later client-side UX.
-- `marketplace_tool_click` attributes for safe click tracking.
+- `related_tool_click` attributes for safe click tracking.
 
 ## Validation
 

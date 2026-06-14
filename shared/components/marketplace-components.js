@@ -75,7 +75,7 @@
       '  <div class="ful-badges" aria-label="Tool outputs">' + renderBadgeList(badges) + '</div>',
       '  <p class="ful-card-meta">Formats: ' + escapeHtml(formats.join(', ')) + '</p>',
       '  <p class="ful-card-meta">Useful for: ' + escapeHtml(userTypes.join(', ')) + '</p>',
-      '  <a class="ful-primary-cta" href="' + escapeHtml(href) + '" data-event="marketplace_tool_click" data-asset-id="' + escapeHtml(assetId) + '">Open free tool</a>',
+      '  <a class="ful-primary-cta" href="' + escapeHtml(href) + '" data-event="related_tool_click" data-asset-id="' + escapeHtml(assetId) + '">Open free tool</a>',
       '</article>'
     ].join('\n');
   }

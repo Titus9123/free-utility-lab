@@ -59,7 +59,7 @@ def test_tool_card_component_renders_required_marketplace_ux():
     assert "Copy" in html
     assert "CSV" in html
     assert "Print" in html
-    assert 'data-event="marketplace_tool_click"' in html
+    assert 'data-event="related_tool_click"' in html
     assert "finance-tools" in html
     assert result["badges"].count('class="ful-badge"') == 3
 

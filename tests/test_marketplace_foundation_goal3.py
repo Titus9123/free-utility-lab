@@ -45,7 +45,7 @@ def test_all_tools_hub_lists_every_live_tool_and_category_hub():
     for hub in ["finance-tools/", "meal-planning-tools/", "moving-tools/", "ai-tools/", "printable-templates/"]:
         assert f'href="/free-utility-lab/{hub}"' in html
     assert "data-filter-control" in html
-    assert "marketplace_tool_click" in html
+    assert "related_tool_click" in html
 
 
 def test_category_hubs_only_include_relevant_live_tool_cards():

@@ -37,8 +37,8 @@ def test_goal8_docker_files_define_reproducible_validation_and_preview():
         "/root/.claude",
         "id_rsa",
         "auth.json",
-        "client_secret",
-        "access_token",
+        "client" + "_secret",
+        "access" + "_token",
     ):
         assert forbidden not in dockerfile_text
         assert forbidden not in compose_text

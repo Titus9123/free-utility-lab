@@ -33,8 +33,8 @@ Goal 4 upgrades the live BudgetReset tool as the first deeper organic mini-produ
 
 The BudgetReset page now records non-private interaction events for:
 
-- `calculator_start`
-- `calculator_complete`
+- `tool_start`
+- `tool_complete`
 - `copy_click`
 - `download_click`
 - `print_click`

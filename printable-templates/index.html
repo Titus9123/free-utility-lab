@@ -113,7 +113,7 @@
   <div class="ful-badges" aria-label="Tool outputs"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">Copy</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span></div>
   <p class="ful-card-meta">Formats: calculator, worksheet, planner, template</p>
   <p class="ful-card-meta">Useful for: households, students, renters, debt payoff planners</p>
-  <a class="ful-primary-cta" href="/free-utility-lab/budgetreset/" data-event="marketplace_tool_click" data-asset-id="budgetreset">Open free tool</a>
+  <a class="ful-primary-cta" href="/free-utility-lab/budgetreset/" data-event="related_tool_click" data-asset-id="budgetreset">Open free tool</a>
 </article>
 <article class="ful-tool-card" data-asset-id="mealplansheet" data-category="meal-planning-tools">
   <div class="ful-card-topline">meal-planning-tools</div>
@@ -122,7 +122,7 @@
   <div class="ful-badges" aria-label="Tool outputs"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">Copy</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span></div>
   <p class="ful-card-meta">Formats: worksheet, planner, template, checklist</p>
   <p class="ful-card-meta">Useful for: families, students, busy workers, budget shoppers</p>
-  <a class="ful-primary-cta" href="/free-utility-lab/mealplansheet/" data-event="marketplace_tool_click" data-asset-id="mealplansheet">Open free tool</a>
+  <a class="ful-primary-cta" href="/free-utility-lab/mealplansheet/" data-event="related_tool_click" data-asset-id="mealplansheet">Open free tool</a>
 </article>
 <article class="ful-tool-card" data-asset-id="movebudget" data-category="moving-tools">
   <div class="ful-card-topline">moving-tools</div>
@@ -131,7 +131,7 @@
   <div class="ful-badges" aria-label="Tool outputs"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">Copy</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span></div>
   <p class="ful-card-meta">Formats: calculator, worksheet, checklist, planner</p>
   <p class="ful-card-meta">Useful for: renters, first apartment planners, local movers, families moving home</p>
-  <a class="ful-primary-cta" href="/free-utility-lab/movebudget/" data-event="marketplace_tool_click" data-asset-id="movebudget">Open free tool</a>
+  <a class="ful-primary-cta" href="/free-utility-lab/movebudget/" data-event="related_tool_click" data-asset-id="movebudget">Open free tool</a>
 </article>
       </div>
     </section>
@@ -153,10 +153,10 @@
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {};
-    document.querySelectorAll('[data-event="marketplace_tool_click"]').forEach(function (link) {
+    document.querySelectorAll('[data-event="related_tool_click"]').forEach(function (link) {
       link.addEventListener('click', function () {
         if (window.FreeUtilityLabActions.trackSafeEvent) {
-          window.FreeUtilityLabActions.trackSafeEvent('marketplace_tool_click', { asset_id: link.dataset.assetId, hub: 'printable-templates' });
+          window.FreeUtilityLabActions.trackSafeEvent('related_tool_click', { asset_id: link.dataset.assetId, hub: 'printable-templates' });
         }
       });
     });
