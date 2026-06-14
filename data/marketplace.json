@@ -167,10 +167,12 @@
       "schema_types": [
         "SoftwareApplication",
         "FAQPage",
-        "BreadcrumbList"
+        "BreadcrumbList",
+        "HowTo"
       ],
       "tracking_asset_id": "aistackcost",
-      "status": "live"
+      "status": "live",
+      "goal7_upgrade": "aistackcost-comparison-presets-cost-calculator-methodology-sources"
     },
     {
       "id": "all-tools-hub",

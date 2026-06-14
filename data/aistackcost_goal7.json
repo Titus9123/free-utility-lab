@@ -1,0 +1,83 @@
+{
+  "last_updated": "2026-06-14",
+  "disclaimer": "Prices and features change. Treat every monthly cost as an approximate planning placeholder and check the official pricing pages before buying.",
+  "official_sources": [
+    {
+      "label": "OpenAI pricing",
+      "url": "https://openai.com/pricing"
+    },
+    {
+      "label": "Anthropic pricing",
+      "url": "https://www.anthropic.com/pricing"
+    },
+    {
+      "label": "Google Gemini pricing",
+      "url": "https://ai.google.dev/pricing"
+    }
+  ],
+  "tools": [
+    {
+      "name": "ChatGPT",
+      "role": "general assistant, writing, analysis, coding support",
+      "free_option": "Free option may be available with usage limits depending on region and plan changes.",
+      "paid_plan_note": "Approximate monthly planning input only; check official OpenAI pricing before buying.",
+      "official_url": "https://openai.com/pricing"
+    },
+    {
+      "name": "Claude",
+      "role": "long-form writing, document reasoning, code review, planning",
+      "free_option": "Free option may be available with usage limits depending on current availability.",
+      "paid_plan_note": "Approximate monthly planning input only; check official Anthropic pricing before buying.",
+      "official_url": "https://www.anthropic.com/pricing"
+    },
+    {
+      "name": "Gemini",
+      "role": "Google-workspace-oriented research, multimodal help, general assistance",
+      "free_option": "Free option may be available through consumer or developer products.",
+      "paid_plan_note": "Approximate monthly planning input only; check official Google Gemini pricing before buying.",
+      "official_url": "https://ai.google.dev/pricing"
+    },
+    {
+      "name": "Canva",
+      "role": "design, social graphics, proposals, client visuals",
+      "free_option": "Free design tier may be enough for many freelancers.",
+      "paid_plan_note": "Approximate monthly planning input only; check official pricing before buying.",
+      "official_url": "https://www.canva.com/pricing/"
+    },
+    {
+      "name": "Notion AI",
+      "role": "notes, lightweight knowledge base, project writing",
+      "free_option": "Core Notion workspace may be usable without the AI add-on.",
+      "paid_plan_note": "Approximate monthly planning input only; check official pricing before buying.",
+      "official_url": "https://www.notion.com/pricing"
+    },
+    {
+      "name": "Zapier AI",
+      "role": "automation, lead routing, repetitive workflows",
+      "free_option": "Free automation capacity may be enough for testing.",
+      "paid_plan_note": "Approximate monthly planning input only; check official pricing before buying.",
+      "official_url": "https://zapier.com/pricing"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Freelancer stack preset",
+      "audience": "solo freelancer",
+      "recommended_roles": ["one general AI assistant", "one design tool", "one notes/project tool"],
+      "buying_rule": "Upgrade only when a paid feature saves billable time every week."
+    },
+    {
+      "name": "Small business stack preset",
+      "audience": "small business owner",
+      "recommended_roles": ["one general AI assistant", "one marketing/design tool", "one automation or CRM helper"],
+      "buying_rule": "Avoid duplicate AI subscriptions until a workflow owner uses each tool weekly."
+    },
+    {
+      "name": "Agency stack preset",
+      "audience": "small agency",
+      "recommended_roles": ["shared writing/research assistant", "design tool", "automation layer", "meeting/documentation helper"],
+      "buying_rule": "Track per-seat cost and cancel overlapping tools after a two-week trial."
+    }
+  ],
+  "comparison_columns": ["Tool", "Best for", "Free option", "Paid plan note", "Official source"]
+}

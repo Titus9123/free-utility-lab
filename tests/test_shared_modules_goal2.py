@@ -139,6 +139,12 @@ def test_shared_modules_are_only_wired_into_approved_marketplace_pages():
         ROOT / "movebudget" / "free-printable-first-apartment-budget-worksheet" / "index.html",
         ROOT / "movebudget" / "moving-cost-checklist" / "index.html",
         ROOT / "movebudget" / "moving-box-calculator" / "index.html",
+        ROOT / "aistackcost" / "index.html",
+        ROOT / "aistackcost" / "ai-tools-for-freelancers" / "index.html",
+        ROOT / "aistackcost" / "best-free-ai-tools-for-freelancers" / "index.html",
+        ROOT / "aistackcost" / "top-10-ai-tools-for-freelancers" / "index.html",
+        ROOT / "aistackcost" / "best-ai-tools-for-small-business" / "index.html",
+        ROOT / "aistackcost" / "chatgpt-claude-gemini-comparison" / "index.html",
     }
     shared_references = []
     for path in html_files:

@@ -42,11 +42,20 @@ GOAL6_UPGRADED_TOOL_PAGES = {
     ROOT / "movebudget" / "moving-cost-checklist" / "index.html",
     ROOT / "movebudget" / "moving-box-calculator" / "index.html",
 }
+GOAL7_UPGRADED_TOOL_PAGES = {
+    ROOT / "aistackcost" / "index.html",
+    ROOT / "aistackcost" / "ai-tools-for-freelancers" / "index.html",
+    ROOT / "aistackcost" / "best-free-ai-tools-for-freelancers" / "index.html",
+    ROOT / "aistackcost" / "top-10-ai-tools-for-freelancers" / "index.html",
+    ROOT / "aistackcost" / "best-ai-tools-for-small-business" / "index.html",
+    ROOT / "aistackcost" / "chatgpt-claude-gemini-comparison" / "index.html",
+}
 APPROVED_SHARED_MODULE_PAGES = (
     GOAL3_MARKETPLACE_PAGES
     | GOAL4_UPGRADED_TOOL_PAGES
     | GOAL5_UPGRADED_TOOL_PAGES
     | GOAL6_UPGRADED_TOOL_PAGES
+    | GOAL7_UPGRADED_TOOL_PAGES
 )
 SHARED_MARKERS = [
     "shared/scripts/utility-actions.js",
@@ -80,7 +89,7 @@ def main() -> int:
         for error in errors:
             print(error)
         return 1
-    print("Shared modules OK: Goal 2 files present and approved Goal 3/4/5/6 wiring is scoped.")
+    print("Shared modules OK: Goal 2 files present and approved Goal 3/4/5/6/7 wiring is scoped.")
     return 0
 
 
