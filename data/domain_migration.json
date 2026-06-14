@@ -1,0 +1,39 @@
+{
+  "goal": "Goal 11 domain migration readiness",
+  "selected_custom_domain": "freeutilitylab.com",
+  "current_canonical_base": "https://titus9123.github.io/free-utility-lab/",
+  "target_canonical_base": "https://freeutilitylab.com/",
+  "base_path": "/free-utility-lab/",
+  "cutover_status": "readiness_only_do_not_create_cname_yet",
+  "canonical_rewrite_plan": [
+    "Replace every absolute canonical URL that starts with https://titus9123.github.io/free-utility-lab/ with https://freeutilitylab.com/ plus the same relative slug.",
+    "Update matching og:url values and JSON-LD URL fields in the same pass so search and social metadata do not drift.",
+    "After rewrite, rerun link, schema, sitemap and no-secret validators before DNS or Pages cutover."
+  ],
+  "sitemap_url_rewrite_plan": [
+    "Rewrite every sitemap <loc> from the current GitHub Pages base to https://freeutilitylab.com/ with identical paths.",
+    "Keep URL count equal to the local HTML inventory after rewrite.",
+    "Submit the new sitemap in the new Google Search Console property only after the domain serves the site successfully."
+  ],
+  "redirect_strategy": [
+    "GitHub Pages custom-domain cutover is the supported path; repository-level HTTP 301 rules are not available on plain GitHub Pages.",
+    "Keep the old GitHub Pages URLs crawlable during transition and use canonicals on the custom domain after cutover.",
+    "If moving behind a proxy or CDN later, add explicit redirects from the old host to the custom domain outside this static repo."
+  ],
+  "gsc_new_property_checklist": [
+    "Create and verify a new Google Search Console property for freeutilitylab.com.",
+    "Submit https://freeutilitylab.com/sitemap.xml after DNS and GitHub Pages custom-domain verification pass.",
+    "Monitor indexing, canonical selection and coverage for priority clusters during the first crawl window."
+  ],
+  "ga4_continuity_check": [
+    "Keep the existing measurement bridge and GA4 event names unchanged during the domain migration.",
+    "Confirm page_view, asset_view, cta_click, copy_result and print_result continue on the custom domain.",
+    "Annotate the migration date in analytics so traffic-source and referral changes are interpreted correctly."
+  ],
+  "post_migration_crawl_validation": [
+    "Run scripts/run_all_validations.py after the canonical and sitemap rewrite.",
+    "Fetch the custom-domain home page and at least one priority URL from each main cluster.",
+    "Confirm canonicals, og:url and JSON-LD use https://freeutilitylab.com/ with no mixed GitHub Pages absolute URLs.",
+    "Recheck sitemap URL count against local HTML inventory before submitting to GSC."
+  ]
+}
