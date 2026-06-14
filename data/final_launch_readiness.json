@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "goal": "Goal 13 final launch readiness",
+  "status": "operator_handoff_ready",
+  "current_base": "https://titus9123.github.io/free-utility-lab/",
+  "target_domain": "freeutilitylab.com",
+  "cutover_performed": false,
+  "live_ads_enabled": false,
+  "completed_goals": [
+    "goal_0_baseline_audit",
+    "goal_1_modular_catalog_foundation",
+    "goal_2_shared_components_helpers",
+    "goal_3_marketplace_foundation_pages",
+    "goal_4_budgetreset_upgrade",
+    "goal_5_mealplansheet_upgrade",
+    "goal_6_movebudget_upgrade",
+    "goal_7_aistackcost_selective_upgrade",
+    "goal_8_docker_validation_preview",
+    "goal_9_ci_gates",
+    "goal_10_measurement_loop",
+    "goal_11_domain_migration_readiness",
+    "goal_12_ongoing_asset_factory"
+  ],
+  "required_gates": [
+    "python3 -m pytest -q",
+    "python3 scripts/validate_marketplace_catalog.py",
+    "python3 scripts/validate_shared_modules.py",
+    "python3 scripts/validate_site_links.py . --base-path /free-utility-lab/",
+    "python3 scripts/validate_sitemap.py sitemap.xml --site-root .",
+    "python3 scripts/validate_schema_smoke.py",
+    "python3 scripts/validate_domain_migration.py",
+    "python3 scripts/validate_asset_factory.py",
+    "python3 scripts/validate_final_launch_readiness.py",
+    "python3 scripts/audit_no_secrets.py data scripts shared docs tests free-utility-lab-tracking.js free-utility-lab-measurement-bridge.js Dockerfile docker-compose.yml .github/workflows/validate-free-utility-lab.yml",
+    "docker compose config",
+    "docker compose build",
+    "docker compose run --rm validate"
+  ],
+  "required_files": [
+    "README.md",
+    "sitemap.xml",
+    "docker-compose.yml",
+    ".github/workflows/validate-free-utility-lab.yml",
+    "data/marketplace.json",
+    "data/domain_migration.json",
+    "data/asset_factory_checklist.json",
+    "docs/DOMAIN_MIGRATION_GOAL11.md",
+    "docs/ASSET_FACTORY_GOAL12.md",
+    "docs/FINAL_LAUNCH_READINESS_GOAL13.md",
+    "templates/new_asset_manifest.template.json",
+    "scripts/run_all_validations.py",
+    "scripts/validate_domain_migration.py",
+    "scripts/validate_asset_factory.py",
+    "scripts/validate_final_launch_readiness.py"
+  ],
+  "blockers": [
+    "domain_migration_approval_required",
+    "live_ads_not_activated"
+  ],
+  "operator_handoff": {
+    "quality_gates": "Run scripts/run_all_validations.py and Docker validate before publishing future changes.",
+    "domain_migration": "Custom-domain migration remains approval-gated; do not create CNAME or rewrite canonicals until final approval.",
+    "asset_expansion": "Use the Goal 12 asset factory for every new asset instead of cloning pages manually.",
+    "measurement": "Use the Goal 10 measurement loop and GSC/GA4 evidence before expanding clusters or activating ads.",
+    "cadence": "Review indexation, impressions, CTR, engagement and validation status before each new sprint."
+  }
+}

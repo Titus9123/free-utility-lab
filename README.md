@@ -27,4 +27,15 @@ python3 scripts/run_all_validations.py
 
 Use `docs/ASSET_FACTORY_GOAL12.md`, `data/asset_factory_checklist.json`, and `templates/new_asset_manifest.template.json` before publishing a new tool, template, checklist or calculator.
 
+## Final launch readiness
+
+Goal 13 adds a final operator handoff and readiness guardrail:
+
+```bash
+python3 scripts/validate_final_launch_readiness.py
+python3 scripts/run_all_validations.py
+```
+
+Use `docs/FINAL_LAUNCH_READINESS_GOAL13.md` and `data/final_launch_readiness.json` before future launches. The custom-domain cutover and live ads remain approval-gated.
+
 CI uses `.github/workflows/validate-free-utility-lab.yml` to run the same credential-free quality gates on pushes to `main` and pull requests: Python tests, the validation bundle, HTML page count reporting, Docker Compose config validation, and Docker image build.
