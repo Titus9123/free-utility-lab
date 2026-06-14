@@ -134,6 +134,11 @@ def test_shared_modules_are_only_wired_into_approved_marketplace_pages():
         ROOT / "mealplansheet" / "cheap-weekly-meal-plan" / "index.html",
         ROOT / "mealplansheet" / "student-meal-planner" / "index.html",
         ROOT / "mealplansheet" / "no-cook-meal-plan" / "index.html",
+        ROOT / "movebudget" / "index.html",
+        ROOT / "movebudget" / "moving-cost-calculator-no-email" / "index.html",
+        ROOT / "movebudget" / "free-printable-first-apartment-budget-worksheet" / "index.html",
+        ROOT / "movebudget" / "moving-cost-checklist" / "index.html",
+        ROOT / "movebudget" / "moving-box-calculator" / "index.html",
     }
     shared_references = []
     for path in html_files:

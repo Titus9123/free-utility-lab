@@ -119,15 +119,18 @@
         "families moving home"
       ],
       "related_tools": [
-        "budgetreset"
+        "budgetreset",
+        "mealplansheet"
       ],
       "schema_types": [
         "SoftwareApplication",
         "FAQPage",
-        "BreadcrumbList"
+        "BreadcrumbList",
+        "HowTo"
       ],
       "tracking_asset_id": "movebudget",
-      "status": "live"
+      "status": "live",
+      "goal6_upgrade": "movebudget-calculators-checklists-export-print-copy-internal-links"
     },
     {
       "id": "aistackcost",
