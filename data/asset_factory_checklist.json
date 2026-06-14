@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "goal": "12",
+  "name": "Free Utility Lab new asset factory checklist",
+  "purpose": "Make new assets repeatable without manual page cloning.",
+  "workflow_doc": "docs/ASSET_FACTORY_GOAL12.md",
+  "manifest_template": "templates/new_asset_manifest.template.json",
+  "validator": "scripts/validate_new_asset.py",
+  "checks": [
+    {
+      "id": "catalog_entry",
+      "label": "Catalog entry",
+      "description": "Add a complete data/marketplace.json entry with id, slug, category, formats, outputs, schema_types, tracking_asset_id and live/planned status."
+    },
+    {
+      "id": "main_product_page",
+      "label": "Main product page",
+      "description": "Create the primary product HTML page at the catalog local_path with canonical metadata and shared assets."
+    },
+    {
+      "id": "category_hub_inclusion",
+      "label": "Category hub inclusion",
+      "description": "Confirm the asset appears in the relevant marketplace/category hub after catalog rendering."
+    },
+    {
+      "id": "usable_asset",
+      "label": "Real usable asset",
+      "description": "Ship at least one real tool, template, checklist, calculator, worksheet, planner, guide or comparison asset."
+    },
+    {
+      "id": "outputs",
+      "label": "Copy/print/export outputs",
+      "description": "Include practical outputs such as copy, CSV/download, print, PDF or checklist actions."
+    },
+    {
+      "id": "schema",
+      "label": "Schema",
+      "description": "Add JSON-LD appropriate for the page, normally BreadcrumbList plus SoftwareApplication, FAQPage, HowTo or ItemList."
+    },
+    {
+      "id": "tracking",
+      "label": "Tracking",
+      "description": "Use the standardized measurement events and safe tracking_asset_id without forwarding private inputs."
+    },
+    {
+      "id": "internal_links",
+      "label": "Internal links",
+      "description": "Link to relevant hubs and related tools with current /free-utility-lab/ base-path safe URLs."
+    },
+    {
+      "id": "validation_pass",
+      "label": "Validation pass",
+      "description": "Run python3 scripts/run_all_validations.py and the new-asset validator before publishing."
+    },
+    {
+      "id": "no_secrets",
+      "label": "No secrets",
+      "description": "Keep manifests, docs, scripts and generated pages credential-free."
+    },
+    {
+      "id": "no_thin_support_pages",
+      "label": "No thin support pages",
+      "description": "Do not publish thin support pages; every support page needs real utility content and internal links."
+    }
+  ],
+  "required_manifest_fields": [
+    "id",
+    "name",
+    "slug",
+    "category",
+    "local_path",
+    "page_type",
+    "intent",
+    "formats",
+    "outputs",
+    "schema_types",
+    "tracking_asset_id",
+    "related_tools",
+    "supporting_pages",
+    "validation_commands"
+  ]
+}

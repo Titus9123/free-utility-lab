@@ -17,6 +17,7 @@ VALIDATION_COMMANDS = [
     [sys.executable, "scripts/validate_sitemap.py", "sitemap.xml", "--site-root", "."],
     [sys.executable, "scripts/validate_schema_smoke.py"],
     [sys.executable, "scripts/validate_domain_migration.py"],
+    [sys.executable, "scripts/validate_asset_factory.py"],
     [
         sys.executable,
         "scripts/audit_no_secrets.py",

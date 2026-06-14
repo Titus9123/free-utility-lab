@@ -1,0 +1,38 @@
+{
+  "id": "exampleasset",
+  "name": "ExampleAsset",
+  "slug": "exampleasset",
+  "category": "finance-tools",
+  "local_path": "exampleasset/index.html",
+  "page_type": "tool",
+  "intent": "One-sentence description of the practical no-signup job this asset helps users complete.",
+  "formats": [
+    "calculator",
+    "worksheet"
+  ],
+  "outputs": [
+    "copy",
+    "csv",
+    "print"
+  ],
+  "schema_types": [
+    "SoftwareApplication",
+    "FAQPage",
+    "BreadcrumbList",
+    "HowTo"
+  ],
+  "tracking_asset_id": "exampleasset",
+  "related_tools": [
+    "budgetreset"
+  ],
+  "supporting_pages": [
+    {
+      "path": "exampleasset/example-support-page/index.html",
+      "purpose": "Real supporting utility content, not a thin SEO page."
+    }
+  ],
+  "validation_commands": [
+    "python3 scripts/validate_new_asset.py path/to/new_asset.json",
+    "python3 scripts/run_all_validations.py"
+  ]
+}
