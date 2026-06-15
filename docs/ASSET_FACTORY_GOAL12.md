@@ -64,6 +64,8 @@ Goal 12 turns new asset creation into a repeatable workflow, not a round of manu
 
 The Goal 12 checklist lives in `data/asset_factory_checklist.json` and is validated by `scripts/validate_asset_factory.py`.
 
+Goal 18 adds an expansion freeze before this factory is used for growth. Do not publish a new cluster, support-page variant, or asset expansion unless `docs/GOAL18_EXPANSION_FREEZE_2026-06-15.md` criteria are met: GSC/GA4 evidence, a documented QA coverage gap, or explicit operator approval. The factory remains the implementation path after approval, not a bypass around the freeze.
+
 A proposed new asset manifest is validated by `scripts/validate_new_asset.py`. The manifest must cover:
 
 - catalog entry;

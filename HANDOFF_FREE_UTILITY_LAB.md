@@ -21,6 +21,7 @@ Do not describe this as a fully proven organic launch until GSC/GA4 evidence exi
 - Live ads are not activated.
 - `/goal 16` — operator handoff updated.
 - `/goal 17` — GSC/GA4 learning loop checklist and non-sensitive evidence template prepared. External account confirmation remains operator-owned.
+- `/goal 18` — expansion freeze documented and validator added. Future expansion must be signal-driven or explicitly approved.
 - Current inventory validated by the full project runner:
   - HTML files: 91
   - Sitemap URLs: 91
@@ -35,6 +36,8 @@ Use these as the current source of truth:
 - `docs/FINAL_LAUNCH_READINESS_GOAL13.md` — final controlled readiness state and launch guardrails.
 - `docs/AUDIT_OPTIMIZATION_GOALS_2026-06-15.md` — audit recovery goals `/goal 14` through `/goal 18`.
 - `docs/GOAL15_PRIORITY_QA_2026-06-15.md` — priority mini-tool QA evidence.
+- `docs/GOAL17_GSC_GA4_LEARNING_LOOP_2026-06-15.md` — external Search Console/GA4 learning loop and weekly evidence template.
+- `docs/GOAL18_EXPANSION_FREEZE_2026-06-15.md` — expansion freeze and signal-driven approval gate.
 - `docs/DOMAIN_MIGRATION_GOAL11.md` — custom-domain migration runbook; preparation only, no cutover.
 - `docs/MEASUREMENT_GOAL10.md` — GSC/GA4 measurement loop and privacy-safe event policy.
 - `docs/organic-traffic-growth-plan.md` — original organic traffic plan.
@@ -55,12 +58,23 @@ Use these as the current source of truth:
   - `scripts/goal15_static_qa.py` added and integrated into `scripts/run_all_validations.py`.
   - `shared/scripts/utility-actions.js` now delegates static HTML copy/print/download patterns reliably.
 
+- `/goal 17` — GSC/GA4 learning loop prepared.
+  - `docs/GOAL17_GSC_GA4_LEARNING_LOOP_2026-06-15.md` defines property/sitemap/event checks, priority URLs, and decision rules.
+  - `docs/organic-evidence/WEEKLY_ORGANIC_EVIDENCE_TEMPLATE.md` provides the non-sensitive weekly reporting format.
+  - External Google account confirmation remains operator-owned.
+
+- `/goal 18` — signal-driven expansion freeze completed.
+  - `docs/GOAL18_EXPANSION_FREEZE_2026-06-15.md` freezes new clusters/support-page variants unless evidence or explicit approval exists.
+  - `scripts/validate_goal18_expansion_freeze.py` is included in the validation bundle.
+  - Asset factory remains the only approved path for any future expansion.
+
 ## Current quality gates
 
 Run these before publishing or handing off new changes:
 
 ```bash
 python3 scripts/goal15_static_qa.py
+python3 scripts/validate_goal18_expansion_freeze.py
 python3 scripts/validate_final_launch_readiness.py
 python3 scripts/run_all_validations.py
 docker compose config
@@ -70,9 +84,10 @@ git diff --check
 git status --short --branch
 ```
 
-Expected current validation snapshot from Goal 15:
+Expected current validation snapshot from Goal 18:
 
 - `python3 scripts/goal15_static_qa.py` — PASS.
+- `python3 scripts/validate_goal18_expansion_freeze.py` — PASS.
 - `python3 scripts/run_all_validations.py` — PASS: 91 pytest tests, 91 HTML files, 91 sitemap URLs, 168 JSON-LD blocks, no secrets.
 - `docker compose config` — PASS.
 - `docker compose build` — PASS.
@@ -85,7 +100,9 @@ Expected current validation snapshot from Goal 15:
 - Do not rewrite canonicals, Open Graph URLs, or sitemap URLs to `freeutilitylab.com` until custom-domain cutover is approved and executed.
 - Do not activate live ads yet.
 - Do not add thin support pages or clone pages manually.
-- Use the asset factory path and validators for any future asset expansion.
+- Do not add new clusters or support-page variants unless GSC/GA4 evidence, a documented QA gap, or explicit operator approval exists.
+- Asset factory remains the only approved path for new assets.
+- Use the asset factory path and validators for any approved future asset expansion.
 - Do not commit secrets, tokens, private analytics exports, Search Console exports with sensitive account data, or private credentials.
 - Do not claim market validation until external GSC/GA4 evidence exists.
 
@@ -107,6 +124,15 @@ Still external/operator-owned:
 - Confirm GA4 receives safe live events from real page sessions.
 - Start a weekly evidence log for indexation, impressions, CTR, positions 8-30, and tool-action engagement.
 
+## Expansion freeze status
+
+Goal 18 is now the operating rule for future growth.
+
+- Expansion is frozen until there is GSC/GA4 evidence, a documented QA coverage gap, or explicit operator approval.
+- Improvement-first actions are allowed: fix existing pages, strengthen artifacts/actions, improve internal links, refresh title/meta from impressions/CTR, and merge/canonicalize only with evidence.
+- New assets must use the Goal 12 asset factory and pass `scripts/validate_new_asset.py` plus the full validation bundle.
+- Expansion candidates should be recorded in the weekly evidence log as approved, rejected, or hold.
+
 ## Current publication check
 
 After pushing/deploying a new commit to GitHub Pages, verify live with cache-busted URLs:
@@ -122,15 +148,12 @@ After pushing/deploying a new commit to GitHub Pages, verify live with cache-bus
 
 ## Next recommended priority
 
-Proceed to `/goal 17`: activate the external GSC/GA4 learning loop.
+Push and externalize the completed recovery work.
 
-This should create or complete a non-sensitive operator checklist for:
+1. Push local `main` to `origin/main` when ready.
+2. Verify GitHub Pages deployment with the cache-busted publication URLs above.
+3. Execute the operator-owned Goal 17 steps in Google Search Console and GA4.
+4. Start the first weekly evidence log.
+5. Keep Goal 18 active: no new clusters/pages unless signal-driven or explicitly approved.
 
-- GSC property verification.
-- Sitemap submission.
-- Priority URL inspection.
-- GA4 realtime event confirmation.
-- Weekly evidence logging.
-- Decision rules for refresh, merge/canonicalization, and expansion based on indexation, impressions, CTR, and engagement.
-
-If Google account access is unavailable, document `/goal 17` as blocked by external account access rather than pretending it is complete.
+If Google account access is unavailable, keep Goal 17 marked as externally blocked and continue with improvement-only work on existing pages.

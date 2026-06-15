@@ -25,7 +25,9 @@ python3 scripts/validate_new_asset.py path/to/new_asset.json
 python3 scripts/run_all_validations.py
 ```
 
-Use `docs/ASSET_FACTORY_GOAL12.md`, `data/asset_factory_checklist.json`, and `templates/new_asset_manifest.template.json` before publishing a new tool, template, checklist or calculator.
+Use `docs/ASSET_FACTORY_GOAL12.md`, `docs/GOAL18_EXPANSION_FREEZE_2026-06-15.md`, `data/asset_factory_checklist.json`, and `templates/new_asset_manifest.template.json` before publishing a new tool, template, checklist or calculator.
+
+Goal 18 freezes new clusters and support-page variants until there is GSC/GA4 evidence, a documented QA coverage gap, or explicit operator approval. Even when approved, the Goal 12 asset factory remains the only implementation path.
 
 ## Final launch readiness
 

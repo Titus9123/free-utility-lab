@@ -20,6 +20,7 @@ VALIDATION_COMMANDS = [
     [sys.executable, "scripts/validate_asset_factory.py"],
     [sys.executable, "scripts/validate_final_launch_readiness.py"],
     [sys.executable, "scripts/goal15_static_qa.py"],
+    [sys.executable, "scripts/validate_goal18_expansion_freeze.py"],
     [
         sys.executable,
         "scripts/audit_no_secrets.py",
