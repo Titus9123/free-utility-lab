@@ -23,6 +23,14 @@ GOAL3_MARKETPLACE_PAGES = {
 }
 GOAL4_UPGRADED_TOOL_PAGES = {
     ROOT / "budgetreset" / "index.html",
+    ROOT / "budgetreset" / "free-printable-monthly-bill-calendar-pdf" / "index.html",
+    ROOT / "budgetreset" / "monthly-bill-calendar-template-free-pdf" / "index.html",
+    ROOT / "budgetreset" / "monthly-bill-calendar-free-printable" / "index.html",
+    ROOT / "budgetreset" / "monthly-bill-calendar-printable-free" / "index.html",
+    ROOT / "budgetreset" / "biweekly-paycheck-budget-template-google-sheets-free" / "index.html",
+    ROOT / "budgetreset" / "paycheck-budget-template" / "index.html",
+    ROOT / "budgetreset" / "debt-payoff-tracker" / "index.html",
+    ROOT / "budgetreset" / "zero-based-budget-template" / "index.html",
 }
 GOAL5_UPGRADED_TOOL_PAGES = {
     ROOT / "mealplansheet" / "index.html",

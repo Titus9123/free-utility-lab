@@ -102,14 +102,58 @@
     if (typeof document === 'undefined' || typeof window === 'undefined') {
       return false;
     }
-    const target = document.querySelector('[data-print-section="' + CSS.escape(id) + '"]');
+    const safeId = String(id || '');
+    const escaped = typeof CSS !== 'undefined' && CSS.escape ? CSS.escape(safeId) : safeId.replace(/"/g, '\\"');
+    const target = document.getElementById(safeId) || document.querySelector('section[data-print-section="' + escaped + '"], [data-print-section="' + escaped + '"]:not(button)');
     if (!target) {
       return false;
     }
-    document.body.setAttribute('data-ful-print-target', id);
+    document.body.setAttribute('data-ful-print-target', safeId);
     window.print();
     document.body.removeAttribute('data-ful-print-target');
     return true;
+  }
+
+  function initDomActions() {
+    if (typeof document === 'undefined') {
+      return false;
+    }
+    document.addEventListener('click', function (event) {
+      const copyButton = event.target.closest('[data-copy-target]');
+      if (copyButton) {
+        const target = document.querySelector(copyButton.getAttribute('data-copy-target'));
+        copyText(target ? target.innerText : '').then(function () {
+          trackSafe('copy_click', { output: 'template' });
+        });
+        return;
+      }
+      const csvButton = event.target.closest('[data-csv-target]');
+      if (csvButton) {
+        const table = document.querySelector(csvButton.getAttribute('data-csv-target'));
+        if (table) {
+          const rows = Array.from(table.querySelectorAll('tr')).map(function (row) {
+            return Array.from(row.querySelectorAll('th,td')).map(function (cell) { return cell.innerText.trim(); });
+          });
+          downloadText(csvButton.getAttribute('data-filename') || 'free-utility-lab-template.csv', tableToCsv(rows), 'text/csv;charset=utf-8');
+          trackSafe('download_click', { output: 'csv' });
+        }
+        return;
+      }
+      const printButton = event.target.closest('button[data-print-section]');
+      if (printButton) {
+        printSection(printButton.getAttribute('data-print-section'));
+        trackSafe('print_click', { output: 'template' });
+      }
+    });
+    return true;
+  }
+
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initDomActions, { once: true });
+    } else {
+      initDomActions();
+    }
   }
 
   function filterMarketplaceItems(items, filters) {
