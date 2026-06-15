@@ -136,6 +136,128 @@ document.addEventListener('DOMContentLoaded', function () {
   if (print) print.addEventListener('click', function () { window.FreeUtilityLabActions.printSection('mealplansheet-result'); track('print_click','weekly_planner'); });
 });
 </script>
+<style>
+/* MealPlanSheet modern improvements */
+/* Scroll-snap mobile week view */
+@media(max-width:980px){.week{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:8px}.day{min-width:220px;scroll-snap-align:start;flex-shrink:0}}
+/* Grocery cost estimate */
+.mp-cost-bar{background:rgba(47,143,70,.08);border:1px solid rgba(47,143,70,.2);border-radius:18px;padding:12px 16px;margin:12px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mp-cost-bar strong{font-family:var(--head);font-size:22px;color:var(--green)}
+.mp-cost-bar span{color:var(--muted);font-size:13px}
+/* Checkable grocery items */
+.mp-check-item{display:flex;align-items:center;gap:8px;padding:5px 0;cursor:pointer;border-bottom:1px solid rgba(47,143,70,.08)}
+.mp-check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0}
+.mp-check-item.checked label{text-decoration:line-through;color:var(--muted);opacity:.6}
+.mp-check-item label{cursor:pointer;flex:1;color:var(--ink);font-size:15px}
+/* Quick swap button */
+.mp-swap-btn{font-size:11px;font-weight:900;border:1px solid rgba(47,143,70,.28);border-radius:999px;padding:3px 8px;background:transparent;color:var(--green);cursor:pointer;margin-top:4px}
+.mp-swap-btn:hover{background:rgba(47,143,70,.1)}
+/* Disclaimer */
+.mp-disclaimer{font-size:12px;color:var(--muted);font-style:italic}
+</style>
+<script>
+/* MealPlanSheet modern additions — grocery checkboxes (mp_ localStorage), cost estimate, quick swap */
+(function(){
+  var LS_CHECKS = 'mp_grocery_checks_v1';
+  var LS_PLAN   = 'mp_plan_v1';
+
+  /* Estimated cost per grocery item (rough ranges, educational only) */
+  var COSTS = {chicken:4.5,potatoes:1.2,carrots:1,onions:0.8,'salad greens':2.5,pasta:1.5,'tomato sauce':2,parmesan:3,basil:1,zucchini:1.5,rice:1,eggs:3.5,'mixed vegetables':2,'soy sauce':2,'green onions':0.5,tortillas:2.5,'beans':1.5,'ground turkey or tofu':4,lettuce:1.5,tomatoes:1.5,cheese:3.5,lentils:1.5,broth:2.5,celery:1,bread:2.5,oats:2.5,'milk or yogurt':3.5,fruit:3,toast:1.5,bread:2.5,'olive oil':4,salt:0.5,pepper:1,garlic:0.8,lemons:0.8};
+
+  function estimateCost(items){
+    return items.reduce(function(t,i){ return t + (COSTS[i.toLowerCase()] || 1.8); }, 0);
+  }
+
+  function loadChecks(){
+    try{ return JSON.parse(localStorage.getItem(LS_CHECKS)||'{}'); }catch(e){ return {}; }
+  }
+  function saveChecks(obj){
+    try{ localStorage.setItem(LS_CHECKS, JSON.stringify(obj)); }catch(e){}
+  }
+
+  /* Patch renderGrocery to add checkboxes after page DOMContentLoaded */
+  function patchGrocery(){
+    var origRender = window.renderGrocery;
+    if(typeof origRender !== 'function') return;
+    window.renderGrocery = function(items){
+      origRender(items);
+      if(!items || !items.length) return;
+      var checks = loadChecks();
+      var cost = estimateCost(items);
+      var el = document.getElementById('groceryList');
+      if(!el) return;
+      /* inject checkboxes into each li */
+      var lis = el.querySelectorAll('li');
+      lis.forEach(function(li){
+        var text = li.textContent.trim();
+        var id = 'mpg-' + text.replace(/\s+/g,'-');
+        var checked = !!checks[text];
+        li.innerHTML = '';
+        var wrap = document.createElement('span');
+        wrap.className = 'mp-check-item' + (checked ? ' checked' : '');
+        var inp = document.createElement('input');
+        inp.type = 'checkbox'; inp.id = id; inp.checked = checked;
+        var lbl = document.createElement('label');
+        lbl.htmlFor = id; lbl.textContent = text;
+        wrap.appendChild(inp); wrap.appendChild(lbl);
+        inp.addEventListener('change', function(){
+          checks = loadChecks();
+          checks[text] = inp.checked;
+          saveChecks(checks);
+          wrap.classList.toggle('checked', inp.checked);
+        });
+        li.appendChild(wrap);
+        li.style.listStyle = 'none';
+      });
+      /* Cost estimate bar */
+      var costBar = document.getElementById('mp-cost-estimate');
+      if(!costBar){
+        costBar = document.createElement('div');
+        costBar.id = 'mp-cost-estimate';
+        costBar.className = 'mp-cost-bar';
+        el.insertBefore(costBar, el.firstChild);
+      }
+      costBar.innerHTML = '<span>Estimated weekly grocery cost</span><strong data-mp-cost>$' + Math.round(cost) + '–$' + Math.round(cost * 1.35) + '</strong><span class="mp-disclaimer">Rough planning range only. Verify at your store.</span>';
+    };
+  }
+
+  /* Add quick-swap buttons to meal slots */
+  function addSwapButtons(){
+    var BANK_ALL = [];
+    if(window.BANK){ Object.values(window.BANK).forEach(function(arr){ arr.forEach(function(m){ if(!BANK_ALL.includes(m)) BANK_ALL.push(m); }); }); }
+    var weekEl = document.getElementById('weekPlan');
+    if(!weekEl || !BANK_ALL.length) return;
+    weekEl.querySelectorAll('.meal').forEach(function(mealEl){
+      var span = mealEl.querySelector('span');
+      if(!span) return;
+      var btn = document.createElement('button');
+      btn.className = 'mp-swap-btn';
+      btn.type = 'button';
+      btn.textContent = '↻ swap';
+      btn.setAttribute('aria-label', 'Swap meal suggestion');
+      btn.addEventListener('click', function(){
+        var current = span.textContent;
+        var options = BANK_ALL.filter(function(m){ return m !== current; });
+        var pick = options[Math.floor(Math.random() * options.length)];
+        if(pick){ span.textContent = pick; }
+      });
+      mealEl.appendChild(btn);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    setTimeout(function(){
+      patchGrocery();
+      addSwapButtons();
+      /* re-patch on generate button click */
+      var gen = document.getElementById('generateBtn');
+      if(gen) gen.addEventListener('click', function(){
+        setTimeout(function(){ patchGrocery(); addSwapButtons(); }, 50);
+      });
+    }, 200);
+  });
+})();
+</script>
 <script src="/free-utility-lab/accessibility-widget.js?v=8ec7e2e" defer></script>
 <script src="/free-utility-lab/free-utility-lab-tracking.js" defer></script>
 <script src="/free-utility-lab/free-utility-lab-measurement-bridge.js" defer></script>

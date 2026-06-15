@@ -188,7 +188,10 @@ document.querySelectorAll('[data-price-input]').forEach(function (input) {
     if (output) output.textContent = 'Approximate monthly total: ' + total.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   });
 });
-</script>"""
+</script>
+<script src=\"/free-utility-lab/accessibility-widget.js?v=8ec7e2e\" defer></script>
+<script src=\"/free-utility-lab/free-utility-lab-tracking.js\" defer></script>
+<script src=\"/free-utility-lab/free-utility-lab-measurement-bridge.js\" defer></script>"""
 
 
 def render_main() -> str:

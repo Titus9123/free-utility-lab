@@ -106,6 +106,42 @@
 })();
 </script>
 
+<!-- DIY vs movers comparator and Day-1 cash section -->
+<section class="section card" aria-labelledby="diy-movers-title">
+  <h2 id="diy-movers-title">DIY vs professional movers comparator</h2>
+  <p>Compare the estimated cost of a self-managed move vs hiring professional movers. Adjust both columns for your situation.</p>
+  <div class="calc-grid" style="margin-bottom:16px">
+    <div><label for="diyTruck">Truck rental cost</label><input id="diyTruck" type="number" min="0" value="200" placeholder="e.g. 200"></div>
+    <div><label for="diyFuel">Fuel &amp; tolls</label><input id="diyFuel" type="number" min="0" value="60" placeholder="e.g. 60"></div>
+    <div><label for="diyHelpers">Helper tips/fees</label><input id="diyHelpers" type="number" min="0" value="100" placeholder="e.g. 100"></div>
+    <div><label for="proMovers">Professional movers quote</label><input id="proMovers" type="number" min="0" value="800" placeholder="e.g. 800"></div>
+    <div><label for="proTips">Movers tip</label><input id="proTips" type="number" min="0" value="80" placeholder="e.g. 80"></div>
+    <div><label for="yourTime">Your hourly rate ($)</label><input id="yourTime" type="number" min="0" value="25" placeholder="e.g. 25"></div>
+  </div>
+  <p><button type="button" id="diyCalcBtn" class="button">Compare DIY vs movers</button></p>
+  <div id="diyResult" style="display:none;margin-top:12px" class="card" data-mb-diy-result>
+    <div class="summary">
+      <div class="metric"><strong id="diyCost">$0</strong><span>DIY total cost</span></div>
+      <div class="metric"><strong id="proCost">$0</strong><span>Pro movers total</span></div>
+      <div class="metric"><strong id="diyTimeCost">$0</strong><span>Your time cost (~8 hrs)</span></div>
+    </div>
+    <p id="diyVerdict" style="margin-top:12px;font-weight:800"></p>
+    <p class="notice" style="margin-top:8px;font-size:13px">Planning estimate only. Get actual quotes before booking. Prices vary by location and season.</p>
+  </div>
+</section>
+
+<!-- Day-1 cash metric -->
+<section class="section card" aria-labelledby="day1-title">
+  <h2 id="day1-title">Day-1 cash requirement</h2>
+  <p>The cash you must have on or before move-in day, before any movers or supplies are paid.</p>
+  <div class="summary" style="margin-top:12px">
+    <div class="metric"><strong id="day1Cash">$0</strong><span>Deposit + first rent + fees</span></div>
+    <div class="metric"><strong id="logisticsCash">$0</strong><span>Movers + packing + utilities</span></div>
+    <div class="metric"><strong id="safetyNet">$0</strong><span>Buffer (recommended)</span></div>
+  </div>
+  <p style="margin-top:10px;color:var(--muted);font-size:14px">Run the calculator above to update these numbers. Educational estimate only.</p>
+</section>
+
 </main>
 <footer>MoveBudget. Free calculator. No address collection, no private data, no live ads. © 2026</footer>
 <script>
@@ -115,6 +151,92 @@ function track(eventName,props={}){window.dataLayer=window.dataLayer||[];window.
 
 function downloadCsv(){const ids=['rent','deposit','fees','movers','packing','utilities','insurance','furniture','bufferPct'];const rows=[['MoveBudget item','Value']].concat(ids.map(id=>[id,document.getElementById(id).value||'0']));const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='movebudget-result.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);track('download_click',{type:'csv'});}
 document.getElementById('calcBtn').addEventListener('click',()=>calculate(true));document.getElementById('currencySelect').addEventListener('change',()=>{track('currency_change',{currency:currency()});calculate(false);});document.getElementById('langSelect').addEventListener('change',e=>{lang=e.target.value;applyLang();});document.getElementById('starterPreset').addEventListener('click',()=>{[['rent',1200],['deposit',1200],['fees',100],['movers',350],['packing',80],['utilities',180],['insurance',18],['furniture',250],['bufferPct',10]].forEach(([id,v])=>document.getElementById(id).value=v);calculate();});document.getElementById('familyPreset').addEventListener('click',()=>{[['rent',2600],['deposit',2600],['fees',250],['movers',1400],['packing',250],['utilities',350],['insurance',30],['furniture',1200],['bufferPct',12]].forEach(([id,v])=>document.getElementById(id).value=v);calculate();});document.getElementById('downloadCsv').addEventListener('click',downloadCsv);document.getElementById('printResult').addEventListener('click',()=>{track('print_click');window.print();});document.getElementById('copyResult').addEventListener('click',async()=>{const text=document.getElementById('resultText').textContent;try{await navigator.clipboard.writeText(text);document.getElementById('copyResult').textContent=lang==='es'?'Copiado':'Copied';track('copy_click');}catch(e){track('copy_click_fallback');}});document.addEventListener('click',e=>{const el=e.target.closest('[data-event]');if(el)track(el.getAttribute('data-event'));});applyLang();track('asset_view');
+</script>
+<script>
+/* MoveBudget modern improvements — DIY vs movers, day-1 cash, mb_ localStorage */
+(function(){
+  var LS_KEY = 'mb_budget_v1';
+  var inputs = ['rent','deposit','fees','movers','packing','utilities','insurance','furniture','bufferPct'];
+
+  function gv(id){ return Number(document.getElementById(id).value) || 0; }
+
+  function updateDay1(){
+    var day1 = gv('rent') + gv('deposit') + gv('fees');
+    var logistics = gv('movers') + gv('packing') + gv('utilities') + gv('insurance');
+    var sub = day1 + logistics + gv('furniture');
+    var buf = sub * (gv('bufferPct') / 100);
+    var d1el = document.getElementById('day1Cash');
+    var locel = document.getElementById('logisticsCash');
+    var bufel = document.getElementById('safetyNet');
+    if(d1el) d1el.textContent = '$' + Math.round(day1).toLocaleString('en-US');
+    if(locel) locel.textContent = '$' + Math.round(logistics + gv('furniture')).toLocaleString('en-US');
+    if(bufel) bufel.textContent = '$' + Math.round(buf).toLocaleString('en-US');
+  }
+
+  function lsSave(){
+    try{
+      var obj = {};
+      inputs.forEach(function(id){ obj[id] = document.getElementById(id).value; });
+      localStorage.setItem(LS_KEY, JSON.stringify(obj));
+    }catch(e){}
+  }
+  function lsRestore(){
+    try{
+      var raw = localStorage.getItem(LS_KEY); if(!raw) return;
+      var obj = JSON.parse(raw);
+      inputs.forEach(function(id){ if(obj[id] !== undefined){ document.getElementById(id).value = obj[id]; } });
+    }catch(e){}
+  }
+
+  /* DIY vs movers comparator */
+  document.addEventListener('DOMContentLoaded', function(){
+    lsRestore();
+    updateDay1();
+
+    /* Patch calculate to also update day-1 and save */
+    var origCalcBtn = document.getElementById('calcBtn');
+    if(origCalcBtn){
+      origCalcBtn.addEventListener('click', function(){ updateDay1(); lsSave(); });
+    }
+    inputs.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.addEventListener('input', function(){ updateDay1(); lsSave(); });
+    });
+
+    var diyBtn = document.getElementById('diyCalcBtn');
+    if(diyBtn){
+      diyBtn.addEventListener('click', function(){
+        var diy = (Number(document.getElementById('diyTruck').value)||0) +
+                  (Number(document.getElementById('diyFuel').value)||0) +
+                  (Number(document.getElementById('diyHelpers').value)||0);
+        var pro = (Number(document.getElementById('proMovers').value)||0) +
+                  (Number(document.getElementById('proTips').value)||0);
+        var rate = Number(document.getElementById('yourTime').value) || 0;
+        var timeCost = rate * 8;
+        var diyTotal = diy + timeCost;
+
+        var dc = document.getElementById('diyCost');
+        var pc = document.getElementById('proCost');
+        var tc = document.getElementById('diyTimeCost');
+        var vd = document.getElementById('diyVerdict');
+        var res = document.getElementById('diyResult');
+
+        if(dc) dc.textContent = '$' + Math.round(diy).toLocaleString('en-US');
+        if(pc) pc.textContent = '$' + Math.round(pro).toLocaleString('en-US');
+        if(tc) tc.textContent = '$' + Math.round(timeCost).toLocaleString('en-US') + ' (8 hrs × $' + rate + ')';
+        if(vd){
+          if(diyTotal < pro){
+            vd.textContent = 'DIY is cheaper by $' + Math.round(pro - diyTotal).toLocaleString('en-US') + ' — but factor in your time, stress and physical effort.';
+          } else {
+            vd.textContent = 'Professional movers are cheaper by $' + Math.round(diyTotal - pro).toLocaleString('en-US') + ' once your time is included.';
+          }
+        }
+        if(res) res.style.display = '';
+        if(window.dataLayer) window.dataLayer.push({event:'tool_complete', asset_id:'movebudget', type:'diy_comparison'});
+      });
+    }
+  });
+})();
 </script>
   <script src="/free-utility-lab/accessibility-widget.js?v=8ec7e2e" defer></script>
 <script src="/free-utility-lab/free-utility-lab-tracking.js" defer></script>

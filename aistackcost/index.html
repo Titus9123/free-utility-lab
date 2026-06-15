@@ -83,6 +83,35 @@
   ]
 }
   </script>
+<link rel="stylesheet" href="/free-utility-lab/asset-lab-modern.css">
+<style>:root{--asset-accent:#6C63FF;--asset-accent2:#00BCD4;--asset-glow:color-mix(in srgb,#6C63FF 32%,transparent);}</style>
+<style>
+/* AIStackCost modern improvements */
+.ai-builder{background:#fff;border:1px solid #ddd;border-radius:20px;padding:20px;margin:16px 0}
+.ai-builder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
+.ai-tool-check{border:1px solid #e0e0e0;border-radius:14px;padding:14px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:border-color .2s,background .2s}
+.ai-tool-check:hover{border-color:#6C63FF;background:#f8f7ff}
+.ai-tool-check.selected{border-color:#6C63FF;background:#f3f1ff}
+.ai-tool-check input[type=checkbox]{margin-top:3px;accent-color:#6C63FF;width:16px;height:16px;flex-shrink:0}
+.ai-tool-check .tc-name{font-weight:800;font-size:15px}
+.ai-tool-check .tc-role{font-size:12px;color:#777;margin-top:2px}
+.ai-tool-check .tc-price{font-size:12px;color:#6C63FF;font-weight:800;margin-top:4px}
+.ai-live-total{background:linear-gradient(135deg,#6C63FF,#00BCD4);color:#fff;border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0}
+.ai-live-total strong{font-size:28px;font-weight:900}
+.ai-live-total span{font-size:14px;opacity:.85}
+.ai-overlap-alert{display:none;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14px}
+.ai-overlap-alert.visible{display:block}
+/* ROI calculator */
+.ai-roi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
+.ai-roi-grid label{font-size:13px;font-weight:800;display:block;margin-bottom:6px;color:#444}
+.ai-roi-grid input{width:100%;border:1px solid #ddd;border-radius:10px;padding:10px 12px;font:inherit}
+.ai-roi-result{background:#f0fdf4;border:1px solid #86efac;border-radius:14px;padding:14px;margin-top:12px}
+.ai-roi-result strong{font-size:22px;color:#15803d}
+/* Budget planner */
+.ai-budget-bar{background:#f3f4f6;border-radius:999px;height:12px;overflow:hidden;margin:8px 0}
+.ai-budget-fill{height:100%;background:linear-gradient(90deg,#6C63FF,#00BCD4);border-radius:999px;transition:width .3s}
+.ai-budget-fill.over{background:linear-gradient(90deg,#ef4444,#f59e0b)}
+</style>
 </head>
 <body data-asset-id="aistackcost" data-goal="aistackcost-upgrade">
 <header class="ful-marketplace-hero"><nav class="ful-breadcrumb" aria-label="Breadcrumb"><a href="/free-utility-lab/">Free Utility Lab</a><span class="ful-breadcrumb-separator">/</span><a href="/free-utility-lab/ai-tools/">AI tools</a><span class="ful-breadcrumb-separator">/</span><span aria-current="page">AIStackCost</span></nav><p class="ful-eyebrow">AIStackCost modular planner</p><h1>Build an AI stack without wasting subscription budget</h1><p class="ful-hero-copy">Compare assistants, presets, and recurring subscription risk before paying for another AI tool.</p><div class="ful-badges"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span></div></header>
@@ -92,13 +121,60 @@
   <p>Enter current planning estimates, then remove duplicates. The result is approximate because prices and features change.</p>
   <div class="ful-tool-grid"><label>General AI assistant <input data-price-input type="number" min="0" value="0"></label><label>Design/content tool <input data-price-input type="number" min="0" value="0"></label><label>Automation/workflow tool <input data-price-input type="number" min="0" value="0"></label></div>
   <p data-cost-output>Approximate monthly total: $0.00</p>
-  <h3>Freelancer stack preset</h3><p>One general assistant + one design/content tool + one project workspace.</p>
-  <h3>Small business stack preset</h3><p>One general assistant + one marketing/design tool + one automation or CRM helper.</p>
   <div class="ful-action-row">
   <button type="button" data-copy-target="#aistackcost-result">Copy AI stack summary</button>
   <button type="button" data-csv-target="#aistackcost-result table">Download AI stack CSV</button>
   <button type="button" data-print-section="aistackcost-result">Print AI stack plan</button>
 </div>
+</section>
+
+<!-- Interactive stack builder -->
+<section class="ful-panel" aria-labelledby="builder-title">
+  <h2 id="builder-title">AI stack builder — select tools and see your live total</h2>
+  <p>Check the AI tools you are considering. The running total updates instantly. Remove overlaps before buying.</p>
+  <p><strong>Prices and features change.</strong> These are approximate planning ranges only. Verify at official pricing pages before buying. <strong>Last updated: 2026-06-14.</strong></p>
+  <div class="ai-live-total" aria-live="polite">
+    <span>Estimated monthly total</span>
+    <strong id="aiStackTotal">$0 / mo</strong>
+    <span id="aiStackCount">0 tools selected</span>
+  </div>
+  <div id="aiOverlapAlert" class="ai-overlap-alert" role="alert">
+    ⚠️ <strong>Overlap detected:</strong> <span id="aiOverlapMsg"></span> Consider removing one before buying.
+  </div>
+  <div class="ai-builder-grid" id="aiToolGrid"><!-- rendered by JS --></div>
+  <div class="ful-action-row" style="margin-top:12px">
+    <button type="button" id="aiBuildCopy">Copy AI stack summary</button>
+    <button type="button" id="aiBuildCsv">Download AI stack CSV</button>
+    <button type="button" id="aiBuildPrint">Print AI stack plan</button>
+  </div>
+</section>
+
+<!-- ROI Calculator -->
+<section class="ful-panel" aria-labelledby="roi-title">
+  <h2 id="roi-title">AI tools ROI calculator</h2>
+  <p>Estimate whether your AI subscriptions pay for themselves in saved time. Educational planning tool only.</p>
+  <div class="ai-roi-grid">
+    <div><label for="roiHours">Hours saved per week</label><input id="roiHours" type="number" min="0" value="3" step="0.5"></div>
+    <div><label for="roiRate">Your hourly rate ($)</label><input id="roiRate" type="number" min="0" value="50"></div>
+    <div><label for="roiCost">Monthly AI subscription cost ($)</label><input id="roiCost" type="number" min="0" value="30"></div>
+  </div>
+  <p><button type="button" id="roiCalcBtn" class="ful-primary-cta">Calculate ROI</button></p>
+  <div id="roiResult" style="display:none" class="ai-roi-result">
+    <div><span>Monthly time value saved: </span><strong id="roiValue">$0</strong></div>
+    <div style="margin-top:6px"><span>Net monthly benefit: </span><strong id="roiNet">$0</strong></div>
+    <div style="margin-top:6px"><span id="roiVerdict"></span></div>
+  </div>
+</section>
+
+<!-- Budget max planner -->
+<section class="ful-panel" aria-labelledby="budget-planner-title">
+  <h2 id="budget-planner-title">AI tools budget planner</h2>
+  <p>Set a maximum monthly budget for AI tools and see how much of your stack fits.</p>
+  <div class="ai-roi-grid">
+    <div><label for="aiMaxBudget">Max monthly AI budget ($)</label><input id="aiMaxBudget" type="number" min="0" value="50"></div>
+  </div>
+  <div class="ai-budget-bar"><div class="ai-budget-fill" id="aiBudgetBar" style="width:0%"></div></div>
+  <p id="aiBudgetStatus" style="font-size:14px;color:#555">Select tools above to see budget fit.</p>
 </section>
 
 <section class="ful-panel" aria-labelledby="comparison-title">
@@ -127,6 +203,7 @@
 <script src="/free-utility-lab/shared/scripts/utility-actions.js"></script>
 <script>
 window.FreeUtilityLabActions = window.FreeUtilityLabActions || {};
+/* Legacy simple price inputs */
 document.querySelectorAll('[data-price-input]').forEach(function (input) {
   input.addEventListener('input', function () {
     var total = 0;
@@ -135,6 +212,176 @@ document.querySelectorAll('[data-price-input]').forEach(function (input) {
     if (output) output.textContent = 'Approximate monthly total: ' + total.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
   });
 });
+
+/* AI Stack Builder — interactive checkbox builder with live total, overlap alert, ROI, budget planner */
+(function(){
+  /* ai_ localStorage namespace */
+  var LS_KEY = 'ai_stack_v1';
+
+  /* Tool data — planning ranges only, no guaranteed prices */
+  var AI_TOOLS = [
+    {id:'chatgpt',    name:'ChatGPT',     category:'assistant', role:'General assistant, writing, coding support', range:'$0–$25+', low:0,  high:25,  url:'https://openai.com/pricing'},
+    {id:'claude',     name:'Claude',      category:'assistant', role:'Long-form writing, document reasoning, code review', range:'$0–$20+', low:0, high:20, url:'https://www.anthropic.com/pricing'},
+    {id:'gemini',     name:'Gemini',      category:'assistant', role:'Google-workspace research, multimodal, general', range:'$0–$20+', low:0, high:20, url:'https://ai.google.dev/pricing'},
+    {id:'canva',      name:'Canva',       category:'design',    role:'Design, social graphics, proposals, visuals', range:'$0–$17+', low:0, high:17, url:'https://www.canva.com/pricing/'},
+    {id:'notion',     name:'Notion AI',   category:'notes',     role:'Notes, knowledge base, project writing', range:'$0–$16+', low:0, high:16, url:'https://www.notion.com/pricing'},
+    {id:'zapier',     name:'Zapier AI',   category:'automation',role:'Automation, lead routing, repetitive workflows', range:'$0–$30+', low:0, high:30, url:'https://zapier.com/pricing'},
+    {id:'midjourney', name:'Midjourney',  category:'design',    role:'AI image generation for creative work', range:'$0–$30+', low:0, high:30, url:'https://www.midjourney.com/account/'},
+    {id:'grammarly',  name:'Grammarly',   category:'writing',   role:'Grammar, style, clarity for writing', range:'$0–$15+', low:0, high:15, url:'https://www.grammarly.com/plans'},
+    {id:'perplexity', name:'Perplexity',  category:'research',  role:'AI-powered search and research', range:'$0–$20+', low:0, high:20, url:'https://www.perplexity.ai/settings/api'},
+    {id:'otter',      name:'Otter.ai',    category:'meetings',  role:'Meeting transcription and notes', range:'$0–$17+', low:0, high:17, url:'https://otter.ai/pricing'},
+  ];
+
+  var selected = {};
+
+  function loadState(){
+    try{ var s = JSON.parse(localStorage.getItem(LS_KEY)||'{}'); selected = s.selected || {}; }catch(e){ selected = {}; }
+  }
+  function saveState(){
+    try{ localStorage.setItem(LS_KEY, JSON.stringify({selected:selected})); }catch(e){}
+  }
+
+  function renderTools(){
+    var grid = document.getElementById('aiToolGrid');
+    if(!grid) return;
+    grid.innerHTML = AI_TOOLS.map(function(t){
+      var chk = selected[t.id] ? 'checked' : '';
+      var sel = selected[t.id] ? 'selected' : '';
+      return '<label class="ai-tool-check ' + sel + '" for="aitool-' + t.id + '">' +
+        '<input type="checkbox" id="aitool-' + t.id + '" data-tool-id="' + t.id + '" ' + chk + '>' +
+        '<div><div class="tc-name">' + t.name + '</div>' +
+        '<div class="tc-role">' + t.role + '</div>' +
+        '<div class="tc-price">~' + t.range + '/mo · <a href="' + t.url + '" target="_blank" rel="noopener">Official pricing ↗</a></div></div>' +
+        '</label>';
+    }).join('');
+    grid.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+      cb.addEventListener('change', function(){
+        var id = cb.getAttribute('data-tool-id');
+        selected[id] = cb.checked;
+        cb.closest('label').classList.toggle('selected', cb.checked);
+        saveState();
+        update();
+      });
+    });
+  }
+
+  function update(){
+    var active = AI_TOOLS.filter(function(t){ return selected[t.id]; });
+    var totalLow = active.reduce(function(s,t){ return s + t.low; }, 0);
+    var totalHigh = active.reduce(function(s,t){ return s + t.high; }, 0);
+
+    var el = document.getElementById('aiStackTotal');
+    if(el) el.textContent = '$' + totalLow + '–$' + totalHigh + ' / mo';
+    var countEl = document.getElementById('aiStackCount');
+    if(countEl) countEl.textContent = active.length + ' tool' + (active.length === 1 ? '' : 's') + ' selected';
+
+    /* Overlap alert */
+    var catCounts = {};
+    active.forEach(function(t){ catCounts[t.category] = (catCounts[t.category]||0) + 1; });
+    var overlaps = Object.keys(catCounts).filter(function(c){ return catCounts[c] > 1; });
+    var alertEl = document.getElementById('aiOverlapAlert');
+    var msgEl = document.getElementById('aiOverlapMsg');
+    if(alertEl && msgEl){
+      if(overlaps.length){
+        msgEl.textContent = 'Multiple tools in category: ' + overlaps.join(', ') + '.';
+        alertEl.classList.add('visible');
+      } else {
+        alertEl.classList.remove('visible');
+      }
+    }
+
+    /* Budget bar */
+    var maxBudget = Number(document.getElementById('aiMaxBudget')&&document.getElementById('aiMaxBudget').value) || 50;
+    var fillPct = Math.min(100, totalHigh / Math.max(1, maxBudget) * 100);
+    var bar = document.getElementById('aiBudgetBar');
+    var stat = document.getElementById('aiBudgetStatus');
+    if(bar){ bar.style.width = fillPct + '%'; bar.classList.toggle('over', totalHigh > maxBudget); }
+    if(stat){
+      if(!active.length) stat.textContent = 'Select tools above to see budget fit.';
+      else if(totalHigh <= maxBudget) stat.textContent = 'Stack fits within $' + maxBudget + ' budget (high-end ~$' + totalHigh + ').';
+      else stat.textContent = 'Stack high-end (~$' + totalHigh + ') exceeds $' + maxBudget + ' budget. Remove a tool or raise your limit.';
+    }
+
+    /* Update ROI cost field if empty */
+    var roiCostEl = document.getElementById('roiCost');
+    if(roiCostEl && !roiCostEl._manuallySet) roiCostEl.value = Math.round((totalLow + totalHigh) / 2) || 0;
+  }
+
+  /* Export helpers */
+  function buildSummary(){
+    var active = AI_TOOLS.filter(function(t){ return selected[t.id]; });
+    if(!active.length) return 'No tools selected yet. Open the AI stack builder to choose tools.';
+    return 'AIStackCost plan summary\n' +
+      active.map(function(t){ return '• ' + t.name + ' (' + t.category + '): ~' + t.range + '/mo — ' + t.url; }).join('\n') +
+      '\n\nPrices are approximate planning ranges. Check official pricing before buying.\nLast updated: 2026-06-14.';
+  }
+  function buildCsvRows(){
+    var rows = [['Tool','Category','Role','Price range','Official pricing URL']];
+    AI_TOOLS.filter(function(t){ return selected[t.id]; }).forEach(function(t){
+      rows.push([t.name, t.category, t.role, t.range, t.url]);
+    });
+    return rows;
+  }
+
+  /* ROI calculator */
+  function calcROI(){
+    var hours = Number(document.getElementById('roiHours').value) || 0;
+    var rate  = Number(document.getElementById('roiRate').value)  || 0;
+    var cost  = Number(document.getElementById('roiCost').value)  || 0;
+    var weeklyValue = hours * rate;
+    var monthlyValue = weeklyValue * 4.33;
+    var net = monthlyValue - cost;
+    var valEl = document.getElementById('roiValue');
+    var netEl = document.getElementById('roiNet');
+    var vdEl  = document.getElementById('roiVerdict');
+    var resEl = document.getElementById('roiResult');
+    if(valEl) valEl.textContent = '$' + Math.round(monthlyValue).toLocaleString('en-US');
+    if(netEl) netEl.textContent = '$' + Math.round(net).toLocaleString('en-US');
+    if(vdEl){
+      if(net > 0) vdEl.textContent = 'Positive ROI: the time saved is worth ~$' + Math.round(net) + ' more than the subscription cost. Educational estimate only.';
+      else vdEl.textContent = 'Negative ROI: the subscription costs more than the estimated time value saved. Consider free tiers first.';
+    }
+    if(resEl) resEl.style.display = '';
+    if(window.dataLayer) window.dataLayer.push({event:'tool_complete', asset_id:'aistackcost', type:'roi_calculator'});
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    loadState();
+    renderTools();
+    update();
+
+    var maxBudgetEl = document.getElementById('aiMaxBudget');
+    if(maxBudgetEl) maxBudgetEl.addEventListener('input', update);
+
+    var roiBtn = document.getElementById('roiCalcBtn');
+    if(roiBtn) roiBtn.addEventListener('click', calcROI);
+
+    var roiCostEl = document.getElementById('roiCost');
+    if(roiCostEl) roiCostEl.addEventListener('input', function(){ roiCostEl._manuallySet = true; });
+
+    /* Copy/CSV/Print for builder */
+    var copyBtn = document.getElementById('aiBuildCopy');
+    var csvBtn  = document.getElementById('aiBuildCsv');
+    var printBtn = document.getElementById('aiBuildPrint');
+    if(copyBtn) copyBtn.addEventListener('click', function(){
+      var a = window.FreeUtilityLabActions;
+      if(a&&a.copyText) a.copyText(buildSummary());
+      if(window.dataLayer) window.dataLayer.push({event:'copy_click', asset_id:'aistackcost'});
+    });
+    if(csvBtn) csvBtn.addEventListener('click', function(){
+      var a = window.FreeUtilityLabActions;
+      var rows = buildCsvRows();
+      var csv = rows.map(function(r){ return r.map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+      if(a&&a.downloadText) a.downloadText('aistackcost-stack.csv', csv, 'text/csv;charset=utf-8');
+      if(window.dataLayer) window.dataLayer.push({event:'download_click', asset_id:'aistackcost', type:'csv'});
+    });
+    if(printBtn) printBtn.addEventListener('click', function(){
+      var a = window.FreeUtilityLabActions;
+      if(a&&a.printSection) a.printSection('aistackcost-result');
+      if(window.dataLayer) window.dataLayer.push({event:'print_click', asset_id:'aistackcost'});
+    });
+  });
+})();
 </script>
 </body>
 </html>

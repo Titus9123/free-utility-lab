@@ -40,6 +40,33 @@
   <link rel="stylesheet" href="/free-utility-lab/shared/styles/marketplace.css">
   <link rel="stylesheet" href="/free-utility-lab/shared/styles/print.css">
   <style>:root{--asset-accent:#9FE870;--asset-accent2:#4CC9A6;--asset-glow:color-mix(in srgb,#9FE870 32%,transparent);}</style>
+  <style>
+  /* Budget semaphore */
+  .br-semaphore{display:flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;border-radius:16px;font-size:14px;font-weight:800;transition:background .25s,color .25s}
+  .br-semaphore.healthy{background:rgba(159,232,112,.22);color:#1a4d14}
+  .br-semaphore.tight{background:rgba(244,185,66,.22);color:#6b4300}
+  .br-semaphore.over{background:rgba(196,69,54,.18);color:#7a1f16}
+  .br-semaphore .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .br-semaphore.healthy .dot{background:#52b788}
+  .br-semaphore.tight .dot{background:#f4b942}
+  .br-semaphore.over .dot{background:#c44536}
+  /* 50/30/20 analysis bar */
+  .br-5030{margin-top:12px;padding:12px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:18px}
+  .br-5030 h4{margin:0 0 8px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:900}
+  .br-5030-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;gap:2px;margin:6px 0}
+  .br-5030-bar span{transition:flex .4s}
+  .br-5030-bar .s-needs{background:#c44536}
+  .br-5030-bar .s-wants{background:#f4b942}
+  .br-5030-bar .s-savings{background:#52b788}
+  .br-5030-labels{display:flex;gap:12px;font-size:12px;color:var(--muted)}
+  .br-5030-labels span::before{content:"■ ";font-size:9px}
+  .br-5030-labels .l-needs::before{color:#c44536}
+  .br-5030-labels .l-wants::before{color:#f4b942}
+  .br-5030-labels .l-savings::before{color:#52b788}
+  /* progress badge */
+  .br-saved-badge{display:none;border:1px solid rgba(82,183,136,.4);background:rgba(82,183,136,.1);border-radius:999px;padding:4px 10px;font-size:11px;color:#1a4d14;font-weight:800}
+  .br-saved-badge.visible{display:inline-flex}
+  </style>
   <style>.goal4-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:18px 0}.goal4-step{background:rgba(255,255,255,.76);border:1px solid var(--line);border-radius:18px;padding:12px 14px;font-weight:800}.goal4-step small{display:block;color:var(--muted);font-weight:650;margin-top:4px}.summary-text{background:#f7fbf1;border:1px dashed rgba(13,22,15,.2);border-radius:18px;color:var(--muted);font-family:var(--mono);font-size:.9rem;margin:14px 0 0;padding:12px;white-space:pre-line}.goal4-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}.goal4-links ul{margin:10px 0 0;padding-left:18px}.goal4-links li{margin:8px 0}.ful-breadcrumb{margin-top:0}</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Free Utility Lab","item":"https://titus9123.github.io/free-utility-lab/"},{"@type":"ListItem","position":2,"name":"Finance tools","item":"https://titus9123.github.io/free-utility-lab/finance-tools/"},{"@type":"ListItem","position":3,"name":"BudgetReset","item":"https://titus9123.github.io/free-utility-lab/budgetreset/"}]}
@@ -142,6 +169,12 @@
             <div class="metric"><small>Payoff estimate</small><strong id="payoffOut">—</strong></div>
             <div class="metric"><small>Budget rhythm</small><strong id="periodOut">Monthly</strong></div>
           </div>
+          <div id="budgetSemaphore" class="br-semaphore tight" aria-live="polite"><span class="dot"></span><span id="semaphoreText">Add income and bills to see budget health.</span></div>
+          <div class="br-5030" id="analysis5030" aria-label="50/30/20 budget breakdown">
+            <h4>50 / 30 / 20 guide</h4>
+            <div class="br-5030-bar" id="bar5030"><span class="s-needs" style="flex:50"></span><span class="s-wants" style="flex:30"></span><span class="s-savings" style="flex:20"></span></div>
+            <div class="br-5030-labels"><span class="l-needs" id="lbl-needs">50% needs</span><span class="l-wants" id="lbl-wants">30% wants</span><span class="l-savings" id="lbl-savings">20% savings</span></div>
+          </div>
           <div class="insight" id="insight">Tip: keep essential bills, minimum debt payments and savings goals visible together before deciding what to cut.</div>
           <div class="actions">
             <button class="btn secondary" type="button" id="copySummary">Copy plan summary</button>
@@ -232,7 +265,59 @@
     const result={income,savings,expenses,debts,extra,exTotal,debtPay,net,rate,months,period:$('period').value,method:$('method').value,currency:currency()};
     if($('summaryText')){$('summaryText').textContent=buildSummary(result);}
     push('tool_complete',{budget_positive:net>=0, expense_count:expenses.length, debt_count:debts.length});
+    updateSemaphore(net, income);
+    update5030(income, exTotal, savings);
+    lsSave();
     return result;
+  }
+  /* Budget semaphore */
+  function updateSemaphore(net, income){
+    const el=$('budgetSemaphore'), txt=$('semaphoreText'); if(!el||!txt)return;
+    el.classList.remove('healthy','tight','over');
+    if(!income){txt.textContent='Add income to see budget health.';el.classList.add('tight');return;}
+    if(net>=income*0.1){el.classList.add('healthy');txt.textContent='Budget is healthy — '+money(net)+' unassigned after all goals.';}
+    else if(net>=0){el.classList.add('tight');txt.textContent='Budget is tight — '+money(net)+' remaining. Review flexible spending.';}
+    else{el.classList.add('over');txt.textContent='Over budget by '+money(Math.abs(net))+'. Cut flexible categories or revisit goals.';}
+  }
+  /* 50/30/20 analysis */
+  function update5030(income, spending, savings){
+    if(!income)return;
+    const needsPct=Math.min(100,Math.round(spending/income*100));
+    const savPct=Math.min(100,Math.round(savings/income*100));
+    const wantsPct=Math.max(0,100-needsPct-savPct);
+    const bar=$('bar5030');
+    if(bar){bar.innerHTML='<span class="s-needs" style="flex:'+needsPct+'"></span><span class="s-wants" style="flex:'+wantsPct+'"></span><span class="s-savings" style="flex:'+savPct+'"></span>';}
+    const ln=$('lbl-needs'),lw=$('lbl-wants'),ls=$('lbl-savings');
+    if(ln)ln.textContent=needsPct+'% needs';
+    if(lw)lw.textContent=wantsPct+'% wants';
+    if(ls)ls.textContent=savPct+'% savings';
+  }
+  /* localStorage persistence — namespace br_ */
+  const LS_KEY='br_budget_v1';
+  function lsSave(){
+    try{
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        income:$('income').value, savings:$('savingsGoal').value,
+        currency:$('currency').value, period:$('period').value,
+        method:$('method').value, extraDebt:$('extraDebt').value,
+        expenses:getExpenses(), debts:getDebts()
+      }));
+    }catch(e){}
+  }
+  function lsRestore(){
+    try{
+      const raw=localStorage.getItem(LS_KEY); if(!raw)return false;
+      const s=JSON.parse(raw);
+      if(s.income)$('income').value=s.income;
+      if(s.savings)$('savingsGoal').value=s.savings;
+      if(s.currency)$('currency').value=s.currency;
+      if(s.period)$('period').value=s.period;
+      if(s.method)$('method').value=s.method;
+      if(s.extraDebt)$('extraDebt').value=s.extraDebt;
+      if(s.expenses&&s.expenses.length){expenseRows.innerHTML='';s.expenses.forEach(e=>makeExpense(e.name,e.amount));}
+      if(s.debts&&s.debts.length){debtRows.innerHTML='';s.debts.forEach(d=>makeDebt(d.name,d.balance,d.apr,d.payment));}
+      return true;
+    }catch(e){return false;}
   }
   function buildSummary(r){
     const topExpenses=r.expenses.filter(e=>e.amount>0).slice(0,5).map(e=>'• '+e.name+': '+money(e.amount)).join('\n') || '• Add bills or spending categories';
@@ -262,9 +347,10 @@
   $('downloadCsv').onclick=downloadCsv; $('downloadPdf').onclick=printPdf; $('copySummary').onclick=copySummary; $('printWorksheet').onclick=printWorksheet;
   $('demoBtn').onclick=()=>{expenseRows.innerHTML=''; debtRows.innerHTML=''; defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); $('income').value=5200; $('savingsGoal').value=700; $('extraDebt').value=225; calc(); push('demo_fill')};
   ['income','savingsGoal','currency','period','method','extraDebt'].forEach(id=>$(id).addEventListener('input',()=>{push('tool_start',{step:'input_change'});calc()}));
-  defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x)); calc();
+  if(!lsRestore()){defaultExpenses.forEach(x=>makeExpense(...x)); defaultDebts.forEach(x=>makeDebt(...x));} calc();
 })();
 </script>
+<script src="/free-utility-lab/shared/scripts/budget-calc.js" defer></script>
 <script src="/free-utility-lab/shared/scripts/utility-actions.js" defer></script>
 <script src="/free-utility-lab/accessibility-widget.js?v=8ec7e2e" defer></script>
 <script src="/free-utility-lab/free-utility-lab-tracking.js" defer></script>
