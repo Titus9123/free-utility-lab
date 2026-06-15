@@ -19,6 +19,8 @@ Do not describe this as a fully proven organic launch until GSC/GA4 evidence exi
 - Public site remains on GitHub Pages: `https://titus9123.github.io/free-utility-lab/`.
 - Custom-domain cutover has not been performed.
 - Live ads are not activated.
+- `/goal 16` — operator handoff updated.
+- `/goal 17` — GSC/GA4 learning loop checklist and non-sensitive evidence template prepared. External account confirmation remains operator-owned.
 - Current inventory validated by the full project runner:
   - HTML files: 91
   - Sitemap URLs: 91
