@@ -29,6 +29,9 @@ jobs:
           echo "HTML page count: ${html_count}"
           test "${html_count}" -gt 0
 
+      - name: Install Python test dependencies
+        run: python3 -m pip install --upgrade pytest
+
       - name: Run Python tests
         run: python3 -m pytest -q
 
