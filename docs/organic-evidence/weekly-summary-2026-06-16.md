@@ -37,6 +37,7 @@ Do not expand yet. The correct next operating mode is: publish, index, measure, 
 - Not indexed priority URLs: not available from API in this run.
 - Manual actions/security issues: not available from API in this run.
 - Blocker: Google OAuth token for `free-utility-lab-google-stack` is present in the vault but unusable: `invalid_grant: Token has been expired or revoked.`
+- Remediation attempted: the Clarvix Connect state for `free-utility-lab-google-stack` was moved to `needs_reauth` and a fresh private reauthorization link was generated locally at `/root/clarvix-connect-links/free-utility-lab-google-stack.url` with token redacted from logs. Metrics remain unavailable until the operator completes Google consent again.
 
 ## GA4 property
 
@@ -58,6 +59,7 @@ Do not expand yet. The correct next operating mode is: publish, index, measure, 
   - `directory_filter_use`: not available.
 - Private payload check: no private payloads were added to this evidence log.
 - Blocker: same OAuth error prevents live GA4 Admin/Data API verification: `invalid_grant: Token has been expired or revoked.`
+- Remediation attempted: the private Google Stack reconnect flow is ready; API verification must be rerun after Google consent stores a new refresh token.
 
 ## Page evidence
 
@@ -124,7 +126,7 @@ No page-level organic decisions this week. API access is blocked, so this log in
 
 ## Next human/API step
 
-Reauthorize Google Stack OAuth for `free-utility-lab-google-stack`, then verify in this order:
+Reauthorize Google Stack OAuth for `free-utility-lab-google-stack` using the fresh private link stored at `/root/clarvix-connect-links/free-utility-lab-google-stack.url`, then verify in this order:
 
 1. GSC property visibility for `https://titus9123.github.io/free-utility-lab/`.
 2. Sitemap submitted/processed state for `https://titus9123.github.io/free-utility-lab/sitemap.xml`.
