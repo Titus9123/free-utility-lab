@@ -29,15 +29,18 @@ Do not expand yet. The correct next operating mode is: publish, index, measure, 
 
 - Property intended: `https://titus9123.github.io/free-utility-lab/`.
 - Sitemap intended: `https://titus9123.github.io/free-utility-lab/sitemap.xml`.
-- Sitemap submitted: not confirmed by API in this run.
-- Sitemap last read: not available from API in this run.
-- Submitted URL count seen in GSC: not available from API in this run.
-- Priority URLs checked in GSC UI/API: not available from API in this run.
-- Indexed priority URLs: not available from API in this run.
-- Not indexed priority URLs: not available from API in this run.
-- Manual actions/security issues: not available from API in this run.
-- Blocker: Google OAuth token for `free-utility-lab-google-stack` is present in the vault but unusable: `invalid_grant: Token has been expired or revoked.`
-- Remediation attempted: the Clarvix Connect state for `free-utility-lab-google-stack` was moved to `needs_reauth` and a fresh private reauthorization link was generated locally at `/root/clarvix-connect-links/free-utility-lab-google-stack.url` with token redacted from logs. Metrics remain unavailable until the operator completes Google consent again.
+- OAuth reauthorized on 2026-06-18: API credentials are usable again for `free-utility-lab-google-stack`; no tokens or secrets were written to this evidence log.
+- GSC property visibility confirmed by API on 2026-06-18: `https://titus9123.github.io/free-utility-lab/` is visible with `siteOwner` permission.
+- Sitemap submitted: already present in GSC before the latest API action.
+- Sitemap last submitted according to GSC API: `2026-06-09T14:13:07.603Z`.
+- Sitemap current GSC API state on 2026-06-18: `isPending=true`, `errors=0`, `warnings=0`.
+- New submit attempt on 2026-06-18: blocked by Google with HTTP 403 because the current OAuth scope is readonly; this does not remove the already-present sitemap entry.
+- Submitted URL count seen in GSC: not exposed by the sitemap list response in this run.
+- Search Analytics snapshot for `2026-05-21..2026-06-17`: API query succeeded; 0 rows, 0 clicks, 0 impressions for the property.
+- Priority URL index inspection: not performed in this run; current OAuth scope is readonly and suitable for measurement, not write/request-index actions.
+- Indexed priority URLs: not checked.
+- Not indexed priority URLs: not checked.
+- Manual actions/security issues: not checked in this run.
 
 ## GA4 property
 
@@ -46,24 +49,26 @@ Do not expand yet. The correct next operating mode is: publish, index, measure, 
 - Measurement bridge from prior technical scan: present on 83 pages.
 - GTM: not installed.
 - Ads/scripts: 0 pages.
-- Realtime tested: not confirmed by API in this run.
-- Events confirmed by API:
-  - `asset_view`: not available.
-  - `tool_start`: not available.
-  - `tool_complete`: not available.
-  - `copy_click`: not available.
-  - `print_click`: not available.
-  - `download_click`: not available.
-  - `support_page_click`: not available.
-  - `related_tool_click`: not available.
-  - `directory_filter_use`: not available.
+- Realtime tested: not tested in this run.
+- GA4 Admin API visibility on 2026-06-18: property `Free Utility Lab` is visible as `properties/540515052` with web stream `Free Utility Lab Web`, measurement ID `G-54GQ1ZT341`, default URI `https://titus9123.github.io/free-utility-lab/`.
+- GA4 Data API snapshot for `2026-05-21..2026-06-17`: query succeeded for the Free Utility Lab property; totals were 1 view, 1 session, 1 active user, and 5 events, all on `/free-utility-lab/`.
+- Events confirmed by API in aggregate: 5 total events for the period; event-name breakdown not pulled in this run.
+- Events confirmed by API by configured event name:
+  - `asset_view`: not checked by event-name dimension in this run.
+  - `tool_start`: not checked by event-name dimension in this run.
+  - `tool_complete`: not checked by event-name dimension in this run.
+  - `copy_click`: not checked by event-name dimension in this run.
+  - `print_click`: not checked by event-name dimension in this run.
+  - `download_click`: not checked by event-name dimension in this run.
+  - `support_page_click`: not checked by event-name dimension in this run.
+  - `related_tool_click`: not checked by event-name dimension in this run.
+  - `directory_filter_use`: not checked by event-name dimension in this run.
 - Private payload check: no private payloads were added to this evidence log.
-- Blocker: same OAuth error prevents live GA4 Admin/Data API verification: `invalid_grant: Token has been expired or revoked.`
-- Remediation attempted: the private Google Stack reconnect flow is ready; API verification must be rerun after Google consent stores a new refresh token.
+- OAuth blocker status: resolved for readonly measurement on 2026-06-18.
 
 ## Page evidence
 
-No page-level organic decisions this week. API access is blocked, so this log intentionally does not infer clicks, impressions, CTR, average position, sessions, or event counts.
+Page-level organic search evidence is now API-readable but not yet actionable. Search Console query for `2026-05-21..2026-06-17` returned 0 rows / 0 clicks / 0 impressions. GA4 Data API returned a very small first signal: 1 view, 1 session, 1 active user, and 5 events on `/free-utility-lab/`. This is enough to confirm measurement plumbing, not enough to justify expansion.
 
 ## Cluster summary
 
@@ -126,11 +131,11 @@ No page-level organic decisions this week. API access is blocked, so this log in
 
 ## Next human/API step
 
-Reauthorize Google Stack OAuth for `free-utility-lab-google-stack` using the fresh private link stored at `/root/clarvix-connect-links/free-utility-lab-google-stack.url`, then verify in this order:
+Reauthorization and baseline API verification are now complete for readonly measurement. Next measurement steps:
 
-1. GSC property visibility for `https://titus9123.github.io/free-utility-lab/`.
-2. Sitemap submitted/processed state for `https://titus9123.github.io/free-utility-lab/sitemap.xml`.
-3. GA4 realtime/event reception for the public site.
-4. First real page/query/event evidence snapshot.
+1. Wait for GSC sitemap processing to leave pending state, then recheck sitemap errors/warnings and Search Analytics rows.
+2. Pull a GA4 event-name breakdown for the Free Utility Lab property to verify named engagement events, not only aggregate event count.
+3. Keep collecting Search Console and GA4 snapshots before deciding on any expansion.
+4. Treat Make My Drive Fun Israel as backlog-only unless explicitly approved as a Goal 18 exception.
 
-Until those are done, treat external metrics as unavailable, not as zero.
+Current decision: measurement plumbing is restored, but signal is still too small for expansion. Keep Goal 18 freeze active.
