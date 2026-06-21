@@ -139,3 +139,19 @@ Reauthorization and baseline API verification are now complete for readonly meas
 3. If GSC remains at 0 impressions after the next crawl window, prioritize non-expansion fixes only: existing-page title/meta review, internal links, sitemap/indexing diagnostics, and QA on current assets.
 
 Current decision: measurement plumbing is restored, but signal is still too small for expansion. Keep Goal 18 freeze active.
+
+## 3-day scheduled recheck
+
+Recheck date: 2026-06-22. Evidence range requested for GSC and GA4: `2026-05-21..2026-06-21` (through the day before execution).
+
+- GSC API: not revalidated in this cron run because no reusable Google OAuth token/credential file was present on the host. This is a credential availability issue, not a real zero-data result. Previous readonly API state from 2026-06-18 remains the last confirmed API baseline in this file.
+- GSC sitemap API state: not available for this run for the same missing-OAuth reason; therefore pending/errors/warnings were not refreshed by API.
+- GSC Search Analytics: not available for this run; do not interpret as 0 clicks or 0 impressions.
+- GA4 API: not revalidated in this cron run because no reusable Google OAuth token/credential file was present on the host. This is a metric-unavailable state, not a real zero.
+- GA4 property target: `Free Utility Lab`, measurement ID `G-54GQ1ZT341`; prior API-visible property remains `properties/540515052` from the 2026-06-18 baseline.
+- Public sitemap technical check: HTTP 200, XML parsed successfully, 91 URLs, 91 unique URLs, home URL present, and all URLs remain under `https://titus9123.github.io/free-utility-lab/`.
+- Public robots technical check: HTTP 200, allows crawl, does not disallow `/`, and points to `https://titus9123.github.io/free-utility-lab/sitemap.xml`.
+- Validation status: Goal 18 expansion-freeze validator and full validation bundle were run after this section update; results are recorded in the local cron output, not as private exports in this repo.
+- Secrets check: documentation update contains aggregate status only; no OAuth tokens, refresh tokens, bearer strings, client secrets, private URLs, raw exports, or user-level analytics were added.
+
+Conclusion: keep Goal 18 expansion freeze active. Public crawlability remains technically healthy, but API measurement could not be refreshed without a local reusable OAuth credential. No new assets, pages, clusters, variants, ads, or custom-domain cutover are approved by this recheck.
