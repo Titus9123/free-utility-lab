@@ -155,3 +155,20 @@ Recheck date: 2026-06-22. Evidence range requested for GSC and GA4: `2026-05-21.
 - Secrets check: documentation update contains aggregate status only; no OAuth tokens, refresh tokens, bearer strings, client secrets, private URLs, raw exports, or user-level analytics were added.
 
 Conclusion: keep Goal 18 expansion freeze active. Public crawlability remains technically healthy, but API measurement could not be refreshed without a local reusable OAuth credential. No new assets, pages, clusters, variants, ads, or custom-domain cutover are approved by this recheck.
+
+## 7-day scheduled recheck
+
+Recheck date: 2026-06-26. Evidence range requested for GSC and GA4: `2026-05-21..2026-06-25` (through the day before execution).
+
+- Google OAuth / connector state: a vault entry for `free-utility-lab-google-stack` is present, but API credential refresh failed with `invalid_grant: Token has been expired or revoked.` This means Google API metrics are unavailable for this run; it is not evidence of zero traffic or zero engagement.
+- GSC property target: `https://titus9123.github.io/free-utility-lab/`.
+- GSC sitemap API state: not refreshed because the Google credential could not be refreshed; pending/errors/warnings are unavailable for this run.
+- GSC Search Analytics: not refreshed because the Google credential could not be refreshed; do not infer clicks, impressions, CTR, or position from this run.
+- GA4 property target: `Free Utility Lab`, measurement ID `G-54GQ1ZT341`, API property `properties/540515052` from the prior baseline.
+- GA4 totals and event breakdown: not refreshed because the Google credential could not be refreshed. The requested events (`tool_start`, `tool_complete`, `copy_click`, `print_click`, `download_click`, `support_page_click`, `related_tool_click`, `directory_filter_use`) remain unavailable by API for this recheck; do not infer zero counts.
+- Public sitemap technical check: HTTP 200, XML parsed successfully, 91 URLs, 91 unique URLs, home URL present, and all URLs remain under `https://titus9123.github.io/free-utility-lab/`.
+- Public robots technical check: HTTP 200, `text/plain`, allows crawl, does not disallow `/`, and points to `https://titus9123.github.io/free-utility-lab/sitemap.xml`.
+- 3-day recheck review: the previous scheduled recheck also recorded API metrics as unavailable due to local OAuth usability; the 7-day recheck confirms this is now a real reauthorization blocker rather than a public crawlability problem.
+- Secrets check: this section records aggregate status only. No OAuth tokens, refresh tokens, bearer strings, client secrets, private URLs, raw exports, or user-level analytics were added.
+
+Conclusion: keep Goal 18 expansion freeze active. Public crawlability remains technically healthy, but GSC and GA4 evidence is blocked until the Google connection is reauthorized. No new assets, pages, clusters, variants, ads, or custom-domain cutover are approved by this recheck. Next action should be reauthorizing the Free Utility Lab Google Stack connection, then rerunning the same GSC sitemap/Search Analytics and GA4 event breakdown against existing pages only. If signal remains weak after API access is restored, optimize only existing pages with concrete evidence.
