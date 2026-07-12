@@ -77,6 +77,14 @@ HUB_LINKS = [
     ("AI tools", "/free-utility-lab/ai-tools/"),
 ]
 
+FINANCE_JOB_ASSETS = [
+    ("Monthly Bill Calendar", "monthly-bill-calendar", "Monthly bills", "Place due dates, planned amounts and payment status on one printable calendar.", "calendar", "print"),
+    ("Biweekly Budget Planner", "biweekly-budget-planner", "Paycheck planning", "Assign bills and savings to each paycheck before the money is spent.", "planner", "csv"),
+    ("Debt Snowball Calculator", "debt-snowball-calculator", "Debt payoff", "Order balances and model a focused smallest-balance-first payoff plan.", "calculator", "copy"),
+    ("Emergency Fund Tracker", "emergency-fund-tracker", "Emergency savings", "Set a savings target and track progress without connecting a bank account.", "tracker", "print"),
+    ("50/30/20 Budget Calculator", "50-30-20-budget-calculator", "Budget split", "Compare needs, wants and savings against the 50/30/20 guideline.", "calculator", "copy"),
+]
+
 
 def load_assets() -> list[dict[str, Any]]:
     catalog = json.loads((ROOT / "data" / "marketplace.json").read_text(encoding="utf-8"))
@@ -113,20 +121,19 @@ def tool_card(asset: dict[str, Any]) -> str:
 
 
 def item_list_schema(slug: str, assets: list[dict[str, Any]]) -> dict[str, Any]:
+    items = [
+        {"@type": "ListItem", "position": index + 1, "name": asset["name"], "url": asset["public_url"]}
+        for index, asset in enumerate(assets)
+    ]
+    if slug == "finance-tools":
+        for name, path, _job, _description, _format, _output in FINANCE_JOB_ASSETS:
+            items.append({"@type": "ListItem", "position": len(items) + 1, "name": name, "url": BASE_URL + "budgetreset/" + path + "/"})
     return {
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": CATEGORY_META[slug]["h1"],
         "url": BASE_URL + slug + "/",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": index + 1,
-                "name": asset["name"],
-                "url": asset["public_url"],
-            }
-            for index, asset in enumerate(assets)
-        ],
+        "itemListElement": items,
     }
 
 
@@ -164,6 +171,32 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
     meta = CATEGORY_META[slug]
     selected = select_assets(slug, assets)
     cards = "\n".join(tool_card(asset) for asset in selected)
+    finance_intro = ""
+    finance_faq = ""
+    schema_three = ""
+    result_heading = f"{len(selected)} free tools in this hub"
+    if slug == "finance-tools":
+        result_heading = f"{len(selected) + len(FINANCE_JOB_ASSETS)} free finance tools by budgeting job"
+        finance_intro = """<section class="ful-related-hubs" aria-labelledby="finance-job-heading">
+      <h2 id="finance-job-heading">Choose by the job you need to finish</h2>
+      <p>Start with the complete planner or open a focused calculator, tracker or printable. Every option is free and requires no signup. No bank connection is used.</p>
+      <p><strong>Important:</strong> Educational planning tools, not financial advice. Check figures and decisions against your own circumstances.</p>
+    </section>"""
+        finance_cards = []
+        for name, path, job, description, format_name, output in FINANCE_JOB_ASSETS:
+            finance_cards.append(f"""<article class="ful-tool-card" data-asset-id="budgetreset-{escape(path)}" data-category="finance-tools">
+  <div class="ful-card-topline">{escape(job)}</div><h3>{escape(name)}</h3><p>{escape(description)}</p>
+  <div class="ful-badges" aria-label="Tool outputs">{badge_list(['free', 'no_signup', output])}</div>
+  <p class="ful-card-meta">Format: {escape(format_name)}</p>
+  <a class="ful-primary-cta" href="/free-utility-lab/budgetreset/{escape(path)}/" data-event="support_page_click" data-asset-id="budgetreset-{escape(path)}">Open {escape(job.lower())} tool</a>
+</article>""")
+        cards += "\n" + "\n".join(finance_cards)
+        faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": "Are these budgeting tools free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. They can be used without signup or a bank connection."}},
+            {"@type": "Question", "name": "Are these tools financial advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. They are educational planning tools; verify figures and decisions for your circumstances."}},
+        ]}
+        schema_three = f'<script type="application/ld+json">\n{json.dumps(faq, ensure_ascii=False, indent=2)}\n  </script>'
+        finance_faq = """<section class="ful-related-hubs" aria-labelledby="finance-faq-heading"><h2 id="finance-faq-heading">Budget tool FAQ</h2><h3>Are these tools free?</h3><p>Yes. Use, copy or print them without signup.</p><h3>Do they connect to a bank?</h3><p>No. Enter only the planning figures you choose; never enter credentials or account numbers.</p></section>"""
     related_hubs = "\n".join(
         f'<a class="ful-hub-pill" href="{href}">{escape(name)}</a>'
         for name, href in HUB_LINKS
@@ -191,6 +224,7 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
   <script type="application/ld+json">
 {schema_two}
   </script>
+  {schema_three}
 </head>
 <body data-page-type="marketplace-hub" data-hub-slug="{escape(slug)}">
   <header class="ful-marketplace-hero">
@@ -202,6 +236,7 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
   </header>
 
   <main class="ful-marketplace-shell">
+    {finance_intro}
     <aside class="ful-hub-sidebar" aria-label="Marketplace hubs">
       <h2>Browse by job</h2>
       <nav class="ful-hub-nav">
@@ -229,13 +264,15 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
 
     <section class="ful-tool-results" aria-label="Free tools">
       <div class="ful-section-heading">
-        <h2>{len(selected)} free tools in this hub</h2>
+        <h2>{result_heading}</h2>
         <p>Open a tool, then copy, export or print the result. No account required.</p>
       </div>
       <div class="ful-tool-grid" data-marketplace-results>
 {cards}
       </div>
     </section>
+
+    {finance_faq}
 
     <section class="ful-related-hubs" aria-label="Related hubs">
       <h2>Related hubs</h2>
@@ -250,10 +287,10 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {{}};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {{}};
-    document.querySelectorAll('[data-event="related_tool_click"]').forEach(function (link) {{
+    document.querySelectorAll('[data-event="related_tool_click"], [data-event="support_page_click"]').forEach(function (link) {{
       link.addEventListener('click', function () {{
         if (window.FreeUtilityLabActions.trackSafeEvent) {{
-          window.FreeUtilityLabActions.trackSafeEvent('related_tool_click', {{ asset_id: link.dataset.assetId, hub: '{escape(slug)}' }});
+          window.FreeUtilityLabActions.trackSafeEvent(link.dataset.event || 'related_tool_click', {{ asset_id: link.dataset.assetId, hub: '{escape(slug)}' }});
         }}
       }});
     }});
