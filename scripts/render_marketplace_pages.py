@@ -15,6 +15,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://titus9123.github.io/free-utility-lab/"
+GA4_MEASUREMENT_ID = "G-54GQ1ZT341"
 BASE_PATH = "/free-utility-lab/"
 
 CATEGORY_META = {
@@ -208,9 +209,17 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
     )
     schema_one = json.dumps(breadcrumb_schema(slug), ensure_ascii=False, indent=2)
     schema_two = json.dumps(item_list_schema(slug, selected), ensure_ascii=False, indent=2)
-    return f"""<!doctype html>
+    html = f"""<!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GA4_MEASUREMENT_ID}');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(meta['title'])} | Free Utility Lab</title>
@@ -284,6 +293,8 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
 
   <script src="../shared/components/marketplace-components.js"></script>
   <script src="../shared/scripts/utility-actions.js"></script>
+  <script src="../free-utility-lab-tracking.js"></script>
+  <script src="../free-utility-lab-measurement-bridge.js"></script>
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {{}};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {{}};
@@ -298,6 +309,7 @@ def render_page(slug: str, assets: list[dict[str, Any]]) -> str:
 </body>
 </html>
 """
+    return "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
 
 
 def main() -> int:

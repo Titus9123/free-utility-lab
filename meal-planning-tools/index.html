@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-54GQ1ZT341"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-54GQ1ZT341');
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Free Meal Planning and Grocery Tools | Free Utility Lab</title>
@@ -44,6 +52,7 @@
   ]
 }
   </script>
+
 </head>
 <body data-page-type="marketplace-hub" data-hub-slug="meal-planning-tools">
   <header class="ful-marketplace-hero">
@@ -55,6 +64,7 @@
   </header>
 
   <main class="ful-marketplace-shell">
+
     <aside class="ful-hub-sidebar" aria-label="Marketplace hubs">
       <h2>Browse by job</h2>
       <nav class="ful-hub-nav">
@@ -106,6 +116,8 @@
       </div>
     </section>
 
+
+
     <section class="ful-related-hubs" aria-label="Related hubs">
       <h2>Related hubs</h2>
       <div class="ful-hub-pill-list">
@@ -120,13 +132,15 @@
 
   <script src="../shared/components/marketplace-components.js"></script>
   <script src="../shared/scripts/utility-actions.js"></script>
+  <script src="../free-utility-lab-tracking.js"></script>
+  <script src="../free-utility-lab-measurement-bridge.js"></script>
   <script>
     window.FreeUtilityLabComponents = window.FreeUtilityLabComponents || {};
     window.FreeUtilityLabActions = window.FreeUtilityLabActions || {};
-    document.querySelectorAll('[data-event="related_tool_click"]').forEach(function (link) {
+    document.querySelectorAll('[data-event="related_tool_click"], [data-event="support_page_click"]').forEach(function (link) {
       link.addEventListener('click', function () {
         if (window.FreeUtilityLabActions.trackSafeEvent) {
-          window.FreeUtilityLabActions.trackSafeEvent('related_tool_click', { asset_id: link.dataset.assetId, hub: 'meal-planning-tools' });
+          window.FreeUtilityLabActions.trackSafeEvent(link.dataset.event || 'related_tool_click', { asset_id: link.dataset.assetId, hub: 'meal-planning-tools' });
         }
       });
     });

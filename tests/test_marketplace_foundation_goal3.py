@@ -12,6 +12,7 @@ GOAL3_PAGES = [
     "moving-tools/index.html",
     "ai-tools/index.html",
 ]
+GA4_MEASUREMENT_ID = "G-54GQ1ZT341"
 
 
 def read(path: str) -> str:
@@ -36,6 +37,24 @@ def test_goal3_marketplace_pages_exist_and_use_shared_modules():
         assert "No signup" in html
         assert "BreadcrumbList" in html
         assert "ItemList" in html
+
+
+def test_goal3_marketplace_hubs_load_the_shared_measurement_stack():
+    """Generated hubs must not become invisible in GA4."""
+    for page in GOAL3_PAGES:
+        html = read(page)
+        assert f"googletagmanager.com/gtag/js?id={GA4_MEASUREMENT_ID}" in html, page
+        assert f"gtag('config', '{GA4_MEASUREMENT_ID}')" in html, page
+        assert "../free-utility-lab-tracking.js" in html, page
+        assert "../free-utility-lab-measurement-bridge.js" in html, page
+        assert html.index("free-utility-lab-tracking.js") < html.index("free-utility-lab-measurement-bridge.js"), page
+
+
+def test_marketplace_renderer_owns_hub_measurement_markup():
+    renderer = read("scripts/render_marketplace_pages.py")
+    assert "googletagmanager.com/gtag/js?id={GA4_MEASUREMENT_ID}" in renderer
+    assert "../free-utility-lab-tracking.js" in renderer
+    assert "../free-utility-lab-measurement-bridge.js" in renderer
 
 
 def test_all_tools_hub_lists_every_live_tool_and_category_hub():
