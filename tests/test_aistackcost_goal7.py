@@ -107,3 +107,16 @@ def test_aistackcost_catalog_records_goal7_upgrade_metadata():
     assert "print" in aistack["outputs"]
     assert "HowTo" in aistack["schema_types"]
     assert aistack.get("goal7_upgrade") == "aistackcost-comparison-presets-cost-calculator-methodology-sources"
+
+
+def test_aistackcost_pages_load_ga4_before_relying_on_it():
+    """free-utility-lab-tracking.js/measurement-bridge.js only forward events when
+    window.gtag exists. Every aistackcost page must load gtag.js itself, matching
+    the other Free Utility Lab assets, or custom events silently never reach GA4."""
+    checked = 0
+    for html_path in (ROOT / "aistackcost").rglob("index.html"):
+        html = read(html_path)
+        assert "googletagmanager.com/gtag/js?id=G-54GQ1ZT341" in html, html_path
+        assert "gtag('config','G-54GQ1ZT341')" in html or "gtag('config', 'G-54GQ1ZT341')" in html, html_path
+        checked += 1
+    assert checked >= 6

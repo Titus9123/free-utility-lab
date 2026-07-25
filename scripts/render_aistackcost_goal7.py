@@ -8,6 +8,7 @@ from html import escape
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+GA4_MEASUREMENT_ID = "G-54GQ1ZT341"
 BASE_URL = "https://titus9123.github.io/free-utility-lab/"
 BASE_PATH = "/free-utility-lab/"
 DATA = json.loads((ROOT / "data" / "aistackcost_goal7.json").read_text(encoding="utf-8"))
@@ -124,6 +125,14 @@ def schema(kind: str, page_url: str, title: str) -> str:
 
 def head(title: str, description: str, canonical: str) -> str:
     return f"""<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={GA4_MEASUREMENT_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', '{GA4_MEASUREMENT_ID}');
+  </script>
   <meta charset=\"utf-8\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
   <title>{escape(title)} | Free Utility Lab</title>
