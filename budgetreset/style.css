@@ -1,0 +1,200 @@
+/* BudgetReset Pro — own identity within the Free Utility Lab / Modernist system.
+   Loads after /style.css: keeps Papel/Tinta/Archivo/flat-architectural base,
+   overrides only the accent to BudgetReset's forest green, and adds the
+   money-danger color (Ascua/Rescoldo) reserved for "over budget" states.
+   Zero radius, 2px borders, flush-left — same language as the rest of the site. */
+
+:root {
+  --color-accent: #1e5c3f;
+  --color-accent-strong: #163f2b;
+  --color-accent-ink: #f3f2f2;
+  --color-danger: #ec3013;
+  --color-danger-ink: #f8f4f4;
+  --input-bg: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent: #8fd6a8;
+    --color-accent-strong: #6fbb8f;
+    --color-accent-ink: #16281c;
+    --color-danger: #ff9783;
+    --color-danger-ink: #2d1712;
+    --input-bg: #2b2927;
+  }
+}
+:root[data-theme="dark"] {
+  --color-accent: #8fd6a8;
+  --color-accent-strong: #6fbb8f;
+  --color-accent-ink: #16281c;
+  --color-danger: #ff9783;
+  --color-danger-ink: #2d1712;
+  --input-bg: #2b2927;
+}
+
+/* — page-only top bar (above the shared site nav) — */
+.br-kicker-bar { max-width: 1160px; margin: 0 auto; padding: 14px 24px 0; }
+.br-kicker-bar span {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* — hero — */
+.br-hero { max-width: 1160px; margin: 0 auto; padding: 20px 24px 40px; }
+.br-eyebrow {
+  display: block; font-size: 13px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px;
+}
+.br-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.02; max-width: 22ch; margin: 0 0 16px;
+}
+.br-hero p { font-size: 1.15rem; max-width: 62ch; margin: 0 0 24px; }
+.br-rule { height: 3px; background: var(--color-text); width: 100%; }
+
+/* — ad slot — */
+.br-ad { max-width: 1160px; margin: 0 auto; padding: 24px 24px 0; }
+.br-ad-box {
+  border: 2px dashed var(--color-border-strong); padding: 28px;
+  display: flex; align-items: center; justify-content: center; min-height: 90px;
+}
+.br-ad-box span { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-soft); }
+
+/* — tool grid: inputs + sticky summary — */
+.br-tool { max-width: 1160px; margin: 0 auto; padding: 8px 24px 56px; }
+.br-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; align-items: start; }
+@media (max-width: 880px) { .br-grid { grid-template-columns: 1fr; } .br-summary { position: static !important; } }
+
+.br-inputs { border-top: 2px solid var(--color-text); padding-top: 32px; padding-right: 40px; }
+.br-kicker { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-soft); margin-bottom: 16px; }
+.br-block { margin-bottom: 36px; }
+.br-block > label, .panel-head p, .field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--color-text); }
+
+.field { display: grid; gap: 7px; margin-bottom: 14px; }
+.field label { font-size: 13px; font-weight: 700; color: var(--color-text); margin: 0; }
+.field input, .field select, .br-inputs > .field input {
+  width: 100%; font-family: var(--font-body); font-size: 16px; font-weight: 700;
+  padding: 12px 14px; border: 2px solid var(--color-border-strong);
+  background: var(--input-bg); color: var(--color-text); min-height: 48px;
+}
+.br-inputs .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.rows { display: grid; gap: 10px; margin-bottom: 10px; }
+.row { display: grid; grid-template-columns: 1.1fr 0.8fr auto; gap: 12px; align-items: end; }
+.row.debt { grid-template-columns: 1fr 0.7fr 0.7fr 0.7fr auto; }
+.row .field input { min-height: 44px; padding: 9px 12px; font-size: 15px; }
+.remove {
+  border: 2px solid var(--color-border-strong); background: var(--color-bg); color: var(--color-text);
+  min-height: 44px; padding: 0 14px; cursor: pointer; font-weight: 800; font-size: 16px;
+}
+.remove:hover { border-color: var(--color-danger); color: var(--color-danger); }
+.add {
+  border: 2px solid var(--color-border-strong); background: transparent; color: var(--color-text);
+  font-family: var(--font-heading); font-weight: 800; padding: 11px 16px; cursor: pointer; margin-top: 4px;
+}
+.add:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+.seg { display: flex; margin-bottom: 20px; }
+.seg-btn {
+  flex: 1; font-family: var(--font-heading); font-weight: 700; font-size: 14px;
+  padding: 11px 0; cursor: pointer; border: 2px solid var(--color-border-strong);
+  background: transparent; color: var(--color-text);
+}
+.seg-btn + .seg-btn { border-left: none; }
+.seg-btn[aria-pressed="true"] { background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink); }
+
+/* — sticky summary panel — */
+.br-summary {
+  position: sticky; top: 24px;
+  border-top: 2px solid var(--color-text); border-left: 2px solid var(--color-text);
+  padding: 32px 28px; margin-left: 8px;
+}
+.br-summary .br-kicker { margin-bottom: 6px; }
+.br-accent-rule { height: 6px; background: var(--color-accent); width: 64px; margin-bottom: 18px; }
+.br-summary.over .br-accent-rule { background: var(--color-danger); }
+.br-money {
+  font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 1; letter-spacing: -0.02em; color: var(--color-accent);
+  font-variant-numeric: tabular-nums; margin-bottom: 8px;
+}
+.br-summary.over .br-money { color: var(--color-danger); }
+.br-status { font-size: 15px; margin: 0 0 28px; }
+
+.br-metrics {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border-top: 2px solid var(--color-border); padding-top: 14px; margin-bottom: 20px;
+}
+.br-metrics .metric { border: none; background: none; padding: 0 12px 0 0; }
+.br-metrics .metric small {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--color-text-soft); margin-bottom: 4px;
+}
+.br-metrics .metric strong { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+/* budget health semaphore */
+.br-semaphore {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  padding: 10px 14px; border: 2px solid var(--color-border); font-size: 14px; font-weight: 700;
+}
+.br-semaphore .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.br-semaphore.healthy { border-color: var(--color-accent); }
+.br-semaphore.healthy .dot { background: var(--color-accent); }
+.br-semaphore.tight { border-color: #c9942f; }
+.br-semaphore.tight .dot { background: #c9942f; }
+.br-semaphore.over { border-color: var(--color-danger); }
+.br-semaphore.over .dot { background: var(--color-danger); }
+
+/* 50/30/20 bar */
+.br-5030 { margin-bottom: 20px; }
+.br-5030 h4 { font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-soft); font-weight: 700; margin: 0 0 8px; }
+.br-5030-bar { display: flex; height: 12px; overflow: hidden; gap: 2px; margin: 6px 0; }
+.br-5030-bar span { transition: flex 0.4s; }
+.br-5030-bar .s-needs { background: var(--color-danger); }
+.br-5030-bar .s-wants { background: #c9942f; }
+.br-5030-bar .s-savings { background: var(--color-accent); }
+.br-5030-labels { display: flex; gap: 14px; font-size: 12px; color: var(--color-text-soft); }
+
+.br-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.br-actions .btn {
+  border: 2px solid var(--color-border-strong); background: transparent; color: var(--color-text);
+  font-family: var(--font-heading); font-weight: 700; font-size: 13px; padding: 10px 0;
+  cursor: pointer; text-align: center;
+}
+.br-actions .btn:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.br-summary-text {
+  border: 2px solid var(--color-border); background: var(--color-surface); color: var(--color-text-soft);
+  font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 0.82rem;
+  white-space: pre-line; padding: 12px; margin: 0;
+}
+
+/* — numbered support cards — */
+.br-cards { max-width: 1160px; margin: 0 auto; padding: 0 24px 56px; }
+.br-cards-row { border-top: 2px solid var(--color-text); padding-top: 32px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.br-cards-row > div { padding: 0 28px; }
+.br-cards-row > div:first-child { padding-left: 0; }
+.br-cards-row > div:not(:last-child) { border-right: 2px solid var(--color-border); }
+.br-card-num { font-family: var(--font-heading); font-weight: 900; font-size: 2rem; color: var(--color-accent); margin-bottom: 12px; }
+.br-cards-row h3 { font-size: 1.05rem; margin-bottom: 10px; }
+.br-cards-row p { font-size: 0.9rem; margin: 0; }
+
+/* — FAQ — */
+.br-faq { max-width: 1160px; margin: 0 auto; padding: 0 24px 80px; }
+.br-faq-inner { border-top: 2px solid var(--color-text); padding-top: 24px; }
+.br-faq details { border-bottom: 2px solid var(--color-border); }
+.br-faq summary {
+  list-style: none; cursor: pointer; padding: 18px 0;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--color-text);
+}
+.br-faq summary::-webkit-details-marker { display: none; }
+.br-faq summary::after { content: "+"; font-size: 1.3rem; font-weight: 800; color: var(--color-accent); }
+.br-faq details[open] summary::after { content: "\2212"; }
+.br-faq details p { font-size: 0.95rem; margin: 0 0 20px; max-width: 70ch; }
+
+/* — related-guides / secondary cards reuse sitewide .card look — */
+.br-tool ~ section.card, .br-guides {
+  max-width: 1160px; margin: 0 auto; padding: 0 24px 40px;
+}
+
+@media print {
+  .br-noprint { display: none !important; }
+  .br-summary { position: static !important; }
+}
