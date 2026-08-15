@@ -13,6 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#f3f2f2">
   <title>Free Utility Lab — Free calculators, planners and practical web tools</title>
   <meta name="description" content="Free Utility Lab publishes practical free calculators, planners, checklists and generators. No signup, useful outputs, ad-ready but no live ad scripts yet.">
   <link rel="canonical" href="https://titus9123.github.io/free-utility-lab/">
@@ -25,6 +26,7 @@
   <meta name="twitter:title" content="Free Utility Lab — Free calculators, planners and practical web tools">
   <meta name="twitter:description" content="Free Utility Lab publishes practical free calculators, planners, checklists and generators. No signup, useful outputs, ad-ready but no live ad scripts yet.">
   <link rel="icon" type="image/png" sizes="64x64" href="/free-utility-lab/images/favicon-64.png">
+  <link rel="stylesheet" href="/free-utility-lab/style.css">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebPage","name":"Free Utility Lab","url":"https://titus9123.github.io/free-utility-lab/","description":"Free browser-based calculators, planners, checklists and generators with no signup and practical outputs.","publisher":{"@type":"Organization","name":"Free Utility Lab"}}
   </script>
@@ -35,122 +37,141 @@
 <link rel="alternate" hreflang="x-default" href="https://titus9123.github.io/free-utility-lab/">
 </head>
 <body data-asset-id="asset_lab_topic_agnostic_index" data-event="asset_view">
-<a href="#main">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<header>
-  <nav aria-label="Primary">
-    <a href="/free-utility-lab/">Free Utility Lab</a>
-    <ul>
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap">
+    <a href="/free-utility-lab/" class="brand">Free Utility Lab</a>
+    <ul class="nav-links">
       <li><a href="/free-utility-lab/">Home</a></li>
       <li><a href="/free-utility-lab/tools/">All tools</a></li>
     </ul>
-  </nav>
-</header>
+    <div class="nav-lang">
+      <a href="/free-utility-lab/" aria-current="page">EN</a>
+      <a href="/free-utility-lab/es/" lang="es">ES</a>
+      <a href="/free-utility-lab/he/" lang="he">עברית</a>
+    </div>
+  </div>
+</nav>
 
 <main id="main">
 
-  <section aria-labelledby="hero-title">
-    <p>Free useful tools · no signup</p>
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <span class="section-label">Free useful tools · no signup</span>
     <h1 id="hero-title">Free practical tools you can use, print, copy or export.</h1>
-    <p>Free Utility Lab publishes practical calculators, planners and checklists for everyday decisions. Every tool is free, mobile-friendly and designed to give you a useful result without signup.</p>
-    <p>
-      <a href="/free-utility-lab/tools/" data-event="cta_click">View free tools</a>
-      <a href="#how-it-works" data-event="cta_click">How it works</a>
-    </p>
-    <p>Free tools · No signup · No private data</p>
+    <p class="hero-sub">Free Utility Lab publishes practical calculators, planners and checklists for everyday decisions. Every tool is free, mobile-friendly and designed to give you a useful result without signup.</p>
+    <div class="hero-cta">
+      <a href="/free-utility-lab/tools/" class="btn btn-primary" data-event="cta_click">View free tools</a>
+      <a href="#how-it-works" class="btn btn-ghost" data-event="cta_click">How it works</a>
+    </div>
+    <p class="hero-trust"><span>Free tools</span><span>No signup</span><span>No private data</span></p>
   </section>
 
-  <section id="how-it-works" aria-labelledby="how-title">
-    <p>How the lab works</p>
-    <h2 id="how-title">Useful free tools first. Monetization stays in the background.</h2>
-    <p>We choose tools by practical demand, safety, search usefulness and whether visitors can get a clear result quickly.</p>
-    <article>
-      <h3>Useful result</h3>
-      <p>Each page should help a visitor calculate, plan, copy, print or download something useful.</p>
-    </article>
-    <article>
-      <h3>No sensitive inputs</h3>
-      <p>Tools run in the browser where possible and avoid asking for account numbers, credentials or private identifiers.</p>
-    </article>
-    <article>
-      <h3>Improve what works</h3>
-      <p>We keep improving tools that people use and add focused support pages for common search intents.</p>
-    </article>
+  <section id="how-it-works" class="section" aria-labelledby="how-title">
+    <div class="wrap">
+      <span class="section-label">How the lab works</span>
+      <h2 id="how-title">Useful free tools first. Monetization stays in the background.</h2>
+      <p class="hero-sub">We choose tools by practical demand, safety, search usefulness and whether visitors can get a clear result quickly.</p>
+      <div class="steps">
+        <article class="step">
+          <h3>Useful result</h3>
+          <p>Each page should help a visitor calculate, plan, copy, print or download something useful.</p>
+        </article>
+        <article class="step">
+          <h3>No sensitive inputs</h3>
+          <p>Tools run in the browser where possible and avoid asking for account numbers, credentials or private identifiers.</p>
+        </article>
+        <article class="step">
+          <h3>Improve what works</h3>
+          <p>We keep improving tools that people use and add focused support pages for common search intents.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section aria-labelledby="tools-title">
-    <p>Current free tools</p>
-    <h2 id="tools-title">Free tools selected for practical everyday search intent</h2>
-    <p>Each tool includes a main interactive page plus focused guides so visitors can solve a specific problem and discover related tools.</p>
-    <ol>
-      <li>
-        <h3><a href="/free-utility-lab/budgetreset/">BudgetReset Pro</a></h3>
-        <p>Free budget planner with monthly/biweekly planning, bill tracker, debt payoff plan, CSV export and printable PDF. Finance utility with strong evergreen ad potential.</p>
-      </li>
-      <li>
-        <h3><a href="/free-utility-lab/aistackcost/">AIStackCost</a></h3>
-        <p>AI subscription cost calculators and support pages for productivity/tool-stack intent.</p>
-      </li>
-      <li>
-        <h3><a href="/free-utility-lab/movebudget/">MoveBudget</a></h3>
-        <p>Moving budget calculators and apartment cost planning assets for high-intent household searches.</p>
-      </li>
-      <li>
-        <h3><a href="/free-utility-lab/mealplansheet/">MealPlanSheet</a></h3>
-        <p>Meal planner and grocery list printables for repeat-use household planning traffic.</p>
-      </li>
-      <li>
-        <h3><a href="/free-utility-lab/mealplansheet/cheap-weekly-meal-plan/">New meal planning guides</a></h3>
-        <p>More searchable guides for cheap weekly meal plans, vegetarian planning, family grocery budgets and printable grocery lists.</p>
-      </li>
-      <li>
-        <h3><a href="/free-utility-lab/budgetreset/zero-based-budget-template/">New budget planning guides</a></h3>
-        <p>Fresh long-tail pages for zero-based budgets, rent budgets, grocery budgets, bill organization and emergency fund tracking.</p>
-      </li>
-    </ol>
+  <section id="tools" class="section" aria-labelledby="tools-title">
+    <div class="wrap">
+      <span class="section-label">Current free tools</span>
+      <h2 id="tools-title">Free tools selected for practical everyday search intent</h2>
+      <p class="hero-sub">Each tool includes a main interactive page plus focused guides so visitors can solve a specific problem and discover related tools.</p>
+      <div class="tool-grid">
+        <article class="tool-card">
+          <h3>BudgetReset</h3>
+          <p>Free budget planner with monthly/biweekly planning, bill tracker, debt payoff plan, CSV export and printable PDF.</p>
+          <a href="/free-utility-lab/budgetreset/" class="btn btn-primary">Open BudgetReset</a>
+        </article>
+        <article class="tool-card">
+          <h3>MealPlanSheet</h3>
+          <p>Meal planner and grocery list printables for repeat-use household planning.</p>
+          <a href="/free-utility-lab/mealplansheet/" class="btn btn-primary">Open MealPlanSheet</a>
+        </article>
+        <article class="tool-card">
+          <h3>MoveBudget</h3>
+          <p>Moving budget calculators and apartment cost planning for high-intent household searches.</p>
+          <a href="/free-utility-lab/movebudget/" class="btn btn-primary">Open MoveBudget</a>
+        </article>
+        <article class="tool-card">
+          <h3>AIStackCost</h3>
+          <p>AI subscription cost calculators and support pages for productivity/tool-stack intent.</p>
+          <a href="/free-utility-lab/aistackcost/" class="btn btn-primary">Open AIStackCost</a>
+        </article>
+        <article class="tool-card">
+          <h3>Printable Templates</h3>
+          <p>Ready-to-print planners, checklists and worksheets you can download today.</p>
+          <a href="/free-utility-lab/printable-templates/" class="btn btn-primary">Open Printable Templates</a>
+        </article>
+      </div>
+      <div class="guides">
+        <span class="guides-label">Latest organic traffic guides</span>
+        <div class="guides-list">
+          <a href="/free-utility-lab/mealplansheet/no-cook-meal-plan/" data-event="support_page_click">No-cook meal plan</a>
+          <a href="/free-utility-lab/budgetreset/monthly-bill-calendar/" data-event="support_page_click">Monthly bill calendar</a>
+          <a href="/free-utility-lab/movebudget/renter-moving-budget/" data-event="support_page_click">Renter moving budget</a>
+          <a href="/free-utility-lab/aistackcost/creator-ai-tools-budget/" data-event="support_page_click">Creator AI tools budget</a>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section aria-labelledby="publishing-title">
-    <p>Publishing rule</p>
-    <h2 id="publishing-title">New tools are chosen by usefulness, safety and search demand.</h2>
-    <p>Before adding a tool, we check whether people search for it, whether we can build an original free version, whether it is safe, and whether it can support helpful guides and FAQs.</p>
+  <section class="section" aria-label="Ad placement reserved for future AdSense unit">
+    <div class="wrap">
+      <div class="ad-slot">
+        <p>Ad space reserved · inactive until AdSense is approved</p>
+      </div>
+    </div>
   </section>
 
-  <section aria-labelledby="launch-title">
-    <p>Ads-ready, not ad-cluttered</p>
-    <h3 id="launch-title">This page is the neutral hub. Every tool must be useful on its own.</h3>
-    <p>No live ad tags are active yet. Tools are free to use, and any future ads should not block the calculator, planner, copy, print or download actions.</p>
-    <p><a href="/free-utility-lab/aistackcost/" data-event="cta_click">Open a free tool</a></p>
-  </section>
-
-  <section aria-labelledby="guides-title">
-    <p>Latest organic traffic guides</p>
-    <h2 id="guides-title">New practical pages for meal, money, moving and AI-tool planning</h2>
-    <p>
-      <a href="/free-utility-lab/mealplansheet/no-cook-meal-plan/" data-event="support_page_click">No-cook meal plan</a>
-      <a href="/free-utility-lab/budgetreset/monthly-bill-calendar/" data-event="support_page_click">Monthly bill calendar</a>
-      <a href="/free-utility-lab/movebudget/renter-moving-budget/" data-event="support_page_click">Renter moving budget</a>
-      <a href="/free-utility-lab/aistackcost/creator-ai-tools-budget/" data-event="support_page_click">Creator AI tools budget</a>
-    </p>
-  </section>
-
-  <section aria-labelledby="languages-title">
-    <p>International versions</p>
-    <h2 id="languages-title">Free Utility Lab is now available in Spanish and Hebrew</h2>
-    <p>Complete localized versions are available for the main calculators and planners, written with natural local search terms instead of literal machine-style translation.</p>
-    <ul>
-      <li><a href="/free-utility-lab/es/" lang="es"><strong>Español</strong> — Planificador de comidas, presupuesto mensual, mudanza y herramientas de IA.</a></li>
-      <li><a href="/free-utility-lab/he/" lang="he" dir="rtl"><strong>עברית</strong> — תכנון ארוחות, תקציב חודשי, מעבר דירה וכלי AI.</a></li>
-    </ul>
+  <section id="languages" class="section" aria-labelledby="languages-title">
+    <div class="wrap">
+      <span class="section-label">International versions</span>
+      <h2 id="languages-title">Free Utility Lab is available in Spanish and Hebrew</h2>
+      <p class="hero-sub">Complete localized versions are available for the main calculators and planners, written with natural local search terms instead of literal machine-style translation.</p>
+      <div class="intl-grid">
+        <a class="intl-card" href="/free-utility-lab/es/" lang="es">
+          <h3>Español</h3>
+          <p>Planificador de comidas, presupuesto mensual, mudanza y herramientas de IA.</p>
+        </a>
+        <a class="intl-card" href="/free-utility-lab/he/" lang="he">
+          <h3>עברית</h3>
+          <p>תכנון ארוחות, תקציב חודשי, מעבר דירה וכלי AI.</p>
+        </a>
+      </div>
+    </div>
   </section>
 
 </main>
 
-<footer>
-  <p><strong>Free Utility Lab</strong></p>
-  <p>Free calculators, planners, checklists and generators. Useful first. No signup.</p>
-  <p><a href="/free-utility-lab/">Home</a> · <a href="/free-utility-lab/privacy-policy.html">Privacy</a></p>
-  <p>© 2026 Free Utility Lab. Free tools are provided as-is; no financial, medical, legal or outcome guarantees.</p>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <p class="footer-brand">Free Utility Lab</p>
+      <p class="footer-copy">Free calculators, planners, checklists and generators. Useful first. No signup.<br>© 2026 Free Utility Lab. Free tools are provided as-is; no financial, medical, legal or outcome guarantees.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/free-utility-lab/">Home</a>
+      <a href="/free-utility-lab/privacy-policy.html">Privacy</a>
+    </div>
+  </div>
 </footer>
 
 <script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'asset_view',asset_id:'asset_lab_topic_agnostic_index',page_path:'/free-utility-lab/'});document.addEventListener('click',function(e){var el=e.target.closest('[data-event]');if(el)window.dataLayer.push({event:el.getAttribute('data-event'),asset_id:'asset_lab_topic_agnostic_index'});});</script>
