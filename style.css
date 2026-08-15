@@ -1,10 +1,14 @@
 /* ============================================================
    Free Utility Lab — brand system "Modernist / Ascua"
-   Tokens sourced from Clarvix Web brand deck:
-   Papel #f3f2f2 · Tinta #201e1d · Ascua #ec3013
+   Tokens: Papel #f3f2f2 · Tinta #201e1d · Ascua #ec3013
    Rescoldo #ff9783 · Grafito #2d2b2b · Bruma #d7d3d3
    Flat, architectural: zero radius, strong 2px dividers,
    flush-left type, accent used sparingly.
+
+   Theme resolution order (light is the default):
+   1. bare :root                          -> light tokens
+   2. prefers-color-scheme: dark          -> dark tokens, unless data-theme="light" is forced
+   3. html[data-theme="dark"|"light"]     -> explicit user choice via the toggle, wins either way
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
@@ -28,7 +32,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg:        #2d2b2b; /* Grafito */
     --color-surface:   #383534;
     --color-text:      #f8f4f4;
@@ -39,6 +43,18 @@
     --color-border:    color-mix(in srgb, #f8f4f4 18%, transparent);
     --color-border-strong: color-mix(in srgb, #f8f4f4 45%, transparent);
   }
+}
+
+:root[data-theme="dark"] {
+  --color-bg:        #2d2b2b; /* Grafito */
+  --color-surface:   #383534;
+  --color-text:      #f8f4f4;
+  --color-text-soft: color-mix(in srgb, #f8f4f4 62%, transparent);
+  --color-accent:    #ff9783; /* Rescoldo */
+  --color-accent-ink:#2d2b2b;
+  --color-accent-strong: #ffb5a6;
+  --color-border:    color-mix(in srgb, #f8f4f4 18%, transparent);
+  --color-border-strong: color-mix(in srgb, #f8f4f4 45%, transparent);
 }
 
 * , *::before, *::after { box-sizing: border-box; }
@@ -92,9 +108,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .nav-links { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
 .nav-links a { color: var(--color-text); font-weight: 600; font-size: 0.95rem; }
 .nav-links a:hover { color: var(--color-accent); }
+.nav-right { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .nav-lang { display: flex; gap: 10px; font-size: 0.85rem; font-weight: 600; color: var(--color-text-soft); }
 .nav-lang a { color: var(--color-text-soft); }
 .nav-lang a:hover { color: var(--color-accent); }
+.nav-lang a[aria-current="page"] { color: var(--color-accent); }
+
+/* — theme toggle — */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; padding: 0;
+  border: 2px solid var(--color-border-strong); background: transparent;
+  color: var(--color-text); cursor: pointer; font-size: 1rem; line-height: 1;
+}
+.theme-toggle:hover { border-color: var(--color-accent); color: var(--color-accent); }
+.theme-toggle::before { content: "\1F319"; }
+:root[data-theme="dark"] .theme-toggle::before { content: "\2600\FE0F"; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle::before { content: "\2600\FE0F"; }
+}
 
 /* — section rhythm — */
 .section { padding: 72px 0; border-bottom: 2px solid var(--color-border); }
@@ -134,8 +166,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* — tool grid — */
 .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 40px; }
-.tool-grid .tool-card:nth-child(4),
-.tool-grid .tool-card:nth-child(5) { grid-column: span 1; }
 .tool-card {
   display: flex; flex-direction: column; gap: 14px;
   padding: 26px; background: var(--color-surface); border: 2px solid var(--color-border);
@@ -169,6 +199,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .intl-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
 .intl-card:hover { border-color: var(--color-accent); }
 .intl-card[lang="he"] { direction: rtl; text-align: right; }
+
+/* — document pages (privacy policy etc.) — */
+.doc-page { padding: 72px 0 96px; }
+.doc-shell { max-width: 72ch; }
+.doc-eyebrow { display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 16px; }
+.doc-title { font-size: clamp(2rem, 4vw, 2.8rem); }
+.doc-updated { color: var(--color-text-soft); font-size: 0.9rem; margin-top: 12px; }
+.doc-shell h2 { font-size: 1.35rem; margin-top: 44px; margin-bottom: 12px; padding-top: 24px; border-top: 2px solid var(--color-border); }
+.doc-shell h2:first-of-type { border-top: none; padding-top: 0; }
+.doc-shell p { margin-top: 4px; font-size: 1rem; }
+.doc-shell .btn { margin-top: 40px; }
 
 /* — footer — */
 .site-footer { padding: 48px 0; border-top: 2px solid var(--color-border-strong); }

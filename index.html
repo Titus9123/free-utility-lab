@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+<script>(function(){try{var t=localStorage.getItem("ful-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-54GQ1ZT341"></script>
 <script>
@@ -46,10 +47,13 @@
       <li><a href="/">Home</a></li>
       <li><a href="/tools/">All tools</a></li>
     </ul>
-    <div class="nav-lang">
-      <a href="/" aria-current="page">EN</a>
-      <a href="/es/" lang="es">ES</a>
-      <a href="/he/" lang="he">עברית</a>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <a href="/" aria-current="page">EN</a>
+        <a href="/es/" lang="es">ES</a>
+        <a href="/he/" lang="he">עברית</a>
+      </div>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme"></button>
     </div>
   </div>
 </nav>
@@ -178,4 +182,5 @@
 <script src="/accessibility-widget.js?v=8ec7e2e" defer></script>
 <script src="/free-utility-lab-tracking.js" defer></script>
 <script src="/free-utility-lab-measurement-bridge.js" defer></script>
+<script src="/theme-toggle.js" defer></script>
 </body></html>

@@ -1,0 +1,94 @@
+/* Free Utility Lab — international hub pages (es/, he/)
+   Restyled onto the Modernist/Ascua tokens defined in /style.css.
+   This file only adds page-level layout; /style.css must load first. */
+
+.wrap { max-width: var(--container); margin: 0 auto; padding: 40px 24px 64px; }
+
+header.page-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; padding-bottom: 24px; border-bottom: 2px solid var(--color-border-strong);
+  margin-bottom: 8px;
+}
+
+.brand {
+  display: inline-flex; gap: 10px; align-items: center;
+  font-family: var(--font-heading); font-weight: 800; font-size: 1.05rem;
+  color: var(--color-text);
+}
+.brand:hover { text-decoration: none; color: var(--color-accent); }
+.mark {
+  background: var(--color-accent); color: var(--color-accent-ink);
+  font-weight: 800; padding: 4px 9px; font-size: 0.82rem;
+}
+
+.nav { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.chip {
+  display: inline-flex; border: 2px solid var(--color-border-strong);
+  padding: 8px 14px; text-decoration: none; color: var(--color-text);
+  font-weight: 600; font-size: 0.9rem;
+}
+.chip:hover { border-color: var(--color-accent); color: var(--color-accent); text-decoration: none; }
+
+.hero, .card {
+  border-top: 2px solid var(--color-border-strong);
+  padding: 32px 0; margin: 0;
+}
+.kicker {
+  display: block; color: var(--color-accent); font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; margin-bottom: 14px;
+}
+h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.08; margin: 0; max-width: 20ch; }
+h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.15; margin: 0 0 22px; }
+.hero p, .card > p { margin-top: 18px; max-width: 60ch; font-size: 1.08rem; }
+
+.hero .cta,
+.card .cta {
+  display: inline-flex; margin-top: 26px;
+  font-family: var(--font-heading); font-weight: 800; font-size: 0.95rem;
+  padding: 13px 24px; border: 2px solid var(--color-text); color: var(--color-text);
+}
+.hero .cta:hover, .card .cta:hover { background: var(--color-text); color: var(--color-bg); text-decoration: none; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 8px; }
+.mini {
+  border: 2px solid var(--color-border); background: var(--color-surface);
+  padding: 22px; display: flex; flex-direction: column; gap: 12px;
+}
+.mini h3 { font-size: 1.1rem; font-weight: 800; margin: 0; }
+.mini p { margin: 0; font-size: 0.95rem; color: var(--color-text-soft); flex: 1; }
+.mini .chip { align-self: flex-start; }
+
+.table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.table th, .table td {
+  border: 2px solid var(--color-border); padding: 10px 12px; text-align: left; vertical-align: top;
+}
+.table th { background: var(--color-surface); font-weight: 800; }
+
+.ad-rail {
+  border: 2px dashed var(--color-border-strong); padding: 22px; text-align: center;
+  color: var(--color-text-soft); font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+
+.footer {
+  display: flex; gap: 16px; justify-content: space-between; flex-wrap: wrap;
+  color: var(--color-text-soft); font-size: 0.9rem;
+  margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--color-border-strong);
+}
+.footer a { color: var(--color-text); font-weight: 600; }
+
+html[dir="rtl"] body { text-align: right; }
+html[dir="rtl"] .mini .chip { align-self: flex-end; }
+
+.toolbox input, .toolbox select {
+  width: 100%; padding: 11px; font: inherit; color: var(--color-text);
+  background: var(--color-bg); border: 2px solid var(--color-border-strong);
+}
+.toolbox button {
+  border: 2px solid var(--color-accent); padding: 11px 16px;
+  background: var(--color-accent); color: var(--color-accent-ink); font-weight: 800;
+}
+#result {
+  white-space: pre-wrap; background: var(--color-surface); color: var(--color-text);
+  border: 2px solid var(--color-border-strong); padding: 16px; min-height: 80px;
+}
