@@ -137,7 +137,7 @@
 #clv-a11y-btn {
   position: fixed;
   bottom: 20px;
-  ${isRTL ? 'right: 18px;' : 'left: 18px;'}
+  ${isRTL ? 'left: 18px;' : 'right: 18px;'}
   z-index: 9998;
   background: #ec3013;
   color: #fff;
@@ -165,7 +165,7 @@
 #clv-a11y-panel {
   position: fixed;
   bottom: 74px;
-  ${isRTL ? 'right: 14px;' : 'left: 14px;'}
+  ${isRTL ? 'left: 14px;' : 'right: 14px;'}
   width: 270px;
   background: #111827;
   border: 1.5px solid #ec3013;
