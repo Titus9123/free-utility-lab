@@ -27,47 +27,12 @@
   <meta name="twitter:description" content="Free budget planner with monthly and biweekly budgeting, bill tracker, debt snowball/avalanche payoff, savings goals, printable PDF and Excel-friendly CSV export. No signup required.">
   <link rel="alternate" hreflang="en" href="https://freeutilitylab.com/budgetreset/">
   <link rel="alternate" hreflang="x-default" href="https://freeutilitylab.com/budgetreset/">
-  <style>
-    :root{--ink:#0d160f;--muted:#5d6b60;--soft:#f4f7ef;--paper:#fffdf8;--card:#ffffff;--line:rgba(13,22,15,.13);--green:#9fe870;--green2:#52b788;--blue:#2364aa;--amber:#f4b942;--danger:#c44536;--shadow:0 24px 70px rgba(13,22,15,.10),0 4px 18px rgba(13,22,15,.06);--radius:28px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:var(--sans);color:var(--ink);background:radial-gradient(circle at 15% 0%,rgba(159,232,112,.36),transparent 34%),radial-gradient(circle at 88% 12%,rgba(35,100,170,.16),transparent 30%),linear-gradient(180deg,#fffdf8 0%,#f5f8f0 56%,#eef4e7 100%);line-height:1.5}a{color:inherit}.wrap{max-width:1200px;margin:0 auto;padding:24px}.skip{position:absolute;left:-999px;top:0;background:#000;color:#fff;padding:10px}.skip:focus{left:12px;z-index:10}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-weight:950;letter-spacing:-.05em;font-size:24px}.mark{width:44px;height:44px;border-radius:16px;background:#07130d;color:var(--green);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(159,232,112,.35)}.nav{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:rgba(255,255,255,.72);padding:10px 13px;border-radius:999px;text-decoration:none;font-size:14px;font-weight:750}.chip:hover{background:#fff}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:28px;align-items:start;padding:38px 0 26px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(13,22,15,.12);background:rgba(255,255,255,.72);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:#34503a}.hero h1{font-size:clamp(42px,6.2vw,78px);line-height:.94;letter-spacing:-.075em;margin:18px 0 18px;max-width:780px}.hero p{font-size:clamp(18px,2vw,22px);color:#405044;max-width:690px;margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:14px 18px;font-weight:900;text-decoration:none;min-height:48px;transition:.18s ease}.btn.primary{background:#07130d;color:#fff;box-shadow:0 16px 38px rgba(7,19,13,.18)}.btn.primary:hover{transform:translateY(-1px);box-shadow:0 22px 48px rgba(7,19,13,.22)}.btn.secondary{background:#fff;color:#07130d;border:1px solid var(--line)}.btn.green{background:var(--green);color:#18300f}.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;color:#526358;font-size:14px}.trust span{border:1px solid var(--line);background:rgba(255,255,255,.62);border-radius:999px;padding:7px 10px}.hero-card{background:#07130d;color:#ecffe8;border-radius:34px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero-card:before{content:"";position:absolute;inset:-80px -80px auto auto;width:260px;height:260px;background:radial-gradient(circle,rgba(159,232,112,.32),transparent 62%)}.screen{position:relative;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:18px}.screen-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-bottom:1px solid rgba(255,255,255,.10);padding:13px 0}.screen-row:last-child{border-bottom:0}.screen small{color:#a9bda7;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:900}.screen strong{font-size:22px}.bar{height:10px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#f3ff8c);border-radius:999px}.tool{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:22px;align-items:start;margin:12px 0 34px}.panel{background:rgba(255,255,255,.86);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 34px rgba(13,22,15,.06);overflow:hidden}.panel-head{padding:22px 22px 0}.panel-head h2,.panel-head h3{margin:0;font-size:28px;letter-spacing:-.05em}.panel-head p{margin:8px 0 0;color:var(--muted)}.form{padding:18px 22px 22px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:7px}.field label{font-size:13px;font-weight:850;color:#304335}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:#fff;color:var(--ink);font:inherit;min-height:48px}.field input:focus,.field select:focus{outline:3px solid rgba(159,232,112,.5);border-color:#6dbb45}.section-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:22px 0 10px}.section-title h3{margin:0;font-size:18px;letter-spacing:-.03em}.mini{font-size:12px;color:var(--muted);font-weight:750}.rows{display:grid;gap:10px}.row{display:grid;grid-template-columns:1.1fr .8fr auto;gap:10px;align-items:end}.row.debt{grid-template-columns:1fr .7fr .7fr .7fr auto}.row button,.remove{border:1px solid var(--line);background:#fff;border-radius:14px;min-height:46px;padding:0 12px;cursor:pointer}.add{margin-top:10px}.summary{position:sticky;top:16px}.summary-body{padding:20px 22px}.score{border-radius:24px;background:linear-gradient(135deg,#07130d,#19321f);color:#fff;padding:20px;position:relative;overflow:hidden}.score:after{content:"";position:absolute;right:-60px;top:-70px;width:190px;height:190px;background:radial-gradient(circle,rgba(159,232,112,.34),transparent 64%)}.score .label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#bfe8bb;font-weight:900}.score .money{font-size:42px;font-weight:950;letter-spacing:-.06em;margin-top:4px}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}.metric{border:1px solid var(--line);background:#fff;border-radius:20px;padding:13px}.metric small{display:block;color:var(--muted);font-size:12px;font-weight:850}.metric strong{font-size:20px;letter-spacing:-.04em}.insight{border-left:4px solid var(--green2);background:#f6fbf3;border-radius:18px;padding:14px;margin-top:12px;color:#334437}.actions{display:grid;gap:10px;margin-top:14px}.ad-slot{border:1px dashed rgba(13,22,15,.26);border-radius:24px;padding:18px;text-align:center;color:#667367;background:rgba(255,255,255,.55);margin-top:16px}.content{display:grid;gap:18px;margin:28px 0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 10px 30px rgba(13,22,15,.05)}.card h3{margin:0 0 8px;font-size:20px;letter-spacing:-.04em}.card p{margin:0;color:var(--muted)}.faq{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px}.faq h2{margin:0 0 12px;font-size:30px;letter-spacing:-.05em}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{font-weight:900;cursor:pointer}.faq p{color:var(--muted)}footer{padding:34px 0;color:#617067}.print-only{display:none}@media (max-width:940px){.hero,.tool{grid-template-columns:1fr}.summary{position:static}.cards{grid-template-columns:1fr}.row,.row.debt{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.wrap{padding:16px}.hero h1{font-size:46px}}@media print{body{background:#fff}.top,.hero,.panel.main,.ad-slot,.content,footer,.actions,.trust{display:none!important}.wrap{max-width:none}.summary{display:block;position:static}.panel{box-shadow:none;border:0}.score{background:#fff;color:#000;border:2px solid #000}.metric{border:1px solid #888}.print-only{display:block}.panel-head{padding:0}.summary-body{padding:0}.insight{border:1px solid #888;background:#fff}}
-  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"BudgetReset Pro","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://freeutilitylab.com/budgetreset/","description":"Free budget planner, bill tracker and debt payoff tool with printable PDF and Excel-friendly CSV export.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Monthly budget planner","Biweekly budget planner","Bill tracker","Debt payoff tracker","Savings goal tracker","CSV export","Printable PDF"]}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is BudgetReset Pro free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The budget planner is free to use in the browser and does not require signup for the main calculation, CSV export or printable PDF."}},{"@type":"Question","name":"Can I download the budget result to Excel?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Download CSV button. The file opens in Excel, Google Sheets, Numbers and other spreadsheet tools."}},{"@type":"Question","name":"Does this replace financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. BudgetReset Pro is an educational planning worksheet and calculator. It does not provide personalized financial, debt or investment advice."}}]}
   </script>
-  <link rel="stylesheet" href="/free-utility-lab/asset-lab-modern.css">
-  <link rel="stylesheet" href="/free-utility-lab/shared/styles/marketplace.css">
-  <link rel="stylesheet" href="/free-utility-lab/shared/styles/print.css">
-  <style>:root{--asset-accent:#9FE870;--asset-accent2:#4CC9A6;--asset-glow:color-mix(in srgb,#9FE870 32%,transparent);}</style>
-  <style>
-  /* Budget semaphore */
-  .br-semaphore{display:flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;border-radius:16px;font-size:14px;font-weight:800;transition:background .25s,color .25s}
-  .br-semaphore.healthy{background:rgba(159,232,112,.22);color:#1a4d14}
-  .br-semaphore.tight{background:rgba(244,185,66,.22);color:#6b4300}
-  .br-semaphore.over{background:rgba(196,69,54,.18);color:#7a1f16}
-  .br-semaphore .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
-  .br-semaphore.healthy .dot{background:#52b788}
-  .br-semaphore.tight .dot{background:#f4b942}
-  .br-semaphore.over .dot{background:#c44536}
-  /* 50/30/20 analysis bar */
-  .br-5030{margin-top:12px;padding:12px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:18px}
-  .br-5030 h4{margin:0 0 8px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:900}
-  .br-5030-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;gap:2px;margin:6px 0}
-  .br-5030-bar span{transition:flex .4s}
-  .br-5030-bar .s-needs{background:#c44536}
-  .br-5030-bar .s-wants{background:#f4b942}
-  .br-5030-bar .s-savings{background:#52b788}
-  .br-5030-labels{display:flex;gap:12px;font-size:12px;color:var(--muted)}
-  .br-5030-labels span::before{content:"■ ";font-size:9px}
-  .br-5030-labels .l-needs::before{color:#c44536}
-  .br-5030-labels .l-wants::before{color:#f4b942}
-  .br-5030-labels .l-savings::before{color:#52b788}
-  /* progress badge */
-  .br-saved-badge{display:none;border:1px solid rgba(82,183,136,.4);background:rgba(82,183,136,.1);border-radius:999px;padding:4px 10px;font-size:11px;color:#1a4d14;font-weight:800}
-  .br-saved-badge.visible{display:inline-flex}
-  </style>
-  <style>.goal4-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:18px 0}.goal4-step{background:rgba(255,255,255,.76);border:1px solid var(--line);border-radius:18px;padding:12px 14px;font-weight:800}.goal4-step small{display:block;color:var(--muted);font-weight:650;margin-top:4px}.summary-text{background:#f7fbf1;border:1px dashed rgba(13,22,15,.2);border-radius:18px;color:var(--muted);font-family:var(--mono);font-size:.9rem;margin:14px 0 0;padding:12px;white-space:pre-line}.goal4-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:18px}.goal4-links ul{margin:10px 0 0;padding-left:18px}.goal4-links li{margin:8px 0}.ful-breadcrumb{margin-top:0}</style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Free Utility Lab","item":"https://freeutilitylab.com/"},{"@type":"ListItem","position":2,"name":"Finance tools","item":"https://freeutilitylab.com/finance-tools/"},{"@type":"ListItem","position":3,"name":"BudgetReset","item":"https://freeutilitylab.com/budgetreset/"}]}
   </script>
@@ -96,7 +61,7 @@
       <a class="chip" href="/free-utility-lab/aistackcost/">AIStackCost</a>
     </nav>
   </header>
-<section class="language-switch" style="margin:16px 0;padding:14px;border:1px solid #dfe5f2;border-radius:16px;background:#fff">
+<section class="language-switch">
   <strong>Available languages:</strong>
   <a href="/free-utility-lab/budgetreset/">English</a> ·
   <a href="/free-utility-lab/es/budgetreset/" lang="es">Español</a> ·
@@ -125,7 +90,7 @@
         <div class="screen">
           <div class="screen-row"><div><small>Income</small><strong id="heroIncome">$4,800</strong></div><span>Monthly</span></div>
           <div class="screen-row"><div><small>Planned bills</small><strong id="heroBills">$2,950</strong></div><span>61%</span></div>
-          <div class="screen-row"><div><small>Debt strategy</small><strong>Snowball</strong><div class="bar"><i style="width:62%"></i></div></div><span>Focus</span></div>
+          <div class="screen-row"><div><small>Debt strategy</small><strong>Snowball</strong><div class="bar"><i></i></div></div><span>Focus</span></div>
           <div class="screen-row"><div><small>Savings room</small><strong id="heroSavings">$650</strong></div><span>Target</span></div>
         </div>
       </aside>
@@ -149,7 +114,7 @@
           <button class="btn secondary add" type="button" id="addExpense">+ Add bill or category</button>
 
           <div class="section-title"><h3>Debt payoff tracker</h3><span class="mini">Balance, APR and planned payment</span></div>
-          <div class="grid" style="margin-bottom:10px">
+          <div class="grid">
             <div class="field"><label for="method">Payoff method</label><select id="method"><option value="snowball">Snowball: smallest balance first</option><option value="avalanche">Avalanche: highest APR first</option></select></div>
             <div class="field"><label for="extraDebt">Extra debt payment / month</label><input id="extraDebt" type="number" min="0" step="25" value="150"></div>
           </div>
@@ -173,7 +138,7 @@
           <div id="budgetSemaphore" class="br-semaphore tight" aria-live="polite"><span class="dot"></span><span id="semaphoreText">Add income and bills to see budget health.</span></div>
           <div class="br-5030" id="analysis5030" aria-label="50/30/20 budget breakdown">
             <h4>50 / 30 / 20 guide</h4>
-            <div class="br-5030-bar" id="bar5030"><span class="s-needs" style="flex:50"></span><span class="s-wants" style="flex:30"></span><span class="s-savings" style="flex:20"></span></div>
+            <div class="br-5030-bar" id="bar5030"><span class="s-needs"></span><span class="s-wants"></span><span class="s-savings"></span></div>
             <div class="br-5030-labels"><span class="l-needs" id="lbl-needs">50% needs</span><span class="l-wants" id="lbl-wants">30% wants</span><span class="l-savings" id="lbl-savings">20% savings</span></div>
           </div>
           <div class="insight" id="insight">Tip: keep essential bills, minimum debt payments and savings goals visible together before deciding what to cut.</div>
