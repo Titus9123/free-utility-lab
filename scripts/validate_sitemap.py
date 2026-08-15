@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
 
-BASE_PATH = "/free-utility-lab/"
+BASE_PATH = "/"
 
 
 class SitemapValidationResult:
