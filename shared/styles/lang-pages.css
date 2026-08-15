@@ -2,6 +2,16 @@
    Restyled onto the Modernist/Ascua tokens defined in /style.css.
    This file only adds page-level layout; /style.css must load first. */
 
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap');
+
+/* Archivo has no Hebrew glyphs, so it silently falls back to whatever
+   serif the OS ships for Hebrew script. Heebo is a modern geometric
+   sans built for Hebrew and keeps the same weight range as Archivo. */
+html[lang="he"] {
+  --font-heading: 'Heebo', system-ui, sans-serif;
+  --font-body: 'Heebo', system-ui, sans-serif;
+}
+
 .wrap { max-width: var(--container); margin: 0 auto; padding: 40px 24px 64px; }
 
 header.page-head {

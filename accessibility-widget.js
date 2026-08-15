@@ -126,7 +126,7 @@
 #clv-a11y-skip {
   position: absolute;
   top: -9999px; left: -9999px;
-  background: #5B3FD4; color: #fff;
+  background: #ec3013; color: #fff;
   padding: 10px 20px; font-size: 16px; font-weight: bold;
   text-decoration: none; border-radius: 4px; z-index: 99999;
 }
@@ -136,10 +136,10 @@
 
 #clv-a11y-btn {
   position: fixed;
-  bottom: 170px;
+  bottom: 20px;
   ${isRTL ? 'right: 18px;' : 'left: 18px;'}
   z-index: 9998;
-  background: #5B3FD4;
+  background: #ec3013;
   color: #fff;
   border: none;
   border-radius: 28px;
@@ -151,24 +151,24 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 3px 14px rgba(91,63,212,0.55);
+  box-shadow: 0 3px 14px rgba(236,48,19,0.55);
   transition: transform 0.2s, box-shadow 0.2s;
   line-height: 1;
 }
 #clv-a11y-btn:hover, #clv-a11y-btn:focus {
   transform: scale(1.07);
-  box-shadow: 0 5px 20px rgba(91,63,212,0.75);
+  box-shadow: 0 5px 20px rgba(236,48,19,0.75);
   outline: 3px solid #fff;
 }
 #clv-a11y-btn svg { flex-shrink: 0; }
 
 #clv-a11y-panel {
   position: fixed;
-  bottom: 220px;
+  bottom: 74px;
   ${isRTL ? 'right: 14px;' : 'left: 14px;'}
   width: 270px;
   background: #111827;
-  border: 1.5px solid #5B3FD4;
+  border: 1.5px solid #ec3013;
   border-radius: 14px;
   padding: 18px;
   z-index: 9997;
@@ -213,12 +213,12 @@
 .clv-a11y-row button:hover,
 .clv-a11y-row button:focus {
   background: #374151;
-  border-color: #5B3FD4;
-  outline: 2px solid #5B3FD4;
+  border-color: #ec3013;
+  outline: 2px solid #ec3013;
 }
 .clv-a11y-row button.active {
-  background: #5B3FD4;
-  border-color: #5B3FD4;
+  background: #ec3013;
+  border-color: #ec3013;
   color: #fff;
 }
 
