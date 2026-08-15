@@ -1,0 +1,22 @@
+/* MoveBudget — same amber identity as the EN tool page, applied to the
+   ES/HE landing pages (shared lang-pages.css component classes).
+   Loads after /style.css and /shared/styles/lang-pages.css. */
+
+:root {
+  --color-accent: #D98E2B;
+  --color-accent-strong: #8C491A;
+  --color-accent-ink: #201e1d;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent: #F4B860;
+    --color-accent-strong: #E0946A;
+    --color-accent-ink: #201e1d;
+  }
+}
+:root[data-theme="dark"] {
+  --color-accent: #F4B860;
+  --color-accent-strong: #E0946A;
+  --color-accent-ink: #201e1d;
+}

@@ -1,0 +1,28 @@
+/* MealPlanSheet — same identity as the EN tool page, applied to the ES/HE
+   landing pages (which use the shared lang-pages.css component classes).
+   Loads after /style.css and /shared/styles/lang-pages.css. */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --color-accent: #B75D3E;
+  --color-accent-strong: #8C491A;
+  --color-accent-ink: #f8f4f4;
+  --font-heading: 'Lora', serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent: #E0946A;
+    --color-accent-strong: #EBB491;
+    --color-accent-ink: #2B2118;
+  }
+}
+:root[data-theme="dark"] {
+  --color-accent: #E0946A;
+  --color-accent-strong: #EBB491;
+  --color-accent-ink: #2B2118;
+}
+
+.mini, .card, .hero { border-radius: 6px; }
+.chip, .cta { border-radius: 6px; }
