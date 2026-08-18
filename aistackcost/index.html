@@ -1,396 +1,373 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-54GQ1ZT341"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-54GQ1ZT341');
-  </script>
+<script>(function(){try{var t=localStorage.getItem("ful-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-54GQ1ZT341"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-54GQ1ZT341');
+</script>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AIStackCost Free AI Stack Cost Planner | Free Utility Lab</title>
-  <meta name="description" content="Compare free and paid AI tools, choose stack presets, and estimate approximate monthly subscription cost without unsupported pricing claims.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#f3f2f2">
+  <title>AI API Pricing Calculator — Compare GPT, Claude, Gemini, Grok & DeepSeek Token Costs</title>
+  <meta name="description" content="Free AI API cost calculator. Enter your input/output tokens and request volume to get exact daily, monthly and annual cost across GPT-5.6, Claude, Gemini, Grok and DeepSeek — official per-token prices, no signup.">
   <link rel="canonical" href="https://freeutilitylab.com/aistackcost/">
-  <link rel="stylesheet" href="/free-utility-lab/shared/styles/marketplace.css">
-  <link rel="stylesheet" href="/free-utility-lab/shared/styles/print.css" media="print">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Free Utility Lab">
+  <meta property="og:title" content="AI API Pricing Calculator — Compare GPT, Claude, Gemini, Grok &amp; DeepSeek Token Costs">
+  <meta property="og:description" content="Enter your token usage and request volume to get exact API cost across GPT-5.6, Claude, Gemini, Grok and DeepSeek. Official per-token prices, no signup.">
+  <meta property="og:url" content="https://freeutilitylab.com/aistackcost/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AI API Pricing Calculator — Compare GPT, Claude, Gemini, Grok &amp; DeepSeek Token Costs">
+  <meta name="twitter:description" content="Enter your token usage and request volume to get exact API cost across GPT-5.6, Claude, Gemini, Grok and DeepSeek. Official per-token prices, no signup.">
+  <link rel="alternate" hreflang="en" href="https://freeutilitylab.com/aistackcost/">
+  <link rel="alternate" hreflang="es" href="https://freeutilitylab.com/es/aistackcost/">
+  <link rel="alternate" hreflang="he" href="https://freeutilitylab.com/he/aistackcost/">
+  <link rel="alternate" hreflang="x-default" href="https://freeutilitylab.com/aistackcost/">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64.png">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/aistackcost/style.css">
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Free Utility Lab",
-      "item": "https://freeutilitylab.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "AI tools",
-      "item": "https://freeutilitylab.com/ai-tools/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "AIStackCost Free AI Stack Cost Planner",
-      "item": "https://freeutilitylab.com/aistackcost/"
-    }
-  ]
-}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"AIStackCost","applicationCategory":"DeveloperApplication","operatingSystem":"Web","url":"https://freeutilitylab.com/aistackcost/","description":"Free AI API pricing calculator: enter token usage and request volume to get exact cost across GPT, Claude, Gemini, Grok and DeepSeek models.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Per-model token cost calculator","Daily, monthly and annual cost projection","Provider comparison table","Token estimator from text","CSV export","Printable summary"]}
   </script>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "Build an AI stack without duplicate subscriptions",
-  "step": [
-    {
-      "@type": "HowToStep",
-      "text": "List the workflows that need AI help before picking tools."
-    },
-    {
-      "@type": "HowToStep",
-      "text": "Compare free options, paid plan notes, and official pricing sources."
-    },
-    {
-      "@type": "HowToStep",
-      "text": "Estimate approximate monthly cost and remove overlapping subscriptions."
-    },
-    {
-      "@type": "HowToStep",
-      "text": "Recheck official pricing pages before buying because prices and features change."
-    }
-  ]
-}
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Are these AI API prices guaranteed?","acceptedAnswer":{"@type":"Answer","text":"No. Prices are entered from each provider's official API pricing page and checked periodically, but providers change rates without notice. Treat every result as a planning estimate and confirm the current rate on the official pricing page linked next to each model before budgeting."}},
+    {"@type":"Question","name":"What is the difference between API pricing and a ChatGPT/Claude subscription?","acceptedAnswer":{"@type":"Answer","text":"A consumer subscription (ChatGPT Plus, Claude Pro, Gemini Advanced) is a flat monthly fee for using the chat app with usage limits. API pricing is pay-per-token: you are billed separately for every request your product or script sends, with no flat fee. This calculator is for API/developer usage, not consumer subscriptions."}},
+    {"@type":"Question","name":"Does this include prompt caching or batch API discounts?","acceptedAnswer":{"@type":"Answer","text":"No, the base calculation uses standard per-token rates. Prompt caching and batch processing can cut real cost by 50-90% depending on the provider and how repetitive your prompts are. Check the official pricing page linked for each model for exact caching and batch rates before finalizing a budget."}},
+    {"@type":"Question","name":"How do I estimate tokens from text?","acceptedAnswer":{"@type":"Answer","text":"Use the token estimator on this page: paste a sample prompt or response and it estimates tokens at roughly 4 characters per token for English text. This is a rough approximation; exact token counts depend on the model's specific tokenizer."}}
+  ]}
   </script>
   <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Are these AI prices guaranteed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Prices and features change. Treat every monthly cost as an approximate planning placeholder and check the official pricing pages before buying."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should a freelancer pay for every major AI assistant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Usually no. Start with one primary assistant and add another only for a specific workflow advantage."
-      }
-    }
-  ]
-}
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Free Utility Lab","item":"https://freeutilitylab.com/"},{"@type":"ListItem","position":2,"name":"AI tools","item":"https://freeutilitylab.com/ai-tools/"},{"@type":"ListItem","position":3,"name":"AIStackCost","item":"https://freeutilitylab.com/aistackcost/"}]}
   </script>
-<link rel="stylesheet" href="/free-utility-lab/asset-lab-modern.css">
-<style>:root{--asset-accent:#6C63FF;--asset-accent2:#00BCD4;--asset-glow:color-mix(in srgb,#6C63FF 32%,transparent);}</style>
-<style>
-/* AIStackCost modern improvements */
-.ai-builder{background:#fff;border:1px solid #ddd;border-radius:20px;padding:20px;margin:16px 0}
-.ai-builder-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:14px 0}
-.ai-tool-check{border:1px solid #e0e0e0;border-radius:14px;padding:14px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:border-color .2s,background .2s}
-.ai-tool-check:hover{border-color:#6C63FF;background:#f8f7ff}
-.ai-tool-check.selected{border-color:#6C63FF;background:#f3f1ff}
-.ai-tool-check input[type=checkbox]{margin-top:3px;accent-color:#6C63FF;width:16px;height:16px;flex-shrink:0}
-.ai-tool-check .tc-name{font-weight:800;font-size:15px}
-.ai-tool-check .tc-role{font-size:12px;color:#777;margin-top:2px}
-.ai-tool-check .tc-price{font-size:12px;color:#6C63FF;font-weight:800;margin-top:4px}
-.ai-live-total{background:linear-gradient(135deg,#6C63FF,#00BCD4);color:#fff;border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:14px 0}
-.ai-live-total strong{font-size:28px;font-weight:900}
-.ai-live-total span{font-size:14px;opacity:.85}
-.ai-overlap-alert{display:none;border-left:4px solid #f59e0b;background:#fffbeb;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:14px}
-.ai-overlap-alert.visible{display:block}
-/* ROI calculator */
-.ai-roi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}
-.ai-roi-grid label{font-size:13px;font-weight:800;display:block;margin-bottom:6px;color:#444}
-.ai-roi-grid input{width:100%;border:1px solid #ddd;border-radius:10px;padding:10px 12px;font:inherit}
-.ai-roi-result{background:#f0fdf4;border:1px solid #86efac;border-radius:14px;padding:14px;margin-top:12px}
-.ai-roi-result strong{font-size:22px;color:#15803d}
-/* Budget planner */
-.ai-budget-bar{background:#f3f4f6;border-radius:999px;height:12px;overflow:hidden;margin:8px 0}
-.ai-budget-fill{height:100%;background:linear-gradient(90deg,#6C63FF,#00BCD4);border-radius:999px;transition:width .3s}
-.ai-budget-fill.over{background:linear-gradient(90deg,#ef4444,#f59e0b)}
-</style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6512777701792073" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"How to calculate AI API cost with AIStackCost","description":"Enter token usage and request volume to get an exact per-model API cost projection.","step":[{"@type":"HowToStep","name":"Enter token usage","text":"Enter average input tokens and output tokens per request, or paste a sample prompt into the token estimator."},{"@type":"HowToStep","name":"Enter request volume","text":"Enter how many requests per day your product or script sends."},{"@type":"HowToStep","name":"Compare models","text":"Filter by provider and read the comparison table, sorted from cheapest to most expensive for your exact usage."},{"@type":"HowToStep","name":"Verify before budgeting","text":"Check the official pricing page linked for the model you choose, since providers change rates without notice."}]}
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6512777701792073" crossorigin="anonymous"></script>
 </head>
-<body data-asset-id="aistackcost" data-goal="aistackcost-upgrade">
-<header class="ful-marketplace-hero"><nav class="ful-breadcrumb" aria-label="Breadcrumb"><a href="/free-utility-lab/">Free Utility Lab</a><span class="ful-breadcrumb-separator">/</span><a href="/free-utility-lab/ai-tools/">AI tools</a><span class="ful-breadcrumb-separator">/</span><span aria-current="page">AIStackCost</span></nav><p class="ful-eyebrow">AIStackCost modular planner</p><h1>Build an AI stack without wasting subscription budget</h1><p class="ful-hero-copy">Compare assistants, presets, and recurring subscription risk before paying for another AI tool.</p><div class="ful-badges"><span class="ful-badge">Free</span><span class="ful-badge">No signup</span><span class="ful-badge">CSV</span><span class="ful-badge">Print</span></div></header>
-<main class="ful-marketplace-shell">
-<section class="ful-panel" data-goal="aistackcost-upgrade" id="aistackcost-result" aria-labelledby="goal7-title">
-  <h2 id="goal7-title">Approximate monthly cost calculator</h2>
-  <p>Enter current planning estimates, then remove duplicates. The result is approximate because prices and features change.</p>
-  <div class="ful-tool-grid"><label>General AI assistant <input data-price-input type="number" min="0" value="0"></label><label>Design/content tool <input data-price-input type="number" min="0" value="0"></label><label>Automation/workflow tool <input data-price-input type="number" min="0" value="0"></label></div>
-  <p data-cost-output>Approximate monthly total: $0.00</p>
-  <div class="ful-action-row">
-  <button type="button" data-copy-target="#aistackcost-result">Copy AI stack summary</button>
-  <button type="button" data-csv-target="#aistackcost-result table">Download AI stack CSV</button>
-  <button type="button" data-print-section="aistackcost-result">Print AI stack plan</button>
-</div>
-</section>
+<body data-asset-id="aistackcost">
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Interactive stack builder -->
-<section class="ful-panel" aria-labelledby="builder-title">
-  <h2 id="builder-title">AI stack builder — select tools and see your live total</h2>
-  <p>Check the AI tools you are considering. The running total updates instantly. Remove overlaps before buying.</p>
-  <p><strong>Prices and features change.</strong> These are approximate planning ranges only. Verify at official pricing pages before buying. <strong>Last updated: 2026-06-14.</strong></p>
-  <div class="ai-live-total" aria-live="polite">
-    <span>Estimated monthly total</span>
-    <strong id="aiStackTotal">$0 / mo</strong>
-    <span id="aiStackCount">0 tools selected</span>
+<nav class="site-nav" aria-label="Primary">
+  <div class="wrap">
+    <a href="/" class="brand">Free Utility Lab</a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/tools/">All tools</a></li>
+      <li><a href="/ai-tools/">AI tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-lang">
+        <a href="/aistackcost/" aria-current="page">EN</a>
+        <a href="/es/aistackcost/" lang="es">ES</a>
+        <a href="/he/aistackcost/" lang="he">עברית</a>
+      </div>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme"></button>
+    </div>
   </div>
-  <div id="aiOverlapAlert" class="ai-overlap-alert" role="alert">
-    ⚠️ <strong>Overlap detected:</strong> <span id="aiOverlapMsg"></span> Consider removing one before buying.
-  </div>
-  <div class="ai-builder-grid" id="aiToolGrid"><!-- rendered by JS --></div>
-  <div class="ful-action-row" style="margin-top:12px">
-    <button type="button" id="aiBuildCopy">Copy AI stack summary</button>
-    <button type="button" id="aiBuildCsv">Download AI stack CSV</button>
-    <button type="button" id="aiBuildPrint">Print AI stack plan</button>
-  </div>
-</section>
+</nav>
 
-<!-- ROI Calculator -->
-<section class="ful-panel" aria-labelledby="roi-title">
-  <h2 id="roi-title">AI tools ROI calculator</h2>
-  <p>Estimate whether your AI subscriptions pay for themselves in saved time. Educational planning tool only.</p>
-  <div class="ai-roi-grid">
-    <div><label for="roiHours">Hours saved per week</label><input id="roiHours" type="number" min="0" value="3" step="0.5"></div>
-    <div><label for="roiRate">Your hourly rate ($)</label><input id="roiRate" type="number" min="0" value="50"></div>
-    <div><label for="roiCost">Monthly AI subscription cost ($)</label><input id="roiCost" type="number" min="0" value="30"></div>
-  </div>
-  <p><button type="button" id="roiCalcBtn" class="ful-primary-cta">Calculate ROI</button></p>
-  <div id="roiResult" style="display:none" class="ai-roi-result">
-    <div><span>Monthly time value saved: </span><strong id="roiValue">$0</strong></div>
-    <div style="margin-top:6px"><span>Net monthly benefit: </span><strong id="roiNet">$0</strong></div>
-    <div style="margin-top:6px"><span id="roiVerdict"></span></div>
-  </div>
-</section>
+<main id="main" data-goal="aistackcost-upgrade">
 
-<!-- Budget max planner -->
-<section class="ful-panel" aria-labelledby="budget-planner-title">
-  <h2 id="budget-planner-title">AI tools budget planner</h2>
-  <p>Set a maximum monthly budget for AI tools and see how much of your stack fits.</p>
-  <div class="ai-roi-grid">
-    <div><label for="aiMaxBudget">Max monthly AI budget ($)</label><input id="aiMaxBudget" type="number" min="0" value="50"></div>
-  </div>
-  <div class="ai-budget-bar"><div class="ai-budget-fill" id="aiBudgetBar" style="width:0%"></div></div>
-  <p id="aiBudgetStatus" style="font-size:14px;color:#555">Select tools above to see budget fit.</p>
-</section>
+  <section class="aisc-hero" aria-labelledby="hero-title">
+    <span class="aisc-eyebrow">Free AI API cost calculator · no signup</span>
+    <h1 id="hero-title">Calculate the exact cost of your AI API usage, not a vague subscription guess.</h1>
+    <p>Enter your input/output tokens per request and request volume. AIStackCost multiplies against official per-token prices for GPT-5.6, Claude, Gemini, Grok and DeepSeek so you get a real daily, monthly and annual number — not a placeholder range.</p>
+    <div class="hero-cta">
+      <a href="#tool" class="btn btn-primary" data-event="cta_click">Calculate my API cost</a>
+    </div>
+    <p class="hero-trust"><span>Official per-token prices</span><span>CSV export</span><span>Printable</span><span>No signup</span></p>
+    <div class="aisc-metrics" style="max-width:640px;margin-top:28px">
+      <div class="metric"><small>Models compared</small><strong id="heroModelCount">14</strong></div>
+      <div class="metric"><small>Providers</small><strong>5</strong></div>
+      <div class="metric"><small>Prices last verified</small><strong>2026-08-18</strong></div>
+    </div>
+    <div class="aisc-rule"></div>
+  </section>
 
-<section class="ful-panel" aria-labelledby="comparison-title">
-  <h2 id="comparison-title">Free vs paid AI stack comparison</h2>
-  <p>Comparison table for common AI stack decisions. Use the notes as planning prompts, not final pricing claims.</p>
-  <div class="ful-table-wrap"><table><thead><tr><th>Tool</th><th>Best for</th><th>Free option</th><th>Paid plan note</th><th>Official source</th></tr></thead><tbody><tr><th scope="row">ChatGPT</th><td>general assistant, writing, analysis, coding support</td><td>Free option may be available with usage limits depending on region and plan changes.</td><td>Approximate monthly planning input only; check official OpenAI pricing before buying.</td><td><a href="https://openai.com/pricing">Official source</a></td></tr><tr><th scope="row">Claude</th><td>long-form writing, document reasoning, code review, planning</td><td>Free option may be available with usage limits depending on current availability.</td><td>Approximate monthly planning input only; check official Anthropic pricing before buying.</td><td><a href="https://www.anthropic.com/pricing">Official source</a></td></tr><tr><th scope="row">Gemini</th><td>Google-workspace-oriented research, multimodal help, general assistance</td><td>Free option may be available through consumer or developer products.</td><td>Approximate monthly planning input only; check official Google Gemini pricing before buying.</td><td><a href="https://ai.google.dev/pricing">Official source</a></td></tr><tr><th scope="row">Canva</th><td>design, social graphics, proposals, client visuals</td><td>Free design tier may be enough for many freelancers.</td><td>Approximate monthly planning input only; check official pricing before buying.</td><td><a href="https://www.canva.com/pricing/">Official source</a></td></tr><tr><th scope="row">Notion AI</th><td>notes, lightweight knowledge base, project writing</td><td>Core Notion workspace may be usable without the AI add-on.</td><td>Approximate monthly planning input only; check official pricing before buying.</td><td><a href="https://www.notion.com/pricing">Official source</a></td></tr><tr><th scope="row">Zapier AI</th><td>automation, lead routing, repetitive workflows</td><td>Free automation capacity may be enough for testing.</td><td>Approximate monthly planning input only; check official pricing before buying.</td><td><a href="https://zapier.com/pricing">Official source</a></td></tr></tbody></table></div>
-</section>
-<section class="ful-panel" aria-labelledby="assistant-title">
-  <h2 id="assistant-title">ChatGPT vs Claude vs Gemini comparison</h2>
-  <p>ChatGPT vs Claude vs Gemini comparison: pick by workflow fit first, then check official pricing pages before buying.</p>
-</section>
-<section class="ful-panel" aria-labelledby="preset-title">
-  <h2 id="preset-title">Stack preset library</h2>
-  <div class="ful-tool-grid"><article class="ful-tool-card"><h3>Freelancer stack preset</h3><p><strong>Audience:</strong> solo freelancer</p><ul><li>one general AI assistant</li><li>one design tool</li><li>one notes/project tool</li></ul><p><strong>Buying rule:</strong> Upgrade only when a paid feature saves billable time every week.</p></article><article class="ful-tool-card"><h3>Small business stack preset</h3><p><strong>Audience:</strong> small business owner</p><ul><li>one general AI assistant</li><li>one marketing/design tool</li><li>one automation or CRM helper</li></ul><p><strong>Buying rule:</strong> Avoid duplicate AI subscriptions until a workflow owner uses each tool weekly.</p></article><article class="ful-tool-card"><h3>Agency stack preset</h3><p><strong>Audience:</strong> small agency</p><ul><li>shared writing/research assistant</li><li>design tool</li><li>automation layer</li><li>meeting/documentation helper</li></ul><p><strong>Buying rule:</strong> Track per-seat cost and cancel overlapping tools after a two-week trial.</p></article></div>
-</section>
-<section class="ful-panel" aria-labelledby="method-title">
-  <h2 id="method-title">Methodology</h2>
-  <p>Methodology: group tools by job-to-be-done, prefer free options until usage is proven, compare recurring cost, and remove overlapping subscriptions before upgrading.</p>
-  <p><strong>Prices and features change.</strong> These are approximate planning notes only; check the official pricing pages before buying.</p>
-  <p><strong>Last updated:</strong> 2026-06-14</p>
-  <ul><li><a href="https://openai.com/pricing">OpenAI pricing</a></li><li><a href="https://www.anthropic.com/pricing">Anthropic pricing</a></li><li><a href="https://ai.google.dev/pricing">Google Gemini pricing</a></li></ul>
-</section>
-<section class="ful-related-hubs" aria-label="Related hubs"><a class="ful-hub-pill" href="/free-utility-lab/ai-tools/">AI tools</a><a class="ful-hub-pill" href="/free-utility-lab/tools/">All tools</a><a class="ful-hub-pill" href="/free-utility-lab/aistackcost/">AIStackCost</a></section>
+  <section class="aisc-ad aisc-noprint" aria-label="Advertising placement reserved for future AdSense unit">
+    <div class="aisc-ad-box" data-ad-slot="aistackcost_top_native" data-ad-status="inactive"><span>Ad space reserved · inactive until AdSense is approved</span></div>
+  </section>
+
+  <section class="aisc-tool" id="tool" data-print-section="aisc-result" aria-label="AI API cost calculator">
+    <div class="aisc-grid">
+
+      <div class="aisc-inputs">
+
+        <div class="aisc-block">
+          <div class="aisc-kicker">01 — Your usage</div>
+          <div class="grid">
+            <div class="field"><label for="tokIn">Input tokens / request</label><input id="tokIn" type="number" min="0" step="10" value="800"></div>
+            <div class="field"><label for="tokOut">Output tokens / request</label><input id="tokOut" type="number" min="0" step="10" value="400"></div>
+            <div class="field"><label for="reqDay">Requests / day</label><input id="reqDay" type="number" min="0" step="1" value="200"></div>
+          </div>
+        </div>
+
+        <div class="aisc-block aisc-estimator">
+          <div class="aisc-kicker">02 — Not sure how many tokens? Estimate from text</div>
+          <textarea id="tokenSample" placeholder="Paste a sample prompt or response here to estimate its token count..."></textarea>
+          <div class="aisc-estimator-row">
+            <span>≈ <span class="aisc-estimator-count" id="tokenEstimate">0</span> tokens (rough estimate, ~4 characters per token for English text)</span>
+            <button type="button" class="btn" id="useAsInput">Use as input tokens</button>
+            <button type="button" class="btn" id="useAsOutput">Use as output tokens</button>
+          </div>
+        </div>
+
+        <div class="aisc-block">
+          <div class="aisc-kicker">03 — Filter by provider</div>
+          <div class="aisc-chips" id="providerChips"></div>
+        </div>
+
+      </div>
+
+      <aside class="aisc-summary" aria-label="Cheapest option for your workload">
+        <div class="aisc-kicker">Cheapest for your workload</div>
+        <div class="aisc-accent-rule"></div>
+        <div class="aisc-money" id="cheapMonthly">$0.00 / mo</div>
+        <div class="aisc-model-name" id="cheapModelName">Select a provider to see results.</div>
+
+        <div class="aisc-summary-stats">
+          <div><span>Cost per request</span><strong id="cheapPerReq">$0.00</strong></div>
+          <div><span>Daily cost</span><strong id="cheapDaily">$0.00</strong></div>
+          <div><span>Annual cost</span><strong id="cheapAnnual">$0.00</strong></div>
+        </div>
+
+        <div class="aisc-summary-worst">Most expensive shown: <strong id="worstModelName">—</strong> at <strong id="worstMonthly">$0.00 / mo</strong></div>
+
+        <div class="aisc-actions aisc-noprint">
+          <button class="btn" type="button" data-copy-target="#aiscSummaryText">Copy summary</button>
+          <button class="btn" type="button" data-csv-target="#aiscTable" data-filename="ai-api-cost-comparison.csv">Download CSV</button>
+          <button class="btn" type="button" data-print-section="aisc-result">Print comparison</button>
+        </div>
+        <pre class="aisc-summary-text" id="aiscSummaryText">Enter usage above to see a summary.</pre>
+      </aside>
+
+    </div>
+
+    <div class="aisc-table-wrap">
+      <table class="aisc-table" id="aiscTable">
+        <thead>
+          <tr>
+            <th>Model</th><th>Provider</th>
+            <th class="num">Input $/1M</th><th class="num">Output $/1M</th>
+            <th class="num">Cost/request</th><th class="num">Daily</th><th class="num">Monthly</th><th class="num">Annual</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody id="aiscTableBody"></tbody>
+      </table>
+    </div>
+    <p class="aisc-methodology"><strong>Prices are approximate planning estimates.</strong> Rates shown are standard per-token API prices without prompt caching, batch discounts, or long-context surcharges, verified against each provider's official pricing page on <strong>2026-08-18</strong>. Providers change prices without notice — confirm the current rate at the official source before budgeting.</p>
+  </section>
+
+  <section class="aisc-cards">
+    <div class="aisc-cards-row">
+      <div><div class="aisc-card-num">01</div><h3>Why per-token, not per-seat</h3><p>A subscription price tells you what a human costs to use a chat app. API pricing tells you what your product costs to run per request — the number that actually matters once you're calling a model in code.</p></div>
+      <div><div class="aisc-card-num">02</div><h3>Caching and batch cut cost hard</h3><p>Repeated system prompts or few-shot context can be cached for a fraction of standard input price on most providers, and batch/async processing typically halves cost again. Check the official page for exact rates once you pick a model.</p></div>
+      <div><div class="aisc-card-num">03</div><h3>Output tokens dominate cost</h3><p>Output tokens cost 3-6x input tokens on almost every model here. A prompt that asks for a short, structured answer instead of a long one is often the single biggest lever on your bill.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>AI cost guides</h2>
+      <p class="hero-sub">Related planning guides for choosing and budgeting an AI stack.</p>
+      <div class="guides">
+        <span class="guides-label">Explore tool hubs</span>
+        <div class="guides-list">
+          <a href="/tools/" data-event="marketplace_hub_click">All free tools</a>
+          <a href="/ai-tools/" data-event="marketplace_hub_click">AI tools</a>
+        </div>
+      </div>
+      <div class="guides">
+        <span class="guides-label">AI cost guides</span>
+        <div class="guides-list">
+          <a href="/aistackcost/ai-subscription-cost-calculator/" data-event="support_page_click">AI subscription cost calculator guide</a>
+          <a href="/aistackcost/chatgpt-vs-claude-cost/" data-event="support_page_click">ChatGPT vs Claude cost</a>
+          <a href="/aistackcost/chatgpt-claude-gemini-comparison/" data-event="support_page_click">ChatGPT vs Claude vs Gemini comparison</a>
+          <a href="/aistackcost/ai-tools-roi-calculator/" data-event="support_page_click">AI tools ROI calculator</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aisc-faq">
+    <div class="aisc-faq-inner">
+      <div class="aisc-kicker">Frequently asked questions</div>
+      <details open><summary>Are these AI API prices guaranteed?</summary><p>No. Prices are entered from each provider's official API pricing page and checked periodically, but providers change rates without notice. Treat every result as a planning estimate and confirm the current rate at the official source linked next to each model before budgeting.</p></details>
+      <details><summary>What is the difference between API pricing and a ChatGPT/Claude subscription?</summary><p>A consumer subscription (ChatGPT Plus, Claude Pro, Gemini Advanced) is a flat monthly fee for the chat app with usage limits. API pricing is pay-per-token: you're billed for every request your product or script sends, no flat fee. This calculator is for API/developer usage, not consumer subscriptions.</p></details>
+      <details><summary>Does this include prompt caching or batch API discounts?</summary><p>No, the base calculation uses standard per-token rates. Prompt caching and batch processing can cut real cost by 50-90% depending on the provider and how repetitive your prompts are. Check the official pricing page linked for each model for exact rates before finalizing a budget.</p></details>
+      <details><summary>How do I estimate tokens from text?</summary><p>Use the token estimator above: paste a sample prompt or response and it estimates tokens at roughly 4 characters per token for English text. This is a rough approximation; exact counts depend on the model's tokenizer.</p></details>
+      <details><summary>Is my data uploaded?</summary><p>No. The calculation and exports run in your browser. Do not paste sensitive or private text into the token estimator.</p></details>
+    </div>
+  </section>
 
 </main>
-<script src="/free-utility-lab/shared/scripts/utility-actions.js"></script>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <p class="footer-brand">AIStackCost</p>
+      <p class="footer-copy">© 2026 Free Utility Lab. AIStackCost is an educational planning tool, not a guarantee of billed cost. Verify prices at the official source before budgeting.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/">Free Utility Lab</a>
+      <a href="/privacy-policy.html">Privacy</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-window.FreeUtilityLabActions = window.FreeUtilityLabActions || {};
-/* Legacy simple price inputs */
-document.querySelectorAll('[data-price-input]').forEach(function (input) {
-  input.addEventListener('input', function () {
-    var total = 0;
-    document.querySelectorAll('[data-price-input]').forEach(function (field) { total += Number(field.value || 0); });
-    var output = document.querySelector('[data-cost-output]');
-    if (output) output.textContent = 'Approximate monthly total: ' + total.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
-  });
-});
-
-/* AI Stack Builder — interactive checkbox builder with live total, overlap alert, ROI, budget planner */
 (function(){
-  /* ai_ localStorage namespace */
-  var LS_KEY = 'ai_stack_v1';
-
-  /* Tool data — planning ranges only, no guaranteed prices */
-  var AI_TOOLS = [
-    {id:'chatgpt',    name:'ChatGPT',     category:'assistant', role:'General assistant, writing, coding support', range:'$0–$25+', low:0,  high:25,  url:'https://openai.com/pricing'},
-    {id:'claude',     name:'Claude',      category:'assistant', role:'Long-form writing, document reasoning, code review', range:'$0–$20+', low:0, high:20, url:'https://www.anthropic.com/pricing'},
-    {id:'gemini',     name:'Gemini',      category:'assistant', role:'Google-workspace research, multimodal, general', range:'$0–$20+', low:0, high:20, url:'https://ai.google.dev/pricing'},
-    {id:'canva',      name:'Canva',       category:'design',    role:'Design, social graphics, proposals, visuals', range:'$0–$17+', low:0, high:17, url:'https://www.canva.com/pricing/'},
-    {id:'notion',     name:'Notion AI',   category:'notes',     role:'Notes, knowledge base, project writing', range:'$0–$16+', low:0, high:16, url:'https://www.notion.com/pricing'},
-    {id:'zapier',     name:'Zapier AI',   category:'automation',role:'Automation, lead routing, repetitive workflows', range:'$0–$30+', low:0, high:30, url:'https://zapier.com/pricing'},
-    {id:'midjourney', name:'Midjourney',  category:'design',    role:'AI image generation for creative work', range:'$0–$30+', low:0, high:30, url:'https://www.midjourney.com/account/'},
-    {id:'grammarly',  name:'Grammarly',   category:'writing',   role:'Grammar, style, clarity for writing', range:'$0–$15+', low:0, high:15, url:'https://www.grammarly.com/plans'},
-    {id:'perplexity', name:'Perplexity',  category:'research',  role:'AI-powered search and research', range:'$0–$20+', low:0, high:20, url:'https://www.perplexity.ai/settings/api'},
-    {id:'otter',      name:'Otter.ai',    category:'meetings',  role:'Meeting transcription and notes', range:'$0–$17+', low:0, high:17, url:'https://otter.ai/pricing'},
+  var MODELS = [
+    {id:'gpt-5.6-sol', name:'GPT-5.6 Sol', provider:'OpenAI', in:5.00, out:30.00, note:'Flagship', url:'https://openai.com/api/pricing/'},
+    {id:'gpt-5.6-terra', name:'GPT-5.6 Terra', provider:'OpenAI', in:2.00, out:12.00, note:'Mid-tier', url:'https://openai.com/api/pricing/'},
+    {id:'gpt-5.6-luna', name:'GPT-5.6 Luna', provider:'OpenAI', in:0.20, out:1.20, note:'Fast/cheap', url:'https://openai.com/api/pricing/'},
+    {id:'gpt-5-mini', name:'GPT-5 mini', provider:'OpenAI', in:0.25, out:2.00, note:'Budget', url:'https://openai.com/api/pricing/'},
+    {id:'gpt-4o-mini', name:'GPT-4o mini', provider:'OpenAI', in:0.15, out:0.60, note:'Legacy budget', url:'https://openai.com/api/pricing/'},
+    {id:'claude-opus-5', name:'Claude Opus 5', provider:'Anthropic', in:5.00, out:25.00, note:'Flagship', url:'https://claude.com/pricing'},
+    {id:'claude-sonnet-5', name:'Claude Sonnet 5', provider:'Anthropic', in:3.00, out:15.00, note:'Balanced', url:'https://claude.com/pricing'},
+    {id:'claude-haiku-4-5', name:'Claude Haiku 4.5', provider:'Anthropic', in:1.00, out:5.00, note:'Fast/cheap', url:'https://claude.com/pricing'},
+    {id:'claude-fable-5', name:'Claude Fable 5', provider:'Anthropic', in:10.00, out:50.00, note:'Premium', url:'https://claude.com/pricing'},
+    {id:'gemini-3.7-flash', name:'Gemini 3.7 Flash', provider:'Google', in:0.75, out:3.75, note:'Fast, intro price thru Dec 2026', url:'https://ai.google.dev/gemini-api/docs/pricing'},
+    {id:'gemini-2.5-pro', name:'Gemini 2.5 Pro', provider:'Google', in:1.25, out:10.00, note:'Reasoning, ≤200k ctx', url:'https://ai.google.dev/gemini-api/docs/pricing'},
+    {id:'gemini-2.5-flash-lite', name:'Gemini 2.5 Flash-Lite', provider:'Google', in:0.10, out:0.40, note:'Cheapest', url:'https://ai.google.dev/gemini-api/docs/pricing'},
+    {id:'grok-4.6', name:'Grok 4.6', provider:'xAI', in:2.00, out:6.00, note:'Flagship, <200k ctx', url:'https://docs.x.ai/docs/models'},
+    {id:'deepseek-v4-flash', name:'DeepSeek V4 Flash', provider:'DeepSeek', in:0.44, out:1.32, note:'Peak, cache miss', url:'https://api-docs.deepseek.com/quick_start/pricing'}
   ];
 
-  var selected = {};
+  var PROVIDERS = ['OpenAI','Anthropic','Google','xAI','DeepSeek'];
+  var activeProviders = {};
+  PROVIDERS.forEach(function(p){ activeProviders[p] = true; });
 
-  function loadState(){
-    try{ var s = JSON.parse(localStorage.getItem(LS_KEY)||'{}'); selected = s.selected || {}; }catch(e){ selected = {}; }
-  }
-  function saveState(){
-    try{ localStorage.setItem(LS_KEY, JSON.stringify({selected:selected})); }catch(e){}
+  function money(n, decimals){
+    decimals = decimals == null ? 2 : decimals;
+    return '$' + n.toLocaleString('en-US', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
   }
 
-  function renderTools(){
-    var grid = document.getElementById('aiToolGrid');
-    if(!grid) return;
-    grid.innerHTML = AI_TOOLS.map(function(t){
-      var chk = selected[t.id] ? 'checked' : '';
-      var sel = selected[t.id] ? 'selected' : '';
-      return '<label class="ai-tool-check ' + sel + '" for="aitool-' + t.id + '">' +
-        '<input type="checkbox" id="aitool-' + t.id + '" data-tool-id="' + t.id + '" ' + chk + '>' +
-        '<div><div class="tc-name">' + t.name + '</div>' +
-        '<div class="tc-role">' + t.role + '</div>' +
-        '<div class="tc-price">~' + t.range + '/mo · <a href="' + t.url + '" target="_blank" rel="noopener">Official pricing ↗</a></div></div>' +
-        '</label>';
+  function computeRow(m, tokIn, tokOut, reqDay){
+    var perReq = (tokIn/1e6)*m.in + (tokOut/1e6)*m.out;
+    var daily = perReq * reqDay;
+    return Object.assign({}, m, {
+      perReq: perReq,
+      daily: daily,
+      monthly: daily * 30.44,
+      annual: daily * 365
+    });
+  }
+
+  function renderChips(){
+    var wrap = document.getElementById('providerChips');
+    wrap.innerHTML = PROVIDERS.map(function(p){
+      return '<button type="button" class="aisc-chip" data-provider="' + p + '" aria-pressed="' + (activeProviders[p] ? 'true' : 'false') + '">' + p + '</button>';
     }).join('');
-    grid.querySelectorAll('input[type=checkbox]').forEach(function(cb){
-      cb.addEventListener('change', function(){
-        var id = cb.getAttribute('data-tool-id');
-        selected[id] = cb.checked;
-        cb.closest('label').classList.toggle('selected', cb.checked);
-        saveState();
-        update();
+    wrap.querySelectorAll('.aisc-chip').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var p = btn.getAttribute('data-provider');
+        activeProviders[p] = !activeProviders[p];
+        btn.setAttribute('aria-pressed', activeProviders[p] ? 'true' : 'false');
+        render();
       });
     });
   }
 
-  function update(){
-    var active = AI_TOOLS.filter(function(t){ return selected[t.id]; });
-    var totalLow = active.reduce(function(s,t){ return s + t.low; }, 0);
-    var totalHigh = active.reduce(function(s,t){ return s + t.high; }, 0);
+  function render(){
+    var tokIn = Number(document.getElementById('tokIn').value) || 0;
+    var tokOut = Number(document.getElementById('tokOut').value) || 0;
+    var reqDay = Number(document.getElementById('reqDay').value) || 0;
 
-    var el = document.getElementById('aiStackTotal');
-    if(el) el.textContent = '$' + totalLow + '–$' + totalHigh + ' / mo';
-    var countEl = document.getElementById('aiStackCount');
-    if(countEl) countEl.textContent = active.length + ' tool' + (active.length === 1 ? '' : 's') + ' selected';
+    var rows = MODELS
+      .filter(function(m){ return activeProviders[m.provider]; })
+      .map(function(m){ return computeRow(m, tokIn, tokOut, reqDay); })
+      .sort(function(a,b){ return a.monthly - b.monthly; });
 
-    /* Overlap alert */
-    var catCounts = {};
-    active.forEach(function(t){ catCounts[t.category] = (catCounts[t.category]||0) + 1; });
-    var overlaps = Object.keys(catCounts).filter(function(c){ return catCounts[c] > 1; });
-    var alertEl = document.getElementById('aiOverlapAlert');
-    var msgEl = document.getElementById('aiOverlapMsg');
-    if(alertEl && msgEl){
-      if(overlaps.length){
-        msgEl.textContent = 'Multiple tools in category: ' + overlaps.join(', ') + '.';
-        alertEl.classList.add('visible');
-      } else {
-        alertEl.classList.remove('visible');
-      }
+    var body = document.getElementById('aiscTableBody');
+    if(!rows.length){
+      body.innerHTML = '<tr class="aisc-empty-row"><td colspan="9">Select at least one provider to see results.</td></tr>';
+    } else {
+      body.innerHTML = rows.map(function(r){
+        return '<tr>' +
+          '<td>' + r.name + ' <span style="color:var(--color-text-soft);font-weight:400">(' + r.note + ')</span></td>' +
+          '<td>' + r.provider + '</td>' +
+          '<td class="num">' + money(r.in) + '</td>' +
+          '<td class="num">' + money(r.out) + '</td>' +
+          '<td class="num">' + money(r.perReq, 4) + '</td>' +
+          '<td class="num">' + money(r.daily) + '</td>' +
+          '<td class="num">' + money(r.monthly) + '</td>' +
+          '<td class="num">' + money(r.annual) + '</td>' +
+          '<td><a href="' + r.url + '" target="_blank" rel="noopener">Official source ↗</a></td>' +
+          '</tr>';
+      }).join('');
     }
 
-    /* Budget bar */
-    var maxBudget = Number(document.getElementById('aiMaxBudget')&&document.getElementById('aiMaxBudget').value) || 50;
-    var fillPct = Math.min(100, totalHigh / Math.max(1, maxBudget) * 100);
-    var bar = document.getElementById('aiBudgetBar');
-    var stat = document.getElementById('aiBudgetStatus');
-    if(bar){ bar.style.width = fillPct + '%'; bar.classList.toggle('over', totalHigh > maxBudget); }
-    if(stat){
-      if(!active.length) stat.textContent = 'Select tools above to see budget fit.';
-      else if(totalHigh <= maxBudget) stat.textContent = 'Stack fits within $' + maxBudget + ' budget (high-end ~$' + totalHigh + ').';
-      else stat.textContent = 'Stack high-end (~$' + totalHigh + ') exceeds $' + maxBudget + ' budget. Remove a tool or raise your limit.';
+    if(rows.length){
+      var cheap = rows[0], worst = rows[rows.length - 1];
+      document.getElementById('cheapMonthly').textContent = money(cheap.monthly) + ' / mo';
+      document.getElementById('cheapModelName').textContent = cheap.name + ' — ' + cheap.provider;
+      document.getElementById('cheapPerReq').textContent = money(cheap.perReq, 4);
+      document.getElementById('cheapDaily').textContent = money(cheap.daily);
+      document.getElementById('cheapAnnual').textContent = money(cheap.annual);
+      document.getElementById('worstModelName').textContent = worst.name;
+      document.getElementById('worstMonthly').textContent = money(worst.monthly) + ' / mo';
+
+      var summary = 'AIStackCost API cost comparison\n' +
+        'Usage: ' + tokIn + ' input tokens + ' + tokOut + ' output tokens per request, ' + reqDay + ' requests/day\n\n' +
+        rows.map(function(r){ return '• ' + r.name + ' (' + r.provider + '): ' + money(r.perReq, 4) + '/request, ' + money(r.monthly) + '/mo'; }).join('\n') +
+        '\n\nCheapest for this workload: ' + cheap.name + ' at ' + money(cheap.monthly) + '/mo.\n' +
+        'Prices are standard per-token rates without caching/batch discounts, verified 2026-08-18. Check official pricing before budgeting.';
+      document.getElementById('aiscSummaryText').textContent = summary;
+    } else {
+      document.getElementById('cheapMonthly').textContent = '$0.00 / mo';
+      document.getElementById('cheapModelName').textContent = 'Select a provider to see results.';
+      document.getElementById('cheapPerReq').textContent = '$0.00';
+      document.getElementById('cheapDaily').textContent = '$0.00';
+      document.getElementById('cheapAnnual').textContent = '$0.00';
+      document.getElementById('worstModelName').textContent = '—';
+      document.getElementById('worstMonthly').textContent = '$0.00 / mo';
+      document.getElementById('aiscSummaryText').textContent = 'Select at least one provider to see a summary.';
     }
 
-    /* Update ROI cost field if empty */
-    var roiCostEl = document.getElementById('roiCost');
-    if(roiCostEl && !roiCostEl._manuallySet) roiCostEl.value = Math.round((totalLow + totalHigh) / 2) || 0;
+    if(window.FreeUtilityLabActions) window.FreeUtilityLabActions.trackSafe('tool_start', {asset_id:'aistackcost', step:'recalculate'});
   }
 
-  /* Export helpers */
-  function buildSummary(){
-    var active = AI_TOOLS.filter(function(t){ return selected[t.id]; });
-    if(!active.length) return 'No tools selected yet. Open the AI stack builder to choose tools.';
-    return 'AIStackCost plan summary\n' +
-      active.map(function(t){ return '• ' + t.name + ' (' + t.category + '): ~' + t.range + '/mo — ' + t.url; }).join('\n') +
-      '\n\nPrices are approximate planning ranges. Check official pricing before buying.\nLast updated: 2026-06-14.';
-  }
-  function buildCsvRows(){
-    var rows = [['Tool','Category','Role','Price range','Official pricing URL']];
-    AI_TOOLS.filter(function(t){ return selected[t.id]; }).forEach(function(t){
-      rows.push([t.name, t.category, t.role, t.range, t.url]);
-    });
-    return rows;
+  function updateTokenEstimate(){
+    var text = document.getElementById('tokenSample').value;
+    var estimate = Math.ceil(text.length / 4);
+    document.getElementById('tokenEstimate').textContent = estimate.toLocaleString('en-US');
+    return estimate;
   }
 
-  /* ROI calculator */
-  function calcROI(){
-    var hours = Number(document.getElementById('roiHours').value) || 0;
-    var rate  = Number(document.getElementById('roiRate').value)  || 0;
-    var cost  = Number(document.getElementById('roiCost').value)  || 0;
-    var weeklyValue = hours * rate;
-    var monthlyValue = weeklyValue * 4.33;
-    var net = monthlyValue - cost;
-    var valEl = document.getElementById('roiValue');
-    var netEl = document.getElementById('roiNet');
-    var vdEl  = document.getElementById('roiVerdict');
-    var resEl = document.getElementById('roiResult');
-    if(valEl) valEl.textContent = '$' + Math.round(monthlyValue).toLocaleString('en-US');
-    if(netEl) netEl.textContent = '$' + Math.round(net).toLocaleString('en-US');
-    if(vdEl){
-      if(net > 0) vdEl.textContent = 'Positive ROI: the time saved is worth ~$' + Math.round(net) + ' more than the subscription cost. Educational estimate only.';
-      else vdEl.textContent = 'Negative ROI: the subscription costs more than the estimated time value saved. Consider free tiers first.';
-    }
-    if(resEl) resEl.style.display = '';
-    if(window.dataLayer) window.dataLayer.push({event:'tool_complete', asset_id:'aistackcost', type:'roi_calculator'});
-  }
+  document.getElementById('tokIn').addEventListener('input', render);
+  document.getElementById('tokOut').addEventListener('input', render);
+  document.getElementById('reqDay').addEventListener('input', render);
+  document.getElementById('tokenSample').addEventListener('input', updateTokenEstimate);
+  document.getElementById('useAsInput').addEventListener('click', function(){
+    document.getElementById('tokIn').value = updateTokenEstimate();
+    render();
+  });
+  document.getElementById('useAsOutput').addEventListener('click', function(){
+    document.getElementById('tokOut').value = updateTokenEstimate();
+    render();
+  });
+
+  renderChips();
+  render();
 
   document.addEventListener('DOMContentLoaded', function(){
-    loadState();
-    renderTools();
-    update();
-
-    var maxBudgetEl = document.getElementById('aiMaxBudget');
-    if(maxBudgetEl) maxBudgetEl.addEventListener('input', update);
-
-    var roiBtn = document.getElementById('roiCalcBtn');
-    if(roiBtn) roiBtn.addEventListener('click', calcROI);
-
-    var roiCostEl = document.getElementById('roiCost');
-    if(roiCostEl) roiCostEl.addEventListener('input', function(){ roiCostEl._manuallySet = true; });
-
-    /* Copy/CSV/Print for builder */
-    var copyBtn = document.getElementById('aiBuildCopy');
-    var csvBtn  = document.getElementById('aiBuildCsv');
-    var printBtn = document.getElementById('aiBuildPrint');
-    if(copyBtn) copyBtn.addEventListener('click', function(){
-      var a = window.FreeUtilityLabActions;
-      if(a&&a.copyText) a.copyText(buildSummary());
-      if(window.dataLayer) window.dataLayer.push({event:'copy_click', asset_id:'aistackcost'});
-    });
-    if(csvBtn) csvBtn.addEventListener('click', function(){
-      var a = window.FreeUtilityLabActions;
-      var rows = buildCsvRows();
-      var csv = rows.map(function(r){ return r.map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
-      if(a&&a.downloadText) a.downloadText('aistackcost-stack.csv', csv, 'text/csv;charset=utf-8');
-      if(window.dataLayer) window.dataLayer.push({event:'download_click', asset_id:'aistackcost', type:'csv'});
-    });
-    if(printBtn) printBtn.addEventListener('click', function(){
-      var a = window.FreeUtilityLabActions;
-      if(a&&a.printSection) a.printSection('aistackcost-result');
-      if(window.dataLayer) window.dataLayer.push({event:'print_click', asset_id:'aistackcost'});
-    });
+    if(window.FreeUtilityLabActions) window.FreeUtilityLabActions.trackSafe('asset_view', {asset_id:'aistackcost'});
   });
 })();
 </script>
+<script src="/shared/scripts/utility-actions.js" defer></script>
+<script src="/accessibility-widget.js?v=8ec7e2e" defer></script>
+<script src="/free-utility-lab-tracking.js" defer></script>
+<script src="/free-utility-lab-measurement-bridge.js" defer></script>
+<script src="/theme-toggle.js" defer></script>
 </body>
 </html>
